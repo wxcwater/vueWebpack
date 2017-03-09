@@ -20,12 +20,12 @@
     <thead class="thin-border-bottom">
     <tr>
     <th>
-  //   <i class="ace-icon fa fa-user"></i>
+
     经度
     </th>
 
     <th>
-  //   <i>@</i>
+
      x
     </th>
 
@@ -80,12 +80,12 @@
     <thead class="thin-border-bottom">
     <tr>
     <th>
-  //   <i class="ace-icon fa fa-user"></i>
+
     检测项目
     </th>
 
     <th>
-  //   <i>@</i>
+  
     测量值
     </th>
 
@@ -137,7 +137,7 @@
     </table>
     </div>
 
-    <div id="profile6" class="tab-pane"  style="overflow: auto;max-height:250px">
+    <div id="profile6" class="tab-pane"  >
     <div id="contentChart" style="width:230px;height:220px"></div>
 
     <div class="input-group input-group-sm" style="margin-top:5px;">
