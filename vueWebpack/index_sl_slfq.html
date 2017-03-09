@@ -1,0 +1,975 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"></meta>
+	<title>太湖流域水环境信息共享平台-首页</title>
+
+
+	<link rel="stylesheet" href="http://localhost/arcgis_js_api/3.18/esri/css/esri.css">
+
+	<link rel="stylesheet" href="src/ace/css/bootstrap.css">
+	<link rel="stylesheet" href="src/ace/css/ace.css">
+	<link rel="stylesheet" href="src/ace/css/font-awesome.css">
+	<link rel="stylesheet" href="src/ace/css/jquery-ui.css">
+	<link rel="stylesheet" href="src/gis/minimal/blue.css" >
+	<link rel="stylesheet" href="src/ace/css/bootstrap-table.min.css">
+	<link rel="stylesheet" href="src/ace/css/ace-rtl.css" />
+	<link rel="stylesheet" href="src/ace/css/ace-skins.css" />
+	<!--[if !IE]> -->
+	<script src="src/ace/components/jquery/jquery.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+	<script src="../ace/components/jquery.1x/jquery.js"></script>
+<![endif]-->
+	<script src="src/ace/js/bootstrap.js" type="text/javascript"></script>
+	<script src="src/echarts/echarts.min.js" type="text/javascript"></script>
+	<script src="src/echarts/bmapBase.js" type="text/javascript"></script>
+	<script src="src/echarts/bmap.min.js" type="text/javascript"></script>
+	<script src="src/gis/icheck.min.js" type="text/javascript"></script>
+  <script src="src/gis/js/typeaHead.js" type="text/javascript"></script>
+	<script src="src/ace/js/ace-extra.js" type="text/javascript"></script>
+	<script src="src/ace/js/data/fuelux.tree-sampledata.js" type="text/javascript"></script>
+	<script src="src/ace/js/bootstrap-treeview.min.js" type="text/javascript"></script>
+	<script src="src/ace/js/fuelux.tree.min.js" type="text/javascript"></script>
+	<script src="src/gis/js/vue.js" type="text/javascript"></script>
+	<!-- <script src="../gis/gisObject.js" type="text/javascript"></script> -->
+	<!-- <script src="../gis/water_gisFunctionalModule.js" type="text/javascript"></script> -->
+
+
+
+	<script
+		src="src/ace/js/bootstrap-table.js"></script>
+	<script
+		src="src/ace/js/bootstrap-table-zh-CN.min.js"></script>
+
+
+<script src="http://localhost/arcgis_js_api/3.18/init.js"></script>
+
+<script src="src/data/pwk.js" type="text/javascript"></script>
+<script src="src/data/syd.js" type="text/javascript"></script>
+
+	<style type="text/css">
+
+	</style>
+</head>
+
+<body>
+
+  <div id="mainContent" style='container-fluid'>
+  <div id="topHeader" class='row' style="background-color:#E2E2E2;z-index:9999;">
+      <div id="headerConetent" class="navbar navbar-default ace-save-state" style="height:30px;padding-left:10px;background-color:#E2E2E2;">
+        <div id = 'headvuetest' class="col-md-2">
+
+        </div>
+
+        <div class="col-md-2">
+          <div class="input-group ">
+            <div class="input-group-addon">当前时间</div>
+            <input type="text" id="inStTm"
+              onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH'})"
+              class="form-control" value="2017-02-13 08"/>
+          </div>
+        </div>
+
+        <div class="col-md-1">
+
+          <div class="btn-group">
+
+												<button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
+													关注:水利分区
+													<i class="ace-icon fa fa-angle-down icon-on-right"></i>
+												</button>
+
+												<ul class="dropdown-menu">
+													<li>
+														<a href="#">监测站</a>
+													</li>
+
+													<li>
+														<a href="#">环太湖河流</a>
+													</li>
+
+													<li>
+														<a href="#">水利分区</a>
+													</li>
+
+
+
+													<li>
+														<a href="#">引供水河道</a>
+													</li>
+													<li>
+														<a href="#">取水用户</a>
+													</li>
+													<li>
+														<a href="#">行政分区</a>
+													</li>
+												</ul>
+											</div>
+        </div>
+
+        <div class="col-md-1" style="margin-left:20px;">
+
+          <div class="btn-group">
+
+												<button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
+													测站筛选：全部
+													<i class="ace-icon fa fa-angle-down icon-on-right"></i>
+												</button>
+
+												<ul class="dropdown-menu">
+													<li>
+														<a href="#">Action</a>
+													</li>
+
+													<li>
+														<a href="#">Another action</a>
+													</li>
+
+													<li>
+														<a href="#">Something else here</a>
+													</li>
+
+													<li class="divider"></li>
+
+													<li>
+														<a href="#">Separated link</a>
+													</li>
+												</ul>
+											</div>
+        </div>
+        <div id="searchBoxTemplate" class="col-md-2" style="margin-left:10px;">
+
+        </div>
+
+
+      </div>
+  </div>
+
+<div id="mapRow" class="row">
+  <div id="mapDiv" style="height:600px;">
+  </div>
+</div>
+
+
+
+
+</div>
+<div id="right-menu" class="modal aside aside-right aside-vc aside-fixed navbar-offset no-backdrop in" data-body-scroll="false" data-offset="true" data-placement="right" data-fixed="true" data-backdrop="false" tabindex="-1" style="display: block; position: fixed;margin-top:40px;">
+									<div class="modal-dialog">
+										<div class="modal-content ace-scroll">
+											<div class="scroll-track scroll-dark no-track idle-hide scroll-active" style="display: block; height: 611px;">
+												<div class="scroll-bar" style="height: 346px; top: 0px;"></div></div>
+												<div class="scroll-content" style="max-height: 611px;width:350px">
+											<div class="modal-header no-padding">
+												<div class="table-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+														<span class="white">×</span>
+													</button>
+													水质数据
+												</div>
+											</div>
+
+											<div class="modal-body" style="height:530px;width:100%;padding:0px;">
+
+
+												<div class="tabbable" style="height:530px;width:100%;">
+													<ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab4">
+														<li >
+															<a data-toggle="tab" href="#basic">监测</a>
+														</li>
+														<li class="active">
+															<a data-toggle="tab" href="#tj">统计</a>
+														</li>
+
+													</ul>
+
+													<div class="tab-content">
+														<div id="basic" class="tab-pane ">
+															<div id="js_tableContent" style="height:480px;0%;width:100%;margin-top:5px;overflow:scroll;">
+																<table border="1" style="width:100%"class="">
+																<tr>
+																	<th colspan="1">水利分区</th>
+																	<th colspan="1">站名</th>
+																	<th colspan="1">时间</th>
+																	<th colspan="">水位</th>
+																	<th colspan="">流量</th>
+																</tr>
+																	<tr>
+																		<td rowspan="10">湘西区</td>
+																		<td rowspan="1">太浦自动闸</td>
+																		<td >02-13 08:00</td>
+																		<td >3.48</td>
+																		<td >+330.74</td>
+																	</tr>
+																	<tr>
+
+																		<td rowspan="1">太浦自动闸</td>
+																		<td >02-13 08:00</td>
+																		<td >3.48</td>
+																		<td >+330.74</td>
+																	</tr>
+																	<tr>
+
+																		<td rowspan="1">太浦自动闸</td>
+																		<td >02-13 08:00</td>
+																		<td >3.48</td>
+																		<td >+330.74</td>
+																	</tr>
+																	<tr>
+
+																		<td rowspan="1">太浦自动闸</td>
+																		<td >02-13 08:00</td>
+																		<td >3.48</td>
+																		<td >+330.74</td>
+																	</tr>
+																	<tr>
+
+																		<td rowspan="1">太浦自动闸</td>
+																		<td >02-13 08:00</td>
+																		<td >3.48</td>
+																		<td >+330.74</td>
+																	</tr>
+																	<tr>
+
+																		<td rowspan="1">太浦自动闸</td>
+																		<td >02-13 08:00</td>
+																		<td >3.48</td>
+																		<td >+330.74</td>
+																	</tr>
+																	<tr>
+
+																		<td rowspan="1">太浦自动闸</td>
+																		<td >02-13 08:00</td>
+																		<td >3.48</td>
+																		<td >+330.74</td>
+																	</tr>
+																	<tr>
+
+																		<td rowspan="1">太浦自动闸</td>
+																		<td >02-13 08:00</td>
+																		<td >3.48</td>
+																		<td >+330.74</td>
+																	</tr>
+																	<tr>
+
+																		<td rowspan="1">太浦自动闸</td>
+																		<td >02-13 08:00</td>
+																		<td >3.48</td>
+																		<td >+330.74</td>
+																	</tr>
+																	<tr>
+
+																		<td rowspan="1">太浦自动闸</td>
+																		<td >02-13 08:00</td>
+																		<td >3.48</td>
+																		<td >+330.74</td>
+																	</tr>
+
+																	<tr>
+																		<th colspan="1">水利分区</th>
+																		<th colspan="1">站名</th>
+																		<th colspan="1">时间</th>
+																		<th colspan="">水位</th>
+																		<th colspan="">流量</th>
+																	</tr>
+																		<tr>
+																			<td rowspan="10">湘西区</td>
+																			<td rowspan="1">太浦自动闸</td>
+																			<td >02-13 08:00</td>
+																			<td >3.48</td>
+																			<td >+330.74</td>
+																		</tr>
+																		<tr>
+
+																			<td rowspan="1">太浦自动闸</td>
+																			<td >02-13 08:00</td>
+																			<td >3.48</td>
+																			<td >+330.74</td>
+																		</tr>
+																		<tr>
+
+																			<td rowspan="1">太浦自动闸</td>
+																			<td >02-13 08:00</td>
+																			<td >3.48</td>
+																			<td >+330.74</td>
+																		</tr>
+																		<tr>
+
+																			<td rowspan="1">太浦自动闸</td>
+																			<td >02-13 08:00</td>
+																			<td >3.48</td>
+																			<td >+330.74</td>
+																		</tr>
+																		<tr>
+
+																			<td rowspan="1">太浦自动闸</td>
+																			<td >02-13 08:00</td>
+																			<td >3.48</td>
+																			<td >+330.74</td>
+																		</tr>
+																		<tr>
+
+																			<td rowspan="1">太浦自动闸</td>
+																			<td >02-13 08:00</td>
+																			<td >3.48</td>
+																			<td >+330.74</td>
+																		</tr>
+																		<tr>
+
+																			<td rowspan="1">太浦自动闸</td>
+																			<td >02-13 08:00</td>
+																			<td >3.48</td>
+																			<td >+330.74</td>
+																		</tr>
+																		<tr>
+
+																			<td rowspan="1">太浦自动闸</td>
+																			<td >02-13 08:00</td>
+																			<td >3.48</td>
+																			<td >+330.74</td>
+																		</tr>
+																		<tr>
+
+																			<td rowspan="1">太浦自动闸</td>
+																			<td >02-13 08:00</td>
+																			<td >3.48</td>
+																			<td >+330.74</td>
+																		</tr>
+																		<tr>
+
+																			<td rowspan="1">太浦自动闸</td>
+																			<td >02-13 08:00</td>
+																			<td >3.48</td>
+																			<td >+330.74</td>
+																		</tr>
+																</table>
+													</div>
+														</div>
+
+														<div id="tj" class="tab-pane in active" style="height:530px;width:100%;">
+															<div class="row">
+															<div class="col-md-6">
+											          <div class="input-group ">
+											            <div class="input-group-addon">开始</div>
+											            <input type="text" id="inStTm"
+											              onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH'})"
+											              class="form-control" value="2017-02-05 08"/>
+											          </div>
+											        </div>
+											        <div class="col-md-6">
+											          <div class="input-group ">
+											            <div class="input-group-addon">结束</div>
+											            <input type="text" id="inStTm"
+											              onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH'})"
+											              class="form-control" value="2017-02-13 08"/>
+											          </div>
+											        </div>
+														</div>
+															<div class="btn-group">
+
+																						<button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
+																							全水利分区
+																							<i class="ace-icon fa fa-angle-down icon-on-right"></i>
+																						</button>
+
+																						<ul class="dropdown-menu">
+																							<li>
+																								<a href="#">湖西区</a>
+																							</li>
+
+																							<li>
+																								<a href="#">物澄锡虞区</a>
+																							</li>
+
+																							<li>
+																								<a href="#">阳澄淀区</a>
+																							</li>
+
+
+
+																							<li>
+																								<a href="#">杭嘉湖区</a>
+																							</li>
+																							<li>
+																								<a href="#">浙西区</a>
+																							</li>
+																							<li>
+																								<a href="#">太浦闸</a>
+																							</li>
+																							<li>
+																								<a href="#">望亭立交</a>
+																							</li>
+																						</ul>
+																					</div>
+																					<label>流量水量对比</label>
+																<div id="chartContent" style="height:30%;width:100%;"></div>
+																	<div class="hr hr5 hr-dotted"></div>
+																<div id="tableContent" style="height:200px;0%;width:100%;margin-top:5px;overflow:scroll;">
+																	<table border="1" style="width:100%"class="">
+																	<tr>
+																		<th colspan="1">水利分区</th>
+																		<th colspan="2">站名</th>
+																		<th colspan="">平均流量</th>
+																		<th colspan="">总流量</th>
+																	</tr>
+																		<tr>
+																			<td rowspan="10">湘西区</td>
+																			<td rowspan="2">太浦自动闸</td>
+																			<td >入湖</td>
+																			<td >3.48</td>
+																			<td >330.74</td>
+																		</tr>
+																		<tr>
+																			<td >出湖</td>
+																			<td >0.7</td>
+																			<td >66.53</td>
+																		</tr>
+																		<tr>
+																			<td rowspan="2">太浦自动闸</td>
+																			<td >入湖</td>
+																			<td >3.48</td>
+																			<td >330.74</td>
+																		</tr>
+																		<tr>
+																			<td >出湖</td>
+																			<td >0.7</td>
+																			<td >66.53</td>
+																		</tr>
+																		<tr>
+																			<td rowspan="2">太浦自动闸</td>
+																			<td >入湖</td>
+																			<td >3.48</td>
+																			<td >330.74</td>
+																		</tr>
+																		<tr>
+																			<td >出湖</td>
+																			<td >0.7</td>
+																			<td >66.53</td>
+																		</tr>
+
+																		<tr>
+																			<td rowspan="2">太浦自动闸</td>
+																			<td >入湖</td>
+																			<td >3.48</td>
+																			<td >330.74</td>
+																		</tr>
+																		<tr>
+																			<td >出湖</td>
+																			<td >0.7</td>
+																			<td >66.53</td>
+																		</tr>
+
+																		<tr>
+																			<td rowspan="2">太浦自动闸</td>
+																			<td >入湖</td>
+																			<td >3.48</td>
+																			<td >330.74</td>
+																		</tr>
+																		<tr>
+																			<td >出湖</td>
+																			<td >0.7</td>
+																			<td >66.53</td>
+																		</tr>
+																		<tr>
+																			<td rowspan="10">湘西区</td>
+																			<td rowspan="2">太浦自动闸</td>
+																			<td >入湖</td>
+																			<td >3.48</td>
+																			<td >330.74</td>
+																		</tr>
+																		<tr>
+																			<td >出湖</td>
+																			<td >0.7</td>
+																			<td >66.53</td>
+																		</tr>
+																		<tr>
+																			<td rowspan="2">太浦自动闸</td>
+																			<td >入湖</td>
+																			<td >3.48</td>
+																			<td >330.74</td>
+																		</tr>
+																		<tr>
+																			<td >出湖</td>
+																			<td >0.7</td>
+																			<td >66.53</td>
+																		</tr>
+																		<tr>
+																			<td rowspan="2">太浦自动闸</td>
+																			<td >入湖</td>
+																			<td >3.48</td>
+																			<td >330.74</td>
+																		</tr>
+																		<tr>
+																			<td >出湖</td>
+																			<td >0.7</td>
+																			<td >66.53</td>
+																		</tr>
+
+																		<tr>
+																			<td rowspan="2">太浦自动闸</td>
+																			<td >入湖</td>
+																			<td >3.48</td>
+																			<td >330.74</td>
+																		</tr>
+																		<tr>
+																			<td >出湖</td>
+																			<td >0.7</td>
+																			<td >66.53</td>
+																		</tr>
+
+																		<tr>
+																			<td rowspan="2">太浦自动闸</td>
+																			<td >入湖</td>
+																			<td >3.48</td>
+																			<td >330.74</td>
+																		</tr>
+																		<tr>
+																			<td >出湖</td>
+																			<td >0.7</td>
+																			<td >66.53</td>
+																		</tr>
+																	</table>
+														</div>
+
+
+													</div>
+												</div>
+
+
+
+
+
+													</div>
+
+											</div>
+										</div></div><!-- /.modal-content -->
+
+										<button class="aside-trigger btn btn-info btn-app btn-xs ace-settings-btn " data-target="#right-menu" data-toggle="modal" type="button">
+											<i data-icon1="fa-minus" data-icon2="fa-plus" class="ace-icon fa bigger-110 icon-only fa-minus"></i>
+										</button>
+									</div><!-- /.modal-dialog -->
+								</div>
+	<script src="result/build.js"></script>
+	<script>
+
+	parentMsg = [{name:'test1',checked:true},{name:'test2',checked:true},{name:'test3',checked:false},{name:'test4',checked:false}];
+	var test_sl_base = [{
+		"ADAG": "江苏省水文水资源勘测局",
+		"MNAG": "",
+		"LGTD": "119.932208",
+		"BSNM": "长江",
+		"NT": "wq",
+		"STNM": "陈东港桥",
+		"WFRCD": "",
+		"STLC": "宜兴市周铁镇",
+		"WDSTYM": "",
+		"ESSTYM": "",
+		"WRRCD": "F120100",
+		"ADDVCD": "320200",
+		"STCD": "63195030",
+		"STGRD": "",
+		"HNNM": "太湖流域南溪水系",
+		"RVNM": "陈东港",
+		"LTTD": "31.320501",
+		"id": "63195030",
+		"index": 52
+},
+{
+		"ADAG": "太湖流域水环境监测中心",
+		"MNAG": "",
+		"LGTD": "119.98694",
+		"BSNM": "长江",
+		"NT": "t1",
+		"STNM": "新塘大桥",
+		"WFRCD": "",
+		"STLC": "浙江长兴雉城镇新塘村",
+		"WDSTYM": "",
+		"ESSTYM": "",
+		"WRRCD": "F120100",
+		"ADDVCD": "330400",
+		"STCD": "50000003",
+		"STGRD": "",
+		"HNNM": "太湖流域湖区水系",
+		"RVNM": "长兴港",
+		"LTTD": "31.034445",
+		"id": "50000003",
+		"index": 3
+},
+{
+		"ADAG": "浙江省水文局",
+		"MNAG": "",
+		"LGTD": "120.03333",
+		"BSNM": "长江",
+		"NT": "wq",
+		"STNM": "杨家埠",
+		"WFRCD": "",
+		"STLC": "浙江省湖州市龙溪乡杨家埠",
+		"WDSTYM": "",
+		"ESSTYM": "",
+		"WRRCD": "F120100",
+		"ADDVCD": "330400",
+		"STCD": "63010800",
+		"STGRD": "",
+		"HNNM": "太湖流域苕溪水系",
+		"RVNM": "旄儿港",
+		"LTTD": "30.9",
+		"id": "63010800",
+		"index": 36
+},
+{
+		"ADAG": "",
+		"MNAG": "",
+		"BSNM": "",
+		"NT": "",
+		"STNM": "幻溇闸",
+		"WFRCD": "",
+		"STLC": "",
+		"WDSTYM": "",
+		"WRRCD": "",
+		"ESSTYM": "",
+		"ADDVCD": "",
+		"STCD": "63201750",
+		"STGRD": "",
+		"HNNM": "",
+		"RVNM": "",
+		"id": "63201750",
+		"index": 63
+},
+{
+		"ADAG": "江苏省水文水资源勘测局",
+		"MNAG": "",
+		"LGTD": "119.48555",
+		"BSNM": "长江",
+		"NT": "wq",
+		"STNM": "团结桥",
+		"WFRCD": "",
+		"STLC": "溧阳市团结桥",
+		"WDSTYM": "",
+		"ESSTYM": "",
+		"WRRCD": "F120100",
+		"ADDVCD": "320400",
+		"STCD": "63186600",
+		"STGRD": "",
+		"HNNM": "太湖流域南溪水系",
+		"RVNM": "南河",
+		"LTTD": "31.42389",
+		"id": "63186600",
+		"index": 43
+},
+{
+		"ADAG": "水利部太湖流域管理局",
+		"MNAG": "",
+		"LGTD": "120.934",
+		"BSNM": "",
+		"NT": "自动站",
+		"STNM": "太浦闸自动站",
+		"WFRCD": "",
+		"STLC": "",
+		"WDSTYM": "",
+		"ESSTYM": "",
+		"WRRCD": "F120100",
+		"ADDVCD": "320000",
+		"STCD": "63189004",
+		"STGRD": "",
+		"HNNM": "",
+		"RVNM": "",
+		"LTTD": "31.032",
+		"id": "63189004",
+		"index": 47
+},
+{
+		"ADAG": "",
+		"MNAG": "",
+		"BSNM": "",
+		"NT": "t1",
+		"STNM": "联湖桥",
+		"WFRCD": "",
+		"STLC": "",
+		"WDSTYM": "",
+		"WRRCD": "",
+		"ESSTYM": "",
+		"ADDVCD": "",
+		"STCD": "50000008",
+		"STGRD": "",
+		"HNNM": "",
+		"RVNM": "",
+		"id": "50000008",
+		"index": 7
+},
+{
+		"ADAG": "",
+		"MNAG": "",
+		"BSNM": "",
+		"NT": "t1",
+		"STNM": "铜坑闸",
+		"WFRCD": "",
+		"STLC": "",
+		"WDSTYM": "",
+		"WRRCD": "",
+		"ESSTYM": "",
+		"ADDVCD": "",
+		"STCD": "50000007",
+		"STGRD": "",
+		"HNNM": "",
+		"RVNM": "",
+		"id": "50000007",
+		"index": 6
+},
+{
+		"ADAG": "水利部太湖流域管理局",
+		"MNAG": "",
+		"LGTD": "120.08917",
+		"BSNM": "长江",
+		"NT": "wq",
+		"STNM": "雅浦港桥",
+		"WFRCD": "",
+		"STLC": "江苏常州武进",
+		"WDSTYM": "",
+		"ESSTYM": "",
+		"WRRCD": "F120100",
+		"ADDVCD": "320400",
+		"STCD": "63280030",
+		"STGRD": "",
+		"HNNM": "太湖流域湖区水系",
+		"RVNM": "雅浦港",
+		"LTTD": "31.462778",
+		"id": "63280030",
+		"index": 85
+},
+{
+		"ADAG": "水利部太湖流域管理局",
+		"MNAG": "",
+		"LGTD": "120.257225",
+		"BSNM": "长江",
+		"NT": "wq",
+		"STNM": "J03#五里湖",
+		"WFRCD": "",
+		"STLC": "五里湖水体",
+		"WDSTYM": "",
+		"ESSTYM": "",
+		"WRRCD": "F120100",
+		"ADDVCD": "320000",
+		"STCD": "63280110",
+		"STGRD": "",
+		"HNNM": "太湖流域湖区水系",
+		"RVNM": "太湖五里湖水体",
+		"LTTD": "31.507778",
+		"id": "63280110",
+		"index": 86
+}];
+
+      // document.getElementById("mapDiv").height =
+     GisModelConfig = {
+        baseInfoLayers:[
+
+        //自动监测站
+        ],
+        // xzqUrl : "http://10.1.102.129:6080/arcgis/rest/services/jiangxi_province/MapServer",
+
+        centerPt:[120.50,31.25],
+        centerPoint:''
+        };
+
+
+      var test_warn = [{name:'突发水事件',stcd:'01',x:120.45,y:31.20,type:'水质异常',arrdress:'xx',ph:10,person:'xx',tm:'2015-12-21 08',content:'淀山湖取水口出现水质异常事件，</br>受影响面积1平方公里，</br>已排专人去此次事件进行核实处理工作',imageUrl:'123'}];
+
+
+
+      require(["gowa/gisObject", "dojo/domReady!"], function(gisObject) {
+      // newGisObject.init('mapDiv');
+
+        newGisObject = new gisObject(GisModelConfig,'mapDiv',test);
+        newGisObject.initGoogleMap();
+      });
+      function test(){
+        newGisObject.mapObject.setLevel(6);
+      //  addslsz();
+      //  addpwk();
+      //  addsyd();
+      //  addwarn();
+      //  pageInit();
+      //  startAnimation();
+      testVueCompent();
+			addslsz();
+			initChart();
+      }
+			function addslsz() {
+        require(["esri/symbols/SimpleMarkerSymbol", "esri/geometry/Point", "esri/graphic","esri/SpatialReference",
+                         "esri/symbols/Font","esri/Color","esri/symbols/TextSymbol","esri/symbols/PictureMarkerSymbol",
+                         "esri/layers/GraphicsLayer","esri/layers/FeatureLayer","esri/config"], function(
+                        SimpleMarkerSymbol, Point, Graphic,SpatialReference,Font,Color,
+                        TextSymbol, PictureMarkerSymbol,GraphicsLayer,FeatureLayer, esriConfig) {
+                        graphicsLayer_sl_base = new GraphicsLayer();
+                        graphicsLayer_sl_base.id = 'graphicsLayer_sl_base';
+                        graphicsLayer_sl_base.visible = true;
+												// graphicsLayer_sl_base.on("mouse-out",function(e){
+												// 	var tempNode = e.graphic.getNode();
+												//
+												// 	$(tempNode).popover('destroy');
+												// 		$('.popover').remove();
+												// });
+                        graphicsLayer_sl_base.on("mouse-over",function(e){
+
+														$('.popover').remove();
+														var tempNode = e.graphic.getNode();
+														var popContent = '';
+														popContent += '<div class=" widget-container-col ui-sortable" id="widget-container" >'
+														popContent += '<div class="widget-box ui-sortable-handle" id="widget-box-5" style="margin-bottom:0px;">'
+														popContent += '<div class="widget-header" style="height:30px">'
+														popContent += '<h5 class="widget-title smaller">'+e.graphic.attributes.STNM+'</h5>'
+
+														popContent += '<div class="widget-toolbar" style="margin-top: 10px">'
+														popContent += '<a href="#" id="popup_close">'
+														popContent += '<i class="ace-icon fa fa-times"></i>'
+														popContent += '</a>'
+
+														popContent += '</div>'
+														popContent += '</div>'
+
+														popContent += '<div class="widget-body">'
+														popContent += '<div class="widget-main padding-6;">'
+														popContent += '<div id="popovercontentv"></div>';
+
+														popContent += '</div>'
+														popContent += '</div>'
+														popContent += '</div>'
+														popContent += '</div>'
+														//popContent = popContent + '<font style="color:#66b4dc;font-size:10px">点击测站显示详细信息'+ '</font><br>';
+														var template = '<div class="popover" role="tooltip" style="z-index:5;opacity:0.9;width:260px;height:305px"><div class="arrow"></div><div class="popover-content" style="font-size:10.5px;padding:0px 0px 0px 0px;margin-top:-4px;"></div></div>';
+														$(tempNode).popover({
+															html:true,
+															placement:"auto",
+															template:template,
+															content:popContent,
+															container:'body'});
+														$(tempNode).popover('show');
+
+														$('#popup_close').on('click',function(e){
+															$(tempNode).popover('destroy');
+																	$('.popover').remove();
+														});
+
+														var slcontent = new Vue({
+														  el: '#popovercontentv',
+														  template:'<div><slcontent></slcontent></div>',
+														  components: { 'slcontent':window.vCompoment.slcontent },
+														  methods:{test:function(parentMsg){alert(parentMsg)}},
+														  data:{
+														  	layers : parentMsg
+														  }
+
+														})
+
+                        });
+
+                        newGisObject.addNewLayer('Point',graphicsLayer_sl_base);
+
+                    var stationSymbol_base = new PictureMarkerSymbol('src/assets/slz_zd.png',24,24);
+
+                    for(var i = 0;i<test_sl_base.length;i++){
+                        var targetData = test_sl_base[i];
+                        var m = newGisObject.lonLat2Mercator([targetData.LGTD,targetData.LTTD]);
+                        var p = new Point(targetData.LGTD,targetData.LTTD);
+                        var gra = new Graphic(p,stationSymbol_base,targetData);
+                        graphicsLayer_sl_base.add(gra);
+                    }
+
+
+        });
+    }
+			function initChart(){
+				option = {
+				    title: {
+				        text: ''
+				    },
+						grid:{
+							top:'5%',
+							bottom:'25%',
+							left:'10%',
+							right:'10%'
+						},
+				    tooltip: {
+				        trigger: 'axis',
+				        // formatter: function (params) {
+				        //     params = params[0];
+				        //     var date = new Date(params.name);
+				        //     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+				        // },
+				        axisPointer: {
+				            animation: false
+				        }
+				    },
+				    xAxis: {
+				        data:['2-05','2-06','2-07','2-08','2-09','2-10','2-11','2-12','2-13'],
+								axisLabel:{
+									rotate:60,
+									interval:0,
+									textSymbol:{
+										fontSize:5
+									}
+								},
+				        splitLine: {
+				            show: false
+				        }
+				    },
+				    yAxis: [{
+				        type: 'value',
+				        boundaryGap: [0, '100%'],
+				        splitLine: {
+				            show: true
+				        }
+				    },{
+				        type: 'value',
+				        boundaryGap: [0, '100%'],
+				        splitLine: {
+				            show: true
+				        }
+				    }],
+				    series: [{
+				        name: '流量',
+				        type: 'bar',
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [100,150,200,250,100,150,200,250,300]
+				    },{
+				        name: '水量',
+				        type: 'bar',
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [10,15,20,25,10,15,20,25,30]
+				    }]
+				};
+				var chart = echarts.init(document.getElementById('chartContent'));
+				chart.setOption(option);
+			}
+      function testVueCompent(){
+      	var laerTreeC = new Vue({
+				  el: '#headvuetest',
+				  template:'<div class="col-md-2"><layertree :layers="layers"></layertree></div>',
+				  components: { 'layertree':window.vCompoment.layertree },
+				  methods:{test:function(parentMsg){alert(parentMsg)}},
+				  data:{
+				  	layers : parentMsg
+				  }
+
+				})
+				var searchBoxC = new Vue({
+							el: '#searchBoxTemplate',
+							template:'<div class="col-md-2" style="margin-left:15px;"><searchToolBar></searchToolBar></div>',
+							components: { 'searchToolBar':window.vCompoment.searchToolBar },
+							methods:{},
+							data:{
+
+							}
+
+						})
+
+			 }
+
+	</script>
+
+
+</body>
+</html>

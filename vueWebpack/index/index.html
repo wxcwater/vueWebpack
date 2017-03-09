@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .box {
+          display: block;
+          position: fixed;
+          width:100%;
+          height:635px;
+          overflow: hidden;
+        }
+        .video-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          padding: 0px;
+          overflow: hidden;
+          margin-top: -145px;
+        }
+        .video-modal{
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          background-color: #242424;
+          -moz-opacity:0.9;
+          opacity:0.9;
+          bottom: 0;
+          left:0;
+          top:0;
+          overflow: hidden;
+        }
+        .modal{
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          bottom: 0;
+          left:0;
+          top:0;
+          overflow: hidden;
+        }
+        .flex-content{
+          display: flex;
+          flex-direction:column;
+          align-items:center;
+        }
+        .item-content-back{
+          display: flex;
+          flex-direction:column;
+          justify-content:space-around;
+          align-items:center;
+          width:200px;
+          height:240px;
+          margin-top:70px;
+          border-radius:20px;
+          background-color: #c4c4c4;
+          -moz-opacity:1;
+          opacity:1;
+        }
+        .item-content{
+          display: flex;
+          flex-direction:column;
+          justify-content:space-around;
+          align-items:center;
+          width:200px;
+          height:240px;
+          margin-top:70px;
+          border-radius:20px;
+        
+          -moz-opacity:1;
+          opacity:1;
+        }
+        .thicon{
+           /*align-self:flex-start;*/
+           align-self:center;
+           /*margin-left:50px;*/
+           margin-top:50px;
+        }
+        .bottom-left{
+          font-size: 10px;
+          font-weight: lighter;
+          color: #FFF;
+          bottom:0px;
+        }
+        .content{
+          display: flex;
+          flex-direction:row;
+          justify-content:space-around;
+          flex-basis: 430px;
+          width:80%;
+        }
+        .footer{
+          align-self:flex-start;
+          margin-left:50px;
+          margin-top:50px;
+        }
+  	</style>
+  </head>
+  <body>
+      <div >
+        <div id="video-container" class="video-container">
+          <video id="video-bg" width='100%'; height="100%" src="testth.mp4" muted="" autoplay="true" loop="loop"></video>
+        </div>
+        <div id="video-modal" class="video-modal flex-content">
+          <img src="banner.png" alt="" class="thicon">
+          <div class="content" id="content">
+            <div class='item-content-back' >
+              <img src="sxx.png" style='width:100px;height:100px;' alt="">
+              <a class="a1" href="../index_jsyj.html">综合信息服务</a>
+            </div>
+            <div class='item-content-back' >
+              <img src="sgl.png" style='width:100px;height:100px;' alt="">
+              <a class="a1" href="../index_jsyj.html">综合业务管理</a>
+            </div>
+            <div class='item-content-back' >
+              <img src="zh.png" style='width:100px;height:100px;' alt="">
+              <a class="a1" href="../index_jsyj.html">专题服务整合</a>
+            </div>
+          </div>
+          <div class="bottom-left">2017-2020 © All Rights Reserved. 北京金水信息技术发展有限公司 <br>
+            联系我们:(010)
+          </div>
+        </div>
+        <div class="modal flex-content">
+          <img src="banner.png" alt="" class="thicon">
+          <div class="content" id="content">
+            <div class='item-content' >
+              <img src="sxx.png" style='width:100px;height:100px;' alt="">
+              <a class="a1" href="../index_jsyj.html">综合信息服务</a>
+            </div>
+            <div class='item-content' >
+              <img src="sgl.png" style='width:100px;height:100px;' alt="">
+              <a class="a1" href="../index_jsyj.html">综合业务管理</a>
+            </div>
+            <div class='item-content' >
+              <img src="zh.png" style='width:100px;height:100px;' alt="">
+              <a class="a1" href="../index_jsyj.html">专题服务整合</a>
+            </div>
+          </div>
+          <div class="bottom-left">2017-2020 © All Rights Reserved. 北京金水信息技术发展有限公司 <br>
+            联系我们:(010)
+          </div>
+        </div>
+  </body>
+</html>

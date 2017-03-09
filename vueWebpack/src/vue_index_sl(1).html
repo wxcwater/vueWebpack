@@ -1,0 +1,719 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"></meta>
+	<title>太湖流域水环境信息共享平台-首页</title>
+
+
+	<link rel="stylesheet" href="http://localhost/arcgis_js_api/3.18/esri/css/esri.css">
+
+	<link rel="stylesheet" href="../ace/css/bootstrap.css">
+	<link rel="stylesheet" href="../ace/css/ace.css">
+	<link rel="stylesheet" href="../ace/css/font-awesome.css">
+	<link rel="stylesheet" href="../ace/css/jquery-ui.css">
+	<link rel="stylesheet" href="../gis/minimal/blue.css" >
+	<link rel="stylesheet" href="../ace/css/bootstrap-table.min.css">
+	<link rel="stylesheet" href="../ace/css/ace-rtl.css" />
+	<link rel="stylesheet" href="../ace/css/ace-skins.css" />
+	<!--[if !IE]> -->
+	<script src="../ace/components/jquery/jquery.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+	<script src="../ace/components/jquery.1x/jquery.js"></script>
+<![endif]-->
+	<script src="../ace/js/bootstrap.js" type="text/javascript"></script>
+	<script src="../echarts/echarts.min.js" type="text/javascript"></script>
+	<script src="../echarts/bmapBase.js" type="text/javascript"></script>
+	<script src="../echarts/bmap.min.js" type="text/javascript"></script>
+	<script src="../gis/icheck.min.js" type="text/javascript"></script>
+  <script src="../ace/js/bootstrap-typeahead.js" type="text/javascript"></script>
+	<script src="../ace/js/ace-extra.js" type="text/javascript"></script>
+	<script src="../ace/js/data/fuelux.tree-sampledata.js" type="text/javascript"></script>
+	<script src="../ace/js/bootstrap-treeview.min.js" type="text/javascript"></script>
+	<script src="../ace/js/fuelux.tree.min.js" type="text/javascript"></script>
+	<!-- <script src="../gis/gisObject.js" type="text/javascript"></script> -->
+	<!-- <script src="../gis/water_gisFunctionalModule.js" type="text/javascript"></script> -->
+
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+  <!-- <script src="../gis/js/vue.js" type="text/javascript"></script> -->
+	<script
+		src="../ace/js/bootstrap-table.js"></script>
+	<script
+		src="../ace/js/bootstrap-table-zh-CN.min.js"></script>
+
+
+<script src="http://localhost/arcgis_js_api/3.18/init.js"></script>
+
+<script src="../data/pwk.js" type="text/javascript"></script>
+<script src="../data/syd.js" type="text/javascript"></script>
+
+	<style type="text/css">
+
+	</style>
+</head>
+
+<body>
+
+  <div id="mainContent" style='container-fluid'>
+  <div id="topHeader" class='row' style="background-color:#E2E2E2;z-index:9;">
+      <div id="headerConetent" class="navbar navbar-default ace-save-state" style="height:30px;padding-left:10px;background-color:#E2E2E2;">
+        <div class="col-md-2" style="width:150px;">
+          <gis-layertree></gis-layertree>
+        </div>
+        <div class="col-md-3">
+          <div class="input-group ">
+            <div class="input-group-addon">当前时间</div>
+            <input type="text" id="inStTm"
+              onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH'})"
+              class="form-control" value="2017-01-03 08"/>
+          </div>
+        </div>
+
+        <div class="col-md-1">
+
+          <div class="btn-group">
+
+												<button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
+													关注图层：无
+													<i class="ace-icon fa fa-angle-down icon-on-right"></i>
+												</button>
+
+												<ul class="dropdown-menu">
+													<li>
+														<a href="#">Action</a>
+													</li>
+
+													<li>
+														<a href="#">Another action</a>
+													</li>
+
+													<li>
+														<a href="#">Something else here</a>
+													</li>
+
+													<li class="divider"></li>
+
+													<li>
+														<a href="#">Separated link</a>
+													</li>
+												</ul>
+											</div>
+        </div>
+
+        <div class="col-md-1" style="margin-left:50px;">
+
+          <div class="btn-group">
+
+												<button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
+													测站筛选：全部
+													<i class="ace-icon fa fa-angle-down icon-on-right"></i>
+												</button>
+
+												<ul class="dropdown-menu">
+													<li>
+														<a href="#">Action</a>
+													</li>
+
+													<li>
+														<a href="#">Another action</a>
+													</li>
+
+													<li>
+														<a href="#">Something else here</a>
+													</li>
+
+													<li class="divider"></li>
+
+													<li>
+														<a href="#">Separated link</a>
+													</li>
+												</ul>
+											</div>
+        </div>
+        <div class="col-md-1" style="margin-left:150px;">
+          <div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon" style="top:5px;height:33px;">
+									<input id='local_data' type="text" placeholder="Search ..." class="nav-search-input" style="height:33px;" id="nav-search-input" autocomplete="off">
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div>
+        </div>
+
+
+      </div>
+  </div>
+
+<div id="mapRow" class="row">
+  <div id="mapDiv" style="height:470px;">
+  </div>
+</div>
+
+<div id="legend" style="height:20px;width:200px;position:fixed;bottom:10px;left:10px;">
+	图例:
+	<img src='images/sz1_mark.png'>
+	<img src='images/sz2_mark.png'>
+	<img src='images/sz3_mark.png'>
+	<img src='images/sz4_mark.png'>
+	<img src='images/sz5_mark.png'>
+</div>
+
+
+</div>
+<div id="right-menu" class="modal aside aside-right aside-vc aside-fixed navbar-offset no-backdrop in" data-body-scroll="false" data-offset="true" data-placement="right" data-fixed="true" data-backdrop="false" tabindex="-1" style="display: block; position: fixed;margin-top:40px;width:350px;">
+									<div class="modal-dialog">
+										<div class="modal-content ace-scroll"><div class="scroll-track scroll-dark no-track idle-hide scroll-active" style="display: block; height: 611px;"><div class="scroll-bar" style="height: 346px; top: 0px;"></div></div><div class="scroll-content" style="max-height: 611px;width:350px;">
+											<div class="modal-header no-padding">
+												<div class="table-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+														<span class="white">×</span>
+													</button>
+													水质数据
+												</div>
+											</div>
+
+											<div class="modal-body">
+														<div id="testCharts" style="width:100%;height:200px;"></div>
+											</div>
+										</div></div><!-- /.modal-content -->
+
+										<button class="aside-trigger btn btn-info btn-app btn-xs ace-settings-btn " data-target="#right-menu" data-toggle="modal" type="button">
+											<i data-icon1="fa-minus" data-icon2="fa-plus" class="ace-icon fa bigger-110 icon-only fa-minus"></i>
+										</button>
+									</div><!-- /.modal-dialog -->
+								</div>
+  <!-- <script src="../gis/layerTree.js" type="text/javascript"></script> -->
+	<script>
+
+      // document.getElementById("mapDiv").height =
+      var GisModelConfig = {
+        baseInfoLayers:[
+
+        //自动监测站
+        ],
+        // xzqUrl : "http://10.1.102.129:6080/arcgis/rest/services/jiangxi_province/MapServer",
+
+        centerPt:[120.50,31.25],
+        centerPoint:''
+        };
+
+
+      var test_warn = [{name:'突发水事件',stcd:'01',x:120.45,y:31.20,type:'水质异常',arrdress:'xx',ph:10,person:'xx',tm:'2015-12-21 08',content:'淀山湖取水口出现水质异常事件，</br>受影响面积1平方公里，</br>已排专人去此次事件进行核实处理工作',imageUrl:'123'}];
+      var test_sl_base = [{
+        "ADAG": "江苏省水文水资源勘测局",
+        "MNAG": "",
+        "LGTD": "119.932208",
+        "BSNM": "长江",
+        "NT": "wq",
+        "STNM": "陈东港桥",
+        "WFRCD": "",
+        "STLC": "宜兴市周铁镇",
+        "WDSTYM": "",
+        "ESSTYM": "",
+        "WRRCD": "F120100",
+        "ADDVCD": "320200",
+        "STCD": "63195030",
+        "STGRD": "",
+        "HNNM": "太湖流域南溪水系",
+        "RVNM": "陈东港",
+        "LTTD": "31.320501",
+        "id": "63195030",
+        "index": 52
+    },
+    {
+        "ADAG": "太湖流域水环境监测中心",
+        "MNAG": "",
+        "LGTD": "119.98694",
+        "BSNM": "长江",
+        "NT": "t1",
+        "STNM": "新塘大桥",
+        "WFRCD": "",
+        "STLC": "浙江长兴雉城镇新塘村",
+        "WDSTYM": "",
+        "ESSTYM": "",
+        "WRRCD": "F120100",
+        "ADDVCD": "330400",
+        "STCD": "50000003",
+        "STGRD": "",
+        "HNNM": "太湖流域湖区水系",
+        "RVNM": "长兴港",
+        "LTTD": "31.034445",
+        "id": "50000003",
+        "index": 3
+    },
+    {
+        "ADAG": "浙江省水文局",
+        "MNAG": "",
+        "LGTD": "120.03333",
+        "BSNM": "长江",
+        "NT": "wq",
+        "STNM": "杨家埠",
+        "WFRCD": "",
+        "STLC": "浙江省湖州市龙溪乡杨家埠",
+        "WDSTYM": "",
+        "ESSTYM": "",
+        "WRRCD": "F120100",
+        "ADDVCD": "330400",
+        "STCD": "63010800",
+        "STGRD": "",
+        "HNNM": "太湖流域苕溪水系",
+        "RVNM": "旄儿港",
+        "LTTD": "30.9",
+        "id": "63010800",
+        "index": 36
+    },
+    {
+        "ADAG": "",
+        "MNAG": "",
+        "BSNM": "",
+        "NT": "",
+        "STNM": "幻溇闸",
+        "WFRCD": "",
+        "STLC": "",
+        "WDSTYM": "",
+        "WRRCD": "",
+        "ESSTYM": "",
+        "ADDVCD": "",
+        "STCD": "63201750",
+        "STGRD": "",
+        "HNNM": "",
+        "RVNM": "",
+        "id": "63201750",
+        "index": 63
+    },
+    {
+        "ADAG": "江苏省水文水资源勘测局",
+        "MNAG": "",
+        "LGTD": "119.48555",
+        "BSNM": "长江",
+        "NT": "wq",
+        "STNM": "团结桥",
+        "WFRCD": "",
+        "STLC": "溧阳市团结桥",
+        "WDSTYM": "",
+        "ESSTYM": "",
+        "WRRCD": "F120100",
+        "ADDVCD": "320400",
+        "STCD": "63186600",
+        "STGRD": "",
+        "HNNM": "太湖流域南溪水系",
+        "RVNM": "南河",
+        "LTTD": "31.42389",
+        "id": "63186600",
+        "index": 43
+    },
+    {
+        "ADAG": "水利部太湖流域管理局",
+        "MNAG": "",
+        "LGTD": "120.934",
+        "BSNM": "",
+        "NT": "自动站",
+        "STNM": "太浦闸自动站",
+        "WFRCD": "",
+        "STLC": "",
+        "WDSTYM": "",
+        "ESSTYM": "",
+        "WRRCD": "F120100",
+        "ADDVCD": "320000",
+        "STCD": "63189004",
+        "STGRD": "",
+        "HNNM": "",
+        "RVNM": "",
+        "LTTD": "31.032",
+        "id": "63189004",
+        "index": 47
+    },
+    {
+        "ADAG": "",
+        "MNAG": "",
+        "BSNM": "",
+        "NT": "t1",
+        "STNM": "联湖桥",
+        "WFRCD": "",
+        "STLC": "",
+        "WDSTYM": "",
+        "WRRCD": "",
+        "ESSTYM": "",
+        "ADDVCD": "",
+        "STCD": "50000008",
+        "STGRD": "",
+        "HNNM": "",
+        "RVNM": "",
+        "id": "50000008",
+        "index": 7
+    },
+    {
+        "ADAG": "",
+        "MNAG": "",
+        "BSNM": "",
+        "NT": "t1",
+        "STNM": "铜坑闸",
+        "WFRCD": "",
+        "STLC": "",
+        "WDSTYM": "",
+        "WRRCD": "",
+        "ESSTYM": "",
+        "ADDVCD": "",
+        "STCD": "50000007",
+        "STGRD": "",
+        "HNNM": "",
+        "RVNM": "",
+        "id": "50000007",
+        "index": 6
+    },
+    {
+        "ADAG": "水利部太湖流域管理局",
+        "MNAG": "",
+        "LGTD": "120.08917",
+        "BSNM": "长江",
+        "NT": "wq",
+        "STNM": "雅浦港桥",
+        "WFRCD": "",
+        "STLC": "江苏常州武进",
+        "WDSTYM": "",
+        "ESSTYM": "",
+        "WRRCD": "F120100",
+        "ADDVCD": "320400",
+        "STCD": "63280030",
+        "STGRD": "",
+        "HNNM": "太湖流域湖区水系",
+        "RVNM": "雅浦港",
+        "LTTD": "31.462778",
+        "id": "63280030",
+        "index": 85
+    },
+    {
+        "ADAG": "水利部太湖流域管理局",
+        "MNAG": "",
+        "LGTD": "120.257225",
+        "BSNM": "长江",
+        "NT": "wq",
+        "STNM": "J03#五里湖",
+        "WFRCD": "",
+        "STLC": "五里湖水体",
+        "WDSTYM": "",
+        "ESSTYM": "",
+        "WRRCD": "F120100",
+        "ADDVCD": "320000",
+        "STCD": "63280110",
+        "STGRD": "",
+        "HNNM": "太湖流域湖区水系",
+        "RVNM": "太湖五里湖水体",
+        "LTTD": "31.507778",
+        "id": "63280110",
+        "index": 86
+    }];
+
+
+      require(["gowa/gisObject", "dojo/domReady!"], function(gisObject) {
+      // newGisObject.init('mapDiv');
+
+        newGisObject = new gisObject(GisModelConfig,'mapDiv',test);
+        newGisObject.initGoogleMap();
+      });
+      function test(){
+        newGisObject.mapObject.setLevel(6);
+        addslsz();
+      //  addpwk();
+      //  addsyd();
+      //  addwarn();
+      //  pageInit();
+      //  startAnimation();
+      // testVueCompent();
+      }
+
+      function testVueCompent(){
+
+         treel = new Vue({
+          el: '#headerConetent',
+          data: {
+            groceryList: [
+              { text: 'Vegetables' },
+              { text: 'Cheese' },
+          { text: 'Whatever else humans are supposed to eat' }
+            ]
+          }
+        })
+
+
+				$('#local_data').typeahead({ //将返回数据加载到组件
+							        source: [{key:'水质水量站'}, {key:'水质等值线'}, {key:'影像图'}, {key:'河流'}, {key:'水质等值面'}, {key:'etc'}],
+							        display: 'key',
+							        val: 'key'
+							    });
+
+				initChartOne();
+      }
+
+			function initChartOne(){
+				var dataBJ = [
+    [1,55,9,56,0.46,18,6,"良"],
+    [2,25,11,21,0.65,34,9,"优"],
+    [3,56,7,63,0.3,14,5,"良"],
+    [4,33,7,29,0.33,16,6,"优"],
+    [5,42,24,44,0.76,40,16,"优"],
+    [6,82,58,90,1.77,68,33,"良"],
+    [7,74,49,77,1.46,48,27,"良"],
+    [8,78,55,80,1.29,59,29,"良"],
+    [9,267,216,280,4.8,108,64,"重度污染"],
+    [10,185,127,216,2.52,61,27,"中度污染"],
+    [11,39,19,38,0.57,31,15,"优"],
+    [12,41,11,40,0.43,21,7,"优"],
+    [13,64,38,74,1.04,46,22,"良"],
+    [14,108,79,120,1.7,75,41,"轻度污染"],
+    [15,108,63,116,1.48,44,26,"轻度污染"],
+    [16,33,6,29,0.34,13,5,"优"],
+    [17,94,66,110,1.54,62,31,"良"],
+    [18,186,142,192,3.88,93,79,"中度污染"],
+    [19,57,31,54,0.96,32,14,"良"],
+    [20,22,8,17,0.48,23,10,"优"],
+    [21,39,15,36,0.61,29,13,"优"],
+    [22,94,69,114,2.08,73,39,"良"],
+    [23,99,73,110,2.43,76,48,"良"],
+    [24,31,12,30,0.5,32,16,"优"],
+    [25,42,27,43,1,53,22,"优"],
+    [26,154,117,157,3.05,92,58,"中度污染"],
+    [27,234,185,230,4.09,123,69,"重度污染"],
+    [28,160,120,186,2.77,91,50,"中度污染"],
+    [29,134,96,165,2.76,83,41,"轻度污染"],
+    [30,52,24,60,1.03,50,21,"良"],
+    [31,46,5,49,0.28,10,6,"优"]
+];
+
+var dataGZ = [
+    [1,26,37,27,1.163,27,13,"优"],
+    [2,85,62,71,1.195,60,8,"良"],
+    [3,78,38,74,1.363,37,7,"良"],
+    [4,21,21,36,0.634,40,9,"优"],
+    [5,41,42,46,0.915,81,13,"优"],
+    [6,56,52,69,1.067,92,16,"良"],
+    [7,64,30,28,0.924,51,2,"良"],
+    [8,55,48,74,1.236,75,26,"良"],
+    [9,76,85,113,1.237,114,27,"良"],
+    [10,91,81,104,1.041,56,40,"良"],
+    [11,84,39,60,0.964,25,11,"良"],
+    [12,64,51,101,0.862,58,23,"良"],
+    [13,70,69,120,1.198,65,36,"良"],
+    [14,77,105,178,2.549,64,16,"良"],
+    [15,109,68,87,0.996,74,29,"轻度污染"],
+    [16,73,68,97,0.905,51,34,"良"],
+    [17,54,27,47,0.592,53,12,"良"],
+    [18,51,61,97,0.811,65,19,"良"],
+    [19,91,71,121,1.374,43,18,"良"],
+    [20,73,102,182,2.787,44,19,"良"],
+    [21,73,50,76,0.717,31,20,"良"],
+    [22,84,94,140,2.238,68,18,"良"],
+    [23,93,77,104,1.165,53,7,"良"],
+    [24,99,130,227,3.97,55,15,"良"],
+    [25,146,84,139,1.094,40,17,"轻度污染"],
+    [26,113,108,137,1.481,48,15,"轻度污染"],
+    [27,81,48,62,1.619,26,3,"良"],
+    [28,56,48,68,1.336,37,9,"良"],
+    [29,82,92,174,3.29,0,13,"良"],
+    [30,106,116,188,3.628,101,16,"轻度污染"],
+    [31,118,50,0,1.383,76,11,"轻度污染"]
+];
+
+var dataSH = [
+    [1,91,45,125,0.82,34,23,"良"],
+    [2,65,27,78,0.86,45,29,"良"],
+    [3,83,60,84,1.09,73,27,"良"],
+    [4,109,81,121,1.28,68,51,"轻度污染"],
+    [5,106,77,114,1.07,55,51,"轻度污染"],
+    [6,109,81,121,1.28,68,51,"轻度污染"],
+    [7,106,77,114,1.07,55,51,"轻度污染"],
+    [8,89,65,78,0.86,51,26,"良"],
+    [9,53,33,47,0.64,50,17,"良"],
+    [10,80,55,80,1.01,75,24,"良"],
+    [11,117,81,124,1.03,45,24,"轻度污染"],
+    [12,99,71,142,1.1,62,42,"良"],
+    [13,95,69,130,1.28,74,50,"良"],
+    [14,116,87,131,1.47,84,40,"轻度污染"],
+    [15,108,80,121,1.3,85,37,"轻度污染"],
+    [16,134,83,167,1.16,57,43,"轻度污染"],
+    [17,79,43,107,1.05,59,37,"良"],
+    [18,71,46,89,0.86,64,25,"良"],
+    [19,97,71,113,1.17,88,31,"良"],
+    [20,84,57,91,0.85,55,31,"良"],
+    [21,87,63,101,0.9,56,41,"良"],
+    [22,104,77,119,1.09,73,48,"轻度污染"],
+    [23,87,62,100,1,72,28,"良"],
+    [24,168,128,172,1.49,97,56,"中度污染"],
+    [25,65,45,51,0.74,39,17,"良"],
+    [26,39,24,38,0.61,47,17,"优"],
+    [27,39,24,39,0.59,50,19,"优"],
+    [28,93,68,96,1.05,79,29,"良"],
+    [29,188,143,197,1.66,99,51,"中度污染"],
+    [30,174,131,174,1.55,108,50,"中度污染"],
+    [31,187,143,201,1.39,89,53,"中度污染"]
+];
+
+var schema = [
+    {name: 'date', index: 0, text: '日期'},
+    {name: 'AQIindex', index: 1, text: 'AQI'},
+    {name: 'PM25', index: 2, text: 'PM2.5'},
+    {name: 'PM10', index: 3, text: 'PM10'},
+    {name: 'CO', index: 4, text: ' CO'},
+    {name: 'NO2', index: 5, text: 'NO2'},
+    {name: 'SO2', index: 6, text: 'SO2'},
+    {name: '等级', index: 7, text: '等级'}
+];
+
+var lineStyle = {
+    normal: {
+        width: 1,
+        opacity: 0.5
+    }
+};
+
+option = {
+    backgroundColor: '#333',
+    legend: {
+        bottom: 0,
+        data: ['北京', '上海', '广州'],
+        itemGap: 10,
+        textStyle: {
+            color: '#fff',
+            fontSize: 14
+        }
+    },
+    tooltip: {
+        padding: 10,
+        backgroundColor: '#222',
+        borderColor: '#777',
+        borderWidth: 1,
+        formatter: function (obj) {
+            var value = obj[0].value;
+            return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                + obj[0].seriesName + ' ' + value[0] + '日期：'
+                + value[7]
+                + '</div>'
+                + schema[1].text + '：' + value[1] + '<br>'
+                + schema[2].text + '：' + value[2] + '<br>'
+                + schema[3].text + '：' + value[3] + '<br>'
+                + schema[4].text + '：' + value[4] + '<br>'
+                + schema[5].text + '：' + value[5] + '<br>'
+                + schema[6].text + '：' + value[6] + '<br>';
+        }
+    },
+    // dataZoom: {
+    //     show: true,
+    //     orient: 'vertical',
+    //     parallelAxisIndex: [0]
+    // },
+    parallelAxis: [
+        {dim: 0, name: schema[0].text, inverse: true, max: 31, nameLocation: 'start'},
+        {dim: 1, name: schema[1].text},
+        {dim: 2, name: schema[2].text},
+        {dim: 3, name: schema[3].text},
+        {dim: 4, name: schema[4].text},
+        {dim: 5, name: schema[5].text},
+        {dim: 6, name: schema[6].text},
+        {dim: 7, name: schema[7].text,
+        type: 'category', data: ['优', '良', '轻度污染', '中度污染', '重度污染', '严重污染']}
+    ],
+    visualMap: {
+        show: false,
+        min: 0,
+        max: 250,
+        right: 20,
+        bottom: 30,
+        dimension: 2,
+        calculable: true,
+        inRange: {
+            color: ['#d94e5d','#eac736','#50a3ba'].reverse()
+        },
+        text: ['PM 2.5', ''],
+        textGap: 5,
+        textStyle: {
+            color: '#fff'
+        }
+    },
+    parallel: {
+				show:false,
+        left: '5%',
+        right: '18%',
+        bottom: 0,
+        parallelAxisDefault: {
+            type: 'value',
+            name: 'AQI指数',
+            nameLocation: 'end',
+            nameGap: 20,
+            nameTextStyle: {
+                color: '#fff',
+                fontSize: 12
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#aaa'
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#777'
+                }
+            },
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
+                textStyle: {
+                    color: '#fff'
+                }
+            }
+        }
+    },
+    series: [
+        {
+            name: '北京',
+            type: 'parallel',
+            lineStyle: lineStyle,
+            data: dataBJ
+        },
+        {
+            name: '上海',
+            type: 'parallel',
+            lineStyle: lineStyle,
+            data: dataSH
+        },
+        {
+            name: '广州',
+            type: 'parallel',
+            lineStyle: lineStyle,
+            data: dataGZ
+        }
+    ]
+};
+var t = echarts.init(document.getElementById('testCharts'));
+t.setOption(option);
+}
+function addslsz() {
+        require(["esri/symbols/SimpleMarkerSymbol", "esri/geometry/Point", "esri/graphic","esri/SpatialReference",
+                         "esri/symbols/Font","esri/Color","esri/symbols/TextSymbol","esri/symbols/PictureMarkerSymbol",
+                         "esri/layers/GraphicsLayer","esri/layers/FeatureLayer","esri/config"], function(
+                        SimpleMarkerSymbol, Point, Graphic,SpatialReference,Font,Color,
+                        TextSymbol, PictureMarkerSymbol,GraphicsLayer,FeatureLayer, esriConfig) {
+                        graphicsLayer_sl_base = new GraphicsLayer();
+                        graphicsLayer_sl_base.id = 'graphicsLayer_sl_base';
+                        graphicsLayer_sl_base.visible = true;
+
+                        newGisObject.addNewLayer('Point',graphicsLayer_sl_base);
+                        
+                    var stationSymbol_base = new PictureMarkerSymbol('images/sz1.png',20,20);
+
+                    for(var i = 0;i<test_sl_base.length;i++){
+                        var targetData = test_sl_base[i];
+                        var m = newGisObject.lonLat2Mercator([targetData.LGTD,targetData.LTTD]);
+                        var p = new Point(targetData.LGTD,targetData.LTTD);
+                        var gra = new Graphic(p,stationSymbol_base,targetData);
+                        graphicsLayer_sl_base.add(gra);
+                    }
+
+
+        });
+    }
+	</script>
+</body>
+</html>

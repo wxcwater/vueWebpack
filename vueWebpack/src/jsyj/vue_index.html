@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"></meta>
+	<title>太湖流域水环境信息共享平台-首页</title>
+
+
+	<link rel="stylesheet" href="http://localhost/3.18/3.18/esri/css/esri.css">
+
+	<link rel="stylesheet" href="../ace/css/bootstrap.css">
+	<link rel="stylesheet" href="../ace/css/ace.css">
+	<link rel="stylesheet" href="../ace/css/font-awesome.css">
+	<link rel="stylesheet" href="../ace/css/jquery-ui.css">
+	<link rel="stylesheet" href="../gis/minimal/blue.css" >
+	<link rel="stylesheet" href="../ace/css/bootstrap-table.min.css">
+	<link rel="stylesheet" href="../ace/css/ace-rtl.css" />
+	<link rel="stylesheet" href="../ace/css/ace-skins.css" />
+	<!--[if !IE]> -->
+	<script src="../ace/components/jquery/jquery.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+	<script src="../ace/components/jquery.1x/jquery.js"></script>
+<![endif]-->
+	<script src="../ace/js/bootstrap.js" type="text/javascript"></script>
+	<script src="../echarts/echarts.min.js" type="text/javascript"></script>
+	<script src="../echarts/bmapBase.js" type="text/javascript"></script>
+	<script src="../echarts/bmap.min.js" type="text/javascript"></script>
+	<script src="../gis/icheck.min.js" type="text/javascript"></script>
+  	<script src="../gis/js/typeaHead.js" type="text/javascript"></script>
+	<script src="../ace/js/ace-extra.js" type="text/javascript"></script>
+	<script src="../ace/js/data/fuelux.tree-sampledata.js" type="text/javascript"></script>
+	<script src="../ace/js/bootstrap-treeview.min.js" type="text/javascript"></script>
+	<script src="../ace/js/fuelux.tree.min.js" type="text/javascript"></script>
+	<!-- <script src="../gis/gisObject.js" type="text/javascript"></script> -->
+	<!-- <script src="../gis/water_gisFunctionalModule.js" type="text/javascript"></script> -->
+
+
+  <script src="../gis/js/vue.js" type="text/javascript"></script>
+	<script
+		src="../ace/js/bootstrap-table.js"></script>
+	<script
+		src="../ace/js/bootstrap-table-zh-CN.min.js"></script>
+
+
+<script src="http://localhost/3.18/3.18/init.js"></script>
+
+<script src="../data/pwk.js" type="text/javascript"></script>
+<script src="../data/syd.js" type="text/javascript"></script>
+
+	<style type="text/css">
+
+	</style>
+</head>
+
+<body>
+
+  <div id="mainContent" style='container-fluid'>
+  <div id="topHeader" class='row' style="background-color:#E2E2E2;z-index:9;">
+      <div id="headerConetent" class="navbar navbar-default ace-save-state" style="height:30px;padding-left:10px;background-color:#E2E2E2;">
+        <div class="col-md-2">
+          <gis-layertree></gis-layertree>
+        </div>
+        <div class="col-md-2">
+          <div class="input-group ">
+            <div class="input-group-addon">当前时间</div>
+            <input type="text" id="inStTm"
+              onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH'})"
+              class="form-control" value="2017-01-03 08"/>
+          </div>
+        </div>
+
+        <div class="col-md-1">
+
+          <div class="btn-group">
+
+												<button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
+													关注图层：无
+													<i class="ace-icon fa fa-angle-down icon-on-right"></i>
+												</button>
+
+												<ul class="dropdown-menu">
+													<li>
+														<a href="#">Action</a>
+													</li>
+
+													<li>
+														<a href="#">Another action</a>
+													</li>
+
+													<li>
+														<a href="#">Something else here</a>
+													</li>
+
+													<li class="divider"></li>
+
+													<li>
+														<a href="#">Separated link</a>
+													</li>
+												</ul>
+											</div>
+        </div>
+
+        <div class="col-md-1" style="margin-left:20px;">
+
+          <div class="btn-group">
+
+												<button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
+													测站筛选：全部
+													<i class="ace-icon fa fa-angle-down icon-on-right"></i>
+												</button>
+
+												<ul class="dropdown-menu">
+													<li>
+														<a href="#">Action</a>
+													</li>
+
+													<li>
+														<a href="#">Another action</a>
+													</li>
+
+													<li>
+														<a href="#">Something else here</a>
+													</li>
+
+													<li class="divider"></li>
+
+													<li>
+														<a href="#">Separated link</a>
+													</li>
+												</ul>
+											</div>
+        </div>
+        <div class="col-md-2" style="margin-left:10px;">
+          <div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon" style="top:5px;height:33px;">
+									<input type="text" placeholder="Search ..." class="nav-search-input" style="height:33px;" id="nav-search-input" autocomplete="off">
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div>
+        </div>
+
+
+      </div>
+  </div>
+
+<div id="mapRow" class="row">
+  <div id="mapDiv" style="height:600px;">
+  </div>
+</div>
+
+
+
+
+</div>
+<div id="right-menu" class="modal aside aside-right aside-vc aside-fixed navbar-offset no-backdrop in" data-body-scroll="false" data-offset="true" data-placement="right" data-fixed="true" data-backdrop="false" tabindex="-1" style="display: block; position: fixed;margin-top:40px;">
+									<div class="modal-dialog">
+										<div class="modal-content ace-scroll"><div class="scroll-track scroll-dark no-track idle-hide scroll-active" style="display: block; height: 611px;"><div class="scroll-bar" style="height: 346px; top: 0px;"></div></div><div class="scroll-content" style="max-height: 611px;">
+											<div class="modal-header no-padding">
+												<div class="table-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+														<span class="white">×</span>
+													</button>
+													水质数据
+												</div>
+											</div>
+
+											<div class="modal-body">
+
+
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												1
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												2
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												<br>
+												3
+											</div>
+										</div></div><!-- /.modal-content -->
+
+										<button class="aside-trigger btn btn-info btn-app btn-xs ace-settings-btn " data-target="#right-menu" data-toggle="modal" type="button">
+											<i data-icon1="fa-minus" data-icon2="fa-plus" class="ace-icon fa bigger-110 icon-only fa-minus"></i>
+										</button>
+									</div><!-- /.modal-dialog -->
+								</div>
+  <script src="../gis/js/layerTree.js" type="text/javascript"></script>
+	<script>
+
+      // document.getElementById("mapDiv").height =
+      var GisModelConfig = {
+        baseInfoLayers:[
+
+        //自动监测站
+        ],
+        // xzqUrl : "http://10.1.102.129:6080/arcgis/rest/services/jiangxi_province/MapServer",
+
+        centerPt:[120.50,31.25],
+        centerPoint:''
+        };
+
+
+      var test_warn = [{name:'突发水事件',stcd:'01',x:120.45,y:31.20,type:'水质异常',arrdress:'xx',ph:10,person:'xx',tm:'2015-12-21 08',content:'淀山湖取水口出现水质异常事件，</br>受影响面积1平方公里，</br>已排专人去此次事件进行核实处理工作',imageUrl:'123'}];
+
+
+
+      require(["gowa/gisObject", "dojo/domReady!"], function(gisObject) {
+      // newGisObject.init('mapDiv');
+
+        newGisObject = new gisObject(GisModelConfig,'mapDiv',test);
+        newGisObject.initGoogleMap();
+      });
+      function test(){
+        newGisObject.mapObject.setLevel(6);
+      //  addslsz();
+      //  addpwk();
+      //  addsyd();
+      //  addwarn();
+      //  pageInit();
+      //  startAnimation();
+      testVueCompent();
+      }
+
+      function testVueCompent(){
+
+         treel = new Vue({
+          el: '#headerConetent',
+          data: {
+            groceryList: [
+              { text: 'Vegetables' },
+              { text: 'Cheese' },
+          { text: 'Whatever else humans are supposed to eat' }
+            ]
+          }
+        })
+        $("#local_data").typeahead({
+                source: ['beijing', 'shanghai', 'guangzhou', 'sz', 'hangzhou', 'ningbo'],//数据源
+                items: 8,//最多显示个数
+                updater: function (item) {
+                    return item;//这里一定要return，否则选中不显示，外加调用display的时候null reference错误。
+                },
+                displayText: function (item) {
+                    return "选：" + item;//返回字符串
+                },
+                afterSelect: function (item) {
+                    //选择项之后的事件 ，item是当前选中的。
+                },
+                delay: 500//延迟时间
+            });
+      }
+	</script>
+</body>
+</html>

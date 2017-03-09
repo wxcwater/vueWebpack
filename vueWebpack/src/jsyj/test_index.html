@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"></meta>
+	<title>太湖流域水环境信息共享平台-首页</title>
+
+
+	<link rel="stylesheet" href="http://localhost/3.18/3.18/esri/css/esri.css">
+
+	<link rel="stylesheet" href="../ace/css/bootstrap.css">
+	<link rel="stylesheet" href="../ace/css/ace.css">
+	<link rel="stylesheet" href="../ace/css/font-awesome.css">
+	<link rel="stylesheet" href="../ace/css/jquery-ui.css">
+	<link rel="stylesheet" href="../gis/minimal/blue.css" >
+	<link rel="stylesheet" href="../ace/css/bootstrap-table.min.css">
+	<link rel="stylesheet" href="../ace/css/ace-rtl.css" />
+	<link rel="stylesheet" href="../ace/css/ace-skins.css" />
+	<!--[if !IE]> -->
+	<script src="../ace/components/jquery/jquery.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+	<script src="../ace/components/jquery.1x/jquery.js"></script>
+<![endif]-->
+	<script src="../ace/js/bootstrap.js" type="text/javascript"></script>
+	<script src="../echarts/echarts.min.js" type="text/javascript"></script>
+	<script src="../echarts/bmapBase.js" type="text/javascript"></script>
+	<script src="../echarts/bmap.min.js" type="text/javascript"></script>
+	<script src="../gis/icheck.min.js" type="text/javascript"></script>
+
+	<script src="../ace/js/ace-extra.js" type="text/javascript"></script>
+	<script src="../ace/js/data/fuelux.tree-sampledata.js" type="text/javascript"></script>
+	<script src="../ace/js/bootstrap-treeview.min.js" type="text/javascript"></script>
+	<script src="../ace/js/fuelux.tree.min.js" type="text/javascript"></script>
+	<!-- <script src="../gis/gisObject.js" type="text/javascript"></script> -->
+	<!-- <script src="../gis/water_gisFunctionalModule.js" type="text/javascript"></script> -->
+
+	<script
+		src="../ace/js/bootstrap-table.js"></script>
+	<script
+		src="../ace/js/bootstrap-table-zh-CN.min.js"></script>
+
+
+<script src="http://localhost/3.18/3.18/init.js"></script>
+
+<script src="../data/pwk.js" type="text/javascript"></script>
+<script src="../data/syd.js" type="text/javascript"></script>
+
+	<style type="text/css">
+
+	</style>
+</head>
+
+<body >
+
+
+
+
+						<div id="mapDiv" style="postion:fixed;height:700px;">
+						</div>
+
+
+
+
+
+	<script>
+
+			var GisModelConfig = {
+		    baseInfoLayers:[
+
+		    //自动监测站
+		  ],
+		    // xzqUrl : "http://10.1.102.129:6080/arcgis/rest/services/jiangxi_province/MapServer",
+
+		    centerPt:[120.50,31.25],
+		    centerPoint:''
+		  };
+
+
+var test_warn = [{name:'突发水事件',stcd:'01',x:120.45,y:31.20,type:'水质异常',arrdress:'xx',ph:10,person:'xx',tm:'2015-12-21 08',content:'淀山湖取水口出现水质异常事件，</br>受影响面积1平方公里，</br>已排专人去此次事件进行核实处理工作',imageUrl:'123'}];
+
+
+
+		require(["gowa/gisObject", "dojo/domReady!"], function(gisObject) {
+				// newGisObject.init('mapDiv');
+
+				newGisObject = new gisObject(GisModelConfig,'mapDiv',test);
+				newGisObject.initGoogleMap();
+});
+	 function test(){
+		 newGisObject.mapObject.setLevel(6);
+		//  addslsz();
+		//  addpwk();
+		//  addsyd();
+		//  addwarn();
+		//  pageInit();
+		//  startAnimation();
+	 }
+
+	</script>
+</body>
+</html>

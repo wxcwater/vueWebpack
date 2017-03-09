@@ -1,0 +1,475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>综合信息服务系统--水质监测数据查询</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="综合信息服务系统--水质监测数据查询" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<link rel="stylesheet"
+	href="../ace/css/bootstrap.css">
+<link rel="stylesheet"
+	href="../ace/css/platform-1.css">
+<link rel="stylesheet"
+	href="../ace/css/easyform.css">
+
+<link rel="stylesheet" href="../ace/css/platform-1.css">
+<link rel="stylesheet"
+	href="../ace/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="../ace/css/jquery.gritter.css" />
+<link rel="stylesheet"
+	href="../ace/css/ui.jqgrid.css" />
+<link rel="stylesheet"
+	href="../ace/css/ace-fonts.css" />
+<link rel="stylesheet"
+	href="../ace/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+<!--[if lte IE 9]>
+	<link rel="stylesheet" href="../ace/css/ace-part2.css" />
+<![endif]-->
+<link rel="stylesheet" href="../ace/css/ace-skins.css" />
+<link rel="stylesheet" href="../ace/css/ace-rtl.css" />
+<!--[if lte IE 9]>
+	<link rel="stylesheet" href="../ace/css/ace-ie.css" />
+<![endif]-->
+<link rel="stylesheet" href="../ace/css/slider.css" />
+<link rel="stylesheet" href="../ace/css/paging.css" />
+<link rel="stylesheet" href="../ace/css/jquery-ui-1.8.16.custom.css" />
+<link rel="stylesheet" href="../ace/css/s.css" />
+<link rel="stylesheet" href="../ace/css/daterangepicker-bs3.css" />
+<link rel="stylesheet" href="../ace/css/daterangepicker-1.3.7.css" />
+<link rel="stylesheet" href="../ace/layer/skin/layer.css" />
+<script type="text/javascript">
+<!--
+	var REQUEST_CONTEXTPATH = "${pageContext.request.contextPath}";
+	var bPath = "${pageContext.request.contextPath}";
+//-->
+</script>
+<style>
+	/* some elements used in demo only */
+	.spinner-preview {
+		width: 100px;
+		height: 100px;
+		text-align: center;
+		margin-top: 60px;
+	}
+	
+	.dropdown-preview {
+		float:right;
+		margin-right:10px;
+		display: inline-block;
+		margin-top: 8px;
+	}
+	.dropdown-preview  > .dropdown-menu {
+		display: block;
+		position: static;
+		margin-bottom: 5px;
+	}
+</style>
+<script
+	src="../ace/js/ace-extra.js"></script>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lte IE 8]>
+<script src="../ace/js/html5shiv.js"></script>
+<script src="../ace/js/respond.min.js"></script>
+<![endif]-->
+<!--[if !IE]> -->
+	<script src="../ace/components/jquery/jquery.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+	<script src="../ace/components/jquery.1x/jquery.js"></script>
+<![endif]-->
+<script type="text/javascript">
+	if('ontouchstart' in document.documentElement) document.write("<script src='../ace/components/_mod/jquery.mobile.custom.js'>"+"<"+"/script>");
+</script>
+<script src="../ace/js/bootstrap.js"></script>
+<!-- ace scripts -->
+<script src="../ace/js/elements.scroller.js"></script>
+<script src="../ace/js/elements.colorpicker.js"></script>
+<script src="../ace/js/ace.js"></script>
+<script src="../ace/js/ace.scrolltop.js"></script>
+<script src="../ace/js/ace.sidebar.js"></script>
+<script src="../ace/js/ace.sidebar-scroll-2.js"></script>
+<script src="../ace/js/ace.submenu-hover.js"></script>
+<script src="../ace/js/slider.js"></script>
+<script src="../ace/js/query.js"></script>
+<script src="../ace/js/paging.js"></script>
+
+<script src="../ace/components/jqGrid/jquery.jqGrid.js"></script>
+<script src="../ace/components/jqGrid/grid.locale-cn.js"></script>
+<script src="../ace/js/easyform/easyform.js"></script>
+<script src="../ace/util.js"></script>
+<script src="../ace/js/jquery.gritter.js"></script>
+<script src="../ace/js/moment.js"></script>
+<script src="../ace/js/daterangepicker-1.3.7.js"></script>
+<script src="../ace/layer/layer.js"></script>
+<script src="../js/util.js"></script>
+    <!-- 表格和弹出窗用到的JS -->
+</head>
+
+<body>
+	<div class="main-content">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right">监测对象：</label>
+					<div class="col-sm-11">
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl">全部</span>
+						</label>
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl">环湖出入湖</span>
+						</label>
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl">沿长江</span>
+						</label>
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl">沿杭州湾</span>
+						</label>
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl">太湖流域省界</span>
+						</label>
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl">东南诸河省界</span>
+						</label>
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl">太湖湖体</span>
+						</label>
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl">重要水体</span>
+						</label>
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl">自动站</span>
+						</label>
+					</div>
+				</div>
+				<div>
+
+				</div>
+			</div>
+			
+			
+			<span style="width: 100px;padding-right: 5px;padding-left: 5px;">区域：</span>
+			<select id="select_Qy" style="margin-top: 0px;" onchange="changeQy()">
+				<option value="1">行政区</option>
+				<option value="2">水资源分区</option>
+				<option value="3">水功能分区</option>
+				<option value="4">省界</option>
+				<option value="5">重要河湖</option>
+			</select>
+			<select id="select_QyVal" style="margin-top: 0px;" onchange="changeState()">
+				<option value="0">全部</option>
+				<option value="1">上海市</option>
+				<option value="2">江苏省</option>
+				<option value="3">浙江省</option>
+				<option value="4">安徽省</option>
+				<option value="5">福建省</option>
+			</select>
+			<span style="width: 100px;padding-right: 5px;padding-left: 5px;">自动监测：</span>
+			<select id="select_xy" style="margin-top: 0px;" onchange="changeState()">
+				<option value="1">全部</option>
+				<option value="2">是</option>
+				<option value="3">否</option>
+			</select>
+			<span style="width: 100px;padding-right: 5px;padding-left: 5px;">建站时间：</span>
+			<div id="reportrange" class="dateRange" style="margin: 3px;border-radius: 4px;width: 240px;display: inline-block;">
+				<i class="icon-calendar"></i>
+				<span id="searchDateRange"></span>
+				<b class="caret"></b>
+			</div>
+			<button class="btn btn-xs btn-primary">
+				<i class="ace-icon fa fa-search align-top"></i>
+				查询
+			</button>
+		</div>
+		<div id="testIframe" class="table_menu_list">
+			<table id="grid-table" style="width: 100%;"></table>
+			<div id="grid-pager" style="width: 100%;"></div>
+		</div>
+	</div>
+	<!-- /.main-content -->
+<script type="text/javascript">
+var subgrid_data;
+var wh = $(window).height() - 133;
+var ww = $(window).width();
+function changeQy(){
+	var qy = $("#select_Qy").val();
+	var str = "";
+	if(qy=="1"){
+		str += "<option value='0'>全部</option>";
+		str += "<option value='1'>上海市</option>";
+		str += "<option value='2'>江苏省</option>";
+		str += "<option value='3'>浙江省</option>";
+		str += "<option value='4'>安徽省</option>";
+		str += "<option value='5'>福建省</option>";
+	}else if(qy=="2"){
+		str += "<option value='0'>全部</option>";
+		str += "<option value='1'>湖西区</option>";
+		str += "<option value='2'>浙西区</option>";
+		str += "<option value='3'>武澄锡虞区</option>";
+		str += "<option value='4'>杭嘉湖区</option>";
+		str += "<option value='5'>阳澄淀泖区</option>";
+		str += "<option value='6'>浦西区</option>";
+		str += "<option value='7'>浦东区</option>";
+		str += "<option value='8'>太湖区</option>";
+	}else if(qy=="3"){
+		str += "<option value='0'>全部</option>";
+		str += "<option value='1'>雅浦港武进工业、农业用水区</option>";
+		str += "<option value='2'>雅浦港武进过渡区</option>";
+		str += "<option value='3'>胥河溧阳保留区</option>";
+		str += "<option value='4'>新安江屯溪景观娱乐用水区</option>";
+		str += "<option value='5'>率水屯溪饮用水源区</option>";
+		str += "<option value='6'>横江屯溪饮用水源区</option>";
+		str += "<option value='7'>衢江衢州市城市景观娱乐、工业用水区</option>";
+		str += "<option value='8'>金华江金华城市景观娱乐、饮用水源区</option>";
+	}else if(qy=="4"){
+		str += "<option value='0'>全部</option>";
+		str += "<option value='1'>东南诸河省界</option>";
+		str += "<option value='2'>太湖流域省界</option>";
+		str += "<option value='3'>苏沪边界</option>";
+	}else if(qy=="5"){
+		str += "<option value='0'>全部</option>";
+		str += "<option value='1'>望虞河干流</option>";
+		str += "<option value='2'>望虞河西岸支流</option>";
+		str += "<option value='3'>太浦河</option>";
+		str += "<option value='4'>大运河</option>";
+	}
+	$("#select_QyVal").html(str);
+}
+$(function() {
+	//时间插件
+				$('#reportrange span').html(moment().subtract('day', 7).format('YYYY-MM-DD HH') + '--' + moment().format('YYYY-MM-DD HH'));
+
+				$('#reportrange').daterangepicker(
+						{
+							// startDate: moment().startOf('day'),
+							//endDate: moment(),
+							//minDate: '01/01/2012',	//最小时间
+							maxDate : moment(), //最大时间 
+							showDropdowns : true,
+							showWeekNumbers : false, //是否显示第几周
+							timePicker : true, //是否显示小时和分钟
+							timePickerIncrement : 60, //时间的增量，单位为分钟
+							timePicker12Hour : false, //是否使用12小时制来显示时间
+							ranges : {
+								'今日': [moment().startOf('day'), moment()],
+			                    '最近一周': [moment().subtract('days', 6), moment()],
+			                    '最近一个月': [moment().subtract('months', 1), moment()],
+			                    '最近半年': [moment().subtract('months', 6), moment()],
+								'最近一年': [moment().subtract('years', 1), moment()]
+							},
+							opens : 'left', //日期选择框的弹出位置
+							buttonClasses : [ 'btn btn-default' ],
+							applyClass : 'btn-small btn-primary blue',
+							cancelClass : 'btn-small',
+							format : 'YYYY-MM-DD HH', //控件中from和to 显示的日期格式
+							separator : ' to ',
+							locale : {
+								applyLabel : '确定',
+								cancelLabel : '取消',
+								fromLabel : '起始时间',
+								toLabel : '结束时间',
+								customRangeLabel : '自定义',
+								daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+								monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+										'七月', '八月', '九月', '十月', '十一月', '十二月' ],
+								firstDay : 1
+							}
+						}, function(start, end, label) {//格式化日期显示框
+			                if(start>end){
+								alert("起始时间要小于结束时间");
+								return;
+							}else{
+								$('#reportrange span').html(start.format('YYYY-MM-DD HH') + '--' + end.format('YYYY-MM-DD HH'));
+							}
+		               });
+
+			//设置日期菜单被选项  --开始--
+		  	  var dateOption ;
+		  	  if("${riqi}"=='day') {
+					dateOption = "今日";
+		      }else if("${riqi}"=='yday') {
+					dateOption = "昨日";
+		      }else if("${riqi}"=='week'){
+					dateOption ="最近7日";
+		      }else if("${riqi}"=='month'){
+					dateOption ="最近30日";
+		      }else if("${riqi}"=='year'){
+					dateOption ="最近一年";
+		      }else{
+					dateOption = "自定义";
+		      }
+		  	   $(".daterangepicker").find("li").each(function (){
+					if($(this).hasClass("active")){
+						$(this).removeClass("active");
+					}
+					if(dateOption==$(this).html()){
+						$(this).addClass("active");
+					}
+		      });
+		      	   //设置日期菜单被选项  --结束--
+	$.getJSON("json/jcxx.json", function(data){ 
+		subgrid_data = data["rows"];
+		showGrid();
+	});
+});
+function getNewData(data,name,type,val){
+	
+}
+function showGrid(){
+	var grid_selector = "#grid-table";
+	var pager_selector = "#grid-pager";
+	jQuery(grid_selector).jqGrid({
+		datatype: 'local',
+		data: subgrid_data,
+		colNames: ['测站编码','测站名称','行政区划','河流名称','水系名称','流域名称','经度','纬度','测站类别','测站等级','站址','水资源分区','水功能分区','管理单位','监测单位','监测频次','自动监测','建站年月','撤站年月','备注'],
+		hidegrid: false,
+		colModel: [
+			{ name: 'STCD', width: 120 , align : "center",frozen:true},
+			{ name: 'STNM', width: 120 , align : "center",frozen:true},
+			{ name: 'ADDVCD', width: 120 , align : "center",frozen:true},
+			{ name: 'RVNM', width: 120 , align : "center",frozen:true},
+			{ name: 'HNNM', width: 180 , align : "center"},
+			{ name: 'BSNM', width: 140 , align : "center"},
+			
+			{ name: 'LGTD', width: 120 , align : "center"},
+			{ name: 'LTTD', width: 120 , align : "center"},
+			{ name: 'STCT', width: 120 , align : "center"},
+			{ name: 'STGRD', width: 120 , align : "center"},
+			{ name: 'STLC', width: 280 , align : "center"},
+			{ name: 'WRRCD', width: 140 , align : "center"},
+			{ name: 'WFRCD', width: 140 , align : "center"},
+			{ name: 'ADAG', width: 140 , align : "center"},
+			{ name:'MNAG', width: 140 , align : "center"},
+			{ name:'MNFRQ', width: 140 , align : "center"},
+			{ name:'MNJC', width: 140 , align : "center"},
+			{ name:'ESSTYM', width: 140 , align : "center"},
+			{ name:'WDSTYM', width: 140 , align : "center"},
+			{ name:'NT', width: 140 , align : "center"}
+		],
+		width : ww,
+		height: wh,
+		emptyrecords:'没有符合条件的数据!',
+		viewrecords : true,
+		rowNum:50,
+		rowList:[10,20,50,100,200,500,1000,2000],
+		pager : pager_selector,
+		altRows: true,
+		rownumbers : true,
+		multiselect: true,
+		//multikey: "ctrlKey",
+        multiboxonly: true,
+		jsonReader : {  
+			root: "ROWS",   // json中代表实际模型数据的入口  
+			page: "PAGE",   // json中代表当前页码的数据  
+			total: "COUNT", // json中代表页码总数的数据  
+			records: "RESULTS", // json中代表数据行总数的数据  
+			repeatitems: true // 如果设为false，则jqGrid在解析json时，会根据name来搜索对应的数据元素（即可以json中元素可以不按顺序）；而所使用的name是来自于colModel中的name设定。  
+		},
+		loadComplete : function() {
+			var table = this;
+			setTimeout(function(){
+				//styleCheckbox(table);
+				
+				//updateActionIcons(table);
+				updatePagerIcons(table);
+				enableTooltips(table);
+			}, 0);
+		},
+		caption: "",
+		autowidth: false,
+		viewrecords:true,
+		shrinkToFit: false
+	});
+	$(window).triggerHandler('resize.jqGrid');
+	jQuery("#grid-table").jqGrid('setFrozenColumns');
+	jQuery("#grid-table").navGrid('#grid-pager',{edit:false,add:false,del:false,search:false})
+	.navButtonAdd('#grid-pager',{
+	   caption:"添加",
+	   buttonicon:"ace-icon fa fa-plus-circle purple",
+	   onClickButton: function(){
+		   openMemo();
+	   },
+	   position:"last"
+	})
+	.navButtonAdd('#grid-pager',{
+	   caption:"修改",
+	   buttonicon:"ace-icon fa fa-pencil blue",
+	   onClickButton: function(){
+		   openMemo();
+	   },
+	   position:"last"
+	})
+	.navButtonAdd('#grid-pager',{
+	   caption:"删除",
+	   buttonicon:"ace-icon fa fa-trash-o red",
+	   onClickButton: function(){
+	   },
+	   position:"last"
+	});
+	
+	//replace icons with FontAwesome icons like above
+	function updatePagerIcons(table) {
+		var replacement = 
+		{
+			'ui-icon-seek-first' : 'ace-icon fa fa-angle-double-left bigger-140',
+			'ui-icon-seek-prev' : 'ace-icon fa fa-angle-left bigger-140',
+			'ui-icon-seek-next' : 'ace-icon fa fa-angle-right bigger-140',
+			'ui-icon-seek-end' : 'ace-icon fa fa-angle-double-right bigger-140'
+		};
+		$('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function(){
+			var icon = $(this);
+			var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
+			
+			if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
+		})
+	}
+	function enableTooltips(table) {
+		$('.navtable .ui-pg-button').tooltip({container:'body'});
+		$(table).find('.ui-pg-div').tooltip({container:'body'});
+	}
+	$('.ui-jqdialog').remove();
+}
+function openMemo()
+{
+	layer.open({
+		type : 2,
+		title : "编辑用户管理",
+		shadeClose : true,
+		shade : false,
+		maxmin : true, // 开启最大化最小化按钮
+		area : [ '800px', '500px' ],
+		content : "yonghugl_edit.html"
+	});
+}
+$(window).resize(winReSize);
+function winReSize(){
+	;
+	$("body").css('height', $("html").height());
+	$("body").css('width', $("html").width());
+	$("#testIframe").css('height', ($("body").height()-50));
+	$("#testIframe").css('width', $("body").width());
+	var wh = $("#testIframe").height() - 83;
+	var www = $(window).width();
+	var aut = jQuery("#grid-table").jqGrid('getGridParam','autowidth');
+	jQuery("#grid-table").jqGrid('setGridWidth',www,aut);
+	jQuery("#grid-table").jqGrid('setGridHeight',wh,aut);
+	var wwww = $(window).width();
+	if(wwww!=www){
+		jQuery("#grid-table").jqGrid('setGridWidth',wwww,aut);
+	}
+	
+}
+</script>
+</body>
+</html>
