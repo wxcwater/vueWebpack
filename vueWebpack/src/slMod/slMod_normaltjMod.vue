@@ -103,6 +103,7 @@
           </table>
         </div>
       </td>
+    </tr>
       <tr>
         <td  style="padding-left:3px;" >
           <i id="table_slfq_icon" class="fa fa-plus-square-o" aria-hidden="true" onclick="table_slfq_clickHandler()"></i>
@@ -175,6 +176,7 @@
             </table>
           </div>
         </td>
+      </tr>
     </table>
     </div>
 

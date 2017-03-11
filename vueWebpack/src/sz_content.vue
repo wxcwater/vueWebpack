@@ -26,7 +26,7 @@
 	// <i>@</i>
 	 x
 	</th>
-
+</tr>
 	</thead>
 
 	<tbody >
@@ -86,7 +86,7 @@
 
 	测量值
 	</th>
-
+</tr>
 	</thead>
 
 	<tbody style="overflow: scroll;">

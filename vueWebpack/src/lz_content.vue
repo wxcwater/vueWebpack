@@ -22,6 +22,7 @@
             <th>
             x
             </th>
+          </tr>
           </thead>
         <tbody >
           <tr>
@@ -68,6 +69,7 @@
     <th>
     测量值
     </th>
+    </tr>
     </thead>
     <tbody style="overflow: scroll">
     <tr>
@@ -141,6 +143,7 @@
 
     </div>
   </div>
+
 </template>
 
 <script>

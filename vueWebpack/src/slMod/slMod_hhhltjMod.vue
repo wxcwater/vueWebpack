@@ -25,7 +25,7 @@
 
       <component :is='currentTableType'></component>
   </div>
-
+</div>
 </template>
 
 <script>

@@ -22,6 +22,7 @@
             <th>
             660832144
             </th>
+          </tr>
           </thead>
         <tbody >
           <tr>
@@ -74,6 +75,7 @@
     <th>
     测量值
     </th>
+  </tr>
     </thead>
     <tbody style="overflow: scroll">
     <tr>
@@ -100,7 +102,6 @@
     <a href="#">良好</a>
     </td>
     </tr>
-    <tr>
     </tbody>
     </table>
     </div>
@@ -120,7 +121,6 @@
       </span>
       </div>
     </div>
-
 
     </div>
   </div>
