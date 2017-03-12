@@ -19,8 +19,8 @@
       </div>
     </div>
     </div> -->
-    <div class="row">
-      <div class="btn-group" style="margin-left:10px;">
+    <div class="" style='display:flex;'>
+      <div class="btn-group " style="margin-left:5px;">
         <button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
       统计对象:水功能区
           <i class="ace-icon fa fa-angle-down icon-on-right"></i>
@@ -38,6 +38,24 @@
 
       </ul>
     </div>
+    <div class="btn-group " style="margin-left:5px;">
+      <button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
+    指标:水质等级
+        <i class="ace-icon fa fa-angle-down icon-on-right"></i>
+      </button>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="#" @click ="changeObjectType('1')">水功能区</a>
+      </li>
+      <li>
+        <a href="#" @click ="changeObjectType('2')">排污口</a>
+      </li>
+      <li>
+        <a href="#" @click ="changeObjectType('3')">水源地</a>
+      </li>
+
+    </ul>
+  </div>
     </div>
     <div id="chartContent" style="height:30%;width:100%;"></div>
     <div class="hr hr5 hr-dotted"></div>
