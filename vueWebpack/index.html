@@ -110,6 +110,15 @@
 					background-image: linear-gradient(to bottom, #FFFFFF 0%, #EEEEEE 100%);
 					border-radius: 0px 0px 20px 0px;
 				}
+				.mapToolPanel{
+					position: fixed;
+					left:60px;
+					top:114px;
+					width:300px;
+					height:300px;
+					background-color: rgb(188, 207, 226);
+					border-radius: 0px 25px 15px 15px;
+				}
 				.control-content{
 					display: flex;
 					flex-direction: column;;
@@ -147,10 +156,13 @@
 			<button type="button" class="btn btn-md" data-toggle="button" style='border-radius: 0px 10px 10px 0px;margin-top:3px;' aria-pressed="false">
 					<i class="icon-only ace-icon fa fa-globe"></i>
 			</button>
-			<button type="button" class="btn btn-md" data-toggle="button" style='border-radius: 0px 10px 10px 0px;margin-top:3px;' aria-pressed="false">
+			<button type="button" class="btn btn-md" data-toggle="button" style='border-radius: 0px 10px 10px 0px;margin-top:3px;' aria-pressed="false" onclick="drawMapToolToggle()">
 					<i class="icon-only ace-icon fa fa-edit"></i>
 			</button>
 
+		</div>
+		<div id="mapTool" class="mapToolPanel">
+			<div id="mapToolContent"></div>
 		</div>
 		<div class="control-panel" id="control-panel panel" style='border-radius: 0 25px 0 0;'>
 			<div class="widget-box ui-sortable-handle" id="widget-box-5" style='height:100%;border-radius: 0 25px 0 0;;'>
@@ -494,7 +506,12 @@
 					stationContent.currentType = currentModName;
 				}
 			}
-			testVueCompent();
+			//testVueCompent();
+			function drawMapToolToggle(){
+				alert(1);
+
+			}
+			//start
       require(["gowa/gisObject","esri/layers/FeatureLayer", "dojo/domReady!"], function(gisObject,FeatureLayer) {
       // newGisObject.init('mapDiv');
 
@@ -1028,6 +1045,19 @@
 							}
 
 						})
+				 drawMapTool = new Vue({
+					 el: '#mapToolContent',
+					 template:'<drawMaptool ></drawMaptool>',
+					 components: {
+						 'drawMaptool':window.vCompoment.drawMapTool,
+					 },
+					 methods:{},
+					 data:{
+							 cview:'gk_tj',
+							 focusObject:'normal',
+					 }
+
+				 });
 				 tjtable = new Vue({
 							el: '#dataWidgetContent',
 							template:'<component :is="cview" :focusObject="focusObject" :echarts="echarts"></component>',

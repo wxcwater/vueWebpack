@@ -29,6 +29,9 @@ import lzMod_jsModule from './lzMod/lzMod_jsContent.vue'
 import szMod_tjModule from './szMod/szMod_tjContent.vue'
 import slMod_tjModule from './slMod/slMod_tjContent.vue'
 
+
+//------
+import drawMapTool from './mapTool/drawMapTool.vue'
 /* eslint-disable no-new */
 //  var x = new Vue({
 //   el: '#headvuetest',
@@ -67,3 +70,5 @@ window.vCompoment.szMod_tjModule = szMod_tjModule;
 window.vCompoment.slMod_tjModule = slMod_tjModule;
 window.vCompoment.gkMod_tjMod    = gkMod_tjMod;
 window.vCompoment.gqMod_tjMod    = gqMod_tjMod;
+
+window.vCompoment.drawMapTool    = drawMapTool;
