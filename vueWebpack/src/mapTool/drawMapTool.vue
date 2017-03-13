@@ -36,20 +36,45 @@
         </div>
       </div>
       <div id = 'drawType' style="margin-top:5px;"></div>
-      <div id = 'tableContent' >
-        <table class='table'>
+      <div id = 'tableContent' style="height:150px;">
+        <table class="table table-striped table-bordered table-hover">
+          <thead >
           <tr>
-            <th>测站名称</th>
-            <th>测站类型</th>
-            <th><input type="checkbox" name="iCheck"  value='sz' class='iCheckRadio'checked></th>
+            <th>
+            测站名称
+            </th>
+            <th>
+            测站类型
+            </th>
+            <th>
+              <input type="checkbox" name="iCheck"  value='sz' class='iCheckRadio'checked>
+            </th>
           </tr>
-          <tr v-for ='station in selectedStations' >
-            <td>{{station.name}}</td>
-            <td>{{station.type}}</td>
-            <td><input type="checkbox" name="iCheck"  value='sz' class='iCheckRadio'checked></td>
-          </tr>
+          </thead>
+        <tbody >
+              <tr v-for="station in selectedStations">
+                <td>
+                {{station.name}}
+              </td>
+                <td>
+                {{station.type}}
+              </td>
+                <td>
+                  <input type="checkbox" name="iCheck"  value='sz' class='iCheckRadio'checked>
+                </td>
+              </tr>
+        </tbody>
         </table>
       </div>
+      <div id = 'methodType' style='display:flex; justify-content:center;margin-top:5px;align-items:center;'>
+      <div data-toggle="buttons" class="btn-group" style="margin-left:20px;">
+					<label class="btn btn-success" id="test">
+						<input value="3" type="radio">
+						<i class="icon-only ace-icon fa fa-external-link"></i>
+						多站对比
+					</label>
+      </div>
+
   </div>
 </template>
 
