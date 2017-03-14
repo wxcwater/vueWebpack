@@ -21,6 +21,18 @@
           overflow: hidden;
           margin-top: -145px;
         }
+        .picture-container{
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          bottom: 0;
+          left:0;
+          top:0;
+          overflow: hidden;
+          display: flex;
+          flex-direction : row;
+          align-items:center;
+        }
         .video-modal{
           position: fixed;
           width: 100%;
@@ -52,26 +64,50 @@
           flex-direction:column;
           justify-content:space-around;
           align-items:center;
-          width:200px;
-          height:240px;
+          width:150px;
+          height:150px;
           margin-top:70px;
-          border-radius:20px;
+          border-radius:100px;
           background-color: #c4c4c4;
           -moz-opacity:1;
           opacity:1;
+          transition: width 2s;
+          -moz-transition: width 2s;	/* Firefox 4 */
+          -webkit-transition: width 2s;	/* Safari 和 Chrome */
+          -o-transition: width 2s;
+          transition: height 2s;
+          -moz-transition: height 2s;	/* Firefox 4 */
+          -webkit-transition: height 2s;	/* Safari 和 Chrome */
+          -o-transition: height 2s;
         }
         .item-content{
           display: flex;
           flex-direction:column;
           justify-content:space-around;
           align-items:center;
-          width:200px;
-          height:240px;
+          width:150px;
+          height:150px;
           margin-top:70px;
-          border-radius:20px;
-
+          border-radius:100px;
           -moz-opacity:1;
           opacity:1;
+
+        }
+        .item-content:hover{
+          display: flex;
+          flex-direction:column;
+          justify-content:space-around;
+          align-items:center;
+          width:250px;
+          height:250px;
+          margin-top:70px;
+          border-radius:50px;
+          -moz-opacity:1;
+          opacity:1;
+          transition: width 2s;
+          -moz-transition: width 2s;	/* Firefox 4 */
+          -webkit-transition: width 2s;	/* Safari 和 Chrome */
+          -o-transition: width 2s;
         }
         .thicon{
            /*align-self:flex-start;*/
@@ -98,26 +134,28 @@
           margin-top:50px;
         }
   	</style>
+    <script src="../src/ace/components/jquery/jquery.js"></script>
   </head>
   <body>
       <div >
         <div id="video-container" class="video-container">
           <video id="video-bg" width='100%'; height="100%" src="testth.mp4" muted="" autoplay="true" loop="loop"></video>
         </div>
+
         <div id="video-modal" class="video-modal flex-content">
           <img src="11.png" alt="" class="thicon">
           <div class="content" id="content">
             <div class='item-content-back' >
-              <img src="zonghexinxi.png" style='width:100px;height:100px;' alt="">
-              <a class="a1" href="../index_jsyj.html">综合信息服务</a>
+              <!-- <img src="zonghexinxi.png" style='width:100px;height:100px;' alt=""> -->
+              <!-- <a class="a1" href="../index_jsyj.html">综合信息服务</a> -->
             </div>
             <div class='item-content-back' >
-              <img src="zongheguanli.png" style='width:100px;height:100px;' alt="">
-              <a class="a1" href="../index_jsyj.html">综合业务管理</a>
+              <!-- <img src="zongheguanli.png" style='width:100px;height:100px;' alt=""> -->
+              <!-- <a class="a1" href="../index_jsyj.html">综合业务管理</a> -->
             </div>
             <div class='item-content-back' >
-              <img src="zhuantizhenghe.png" style='width:100px;height:100px;' alt="">
-              <a class="a1" href="../index_jsyj.html">专题服务整合</a>
+              <!-- <img src="zhuantizhenghe.png" style='width:100px;height:100px;' alt=""> -->
+              <!-- <a class="a1" href="../index_jsyj.html">专题服务整合</a> -->
             </div>
           </div>
           <div class="bottom-left">2017-2020 © All Rights Reserved. 北京金水信息技术发展有限公司 <br>
@@ -127,22 +165,27 @@
         <div class="modal flex-content">
           <img src="11.png" alt="" class="thicon">
           <div class="content" id="content">
-            <div class='item-content' >
+            <div class='item-content'  onmouseover="itemHover()">
               <img src="zonghexinxi.png" style='width:100px;height:100px;' alt="">
-              <a class="a1" href="../index_jsyj.html">综合信息服务</a>
+              <a class="a1" href="../index_jsyj.html"  style='display:none' onmouseover="itemHover" >综合信息服务</a>
             </div>
-            <div class='item-content' >
+            <div class='item-content'  onmouseover="itemHover()">
               <img src="zongheguanli.png" style='width:100px;height:100px;' alt="">
-              <a class="a1" href="../index_jsyj.html">综合业务管理</a>
+              <a class="a1" href="../index_jsyj.html"  style='display:none' onmouseover="itemHover" >综合业务管理</a>
             </div>
-            <div class='item-content' >
+            <div class='item-content'  onmouseover="itemHover()">
               <img src="zhuantizhenghe.png" style='width:100px;height:100px;' alt="">
-              <a class="a1" href="../index_jsyj.html">专题服务整合</a>
+              <a class="a1" href="../index_jsyj.html"  style='display:none' onmouseover="itemHover" >专题服务整合</a>
             </div>
           </div>
           <div class="bottom-left">2017-2020 © All Rights Reserved. 北京金水信息技术发展有限公司 <br>
             联系我们:(010)
           </div>
         </div>
+        <script type="text/javascript">
+          function itemHover(){
+           //$("div").animate({left:'250px'});
+          }
+        </script>
   </body>
 </html>
