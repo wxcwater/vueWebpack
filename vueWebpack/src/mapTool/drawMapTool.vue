@@ -4,7 +4,7 @@
       <h5 class="widget-title smaller">选测测站</h5>
     </div>
       <div id = 'methodType' style='display:flex; justify-content:flex-start;margin-top:5px;'>
-      <div data-toggle="buttons" class="btn-group" style="margin-left:20px;">
+      <div data-toggle="buttons" class="btn-group" style="margin-left:20px;" v-on:click='draw()'>
 					<label class="btn btn-primary" id="test">
 						<input value="3" type="radio">
 						<i class="icon-only ace-icon fa fa-external-link"></i>
@@ -52,12 +52,12 @@
           </tr>
           </thead>
         <tbody >
-              <tr v-for="station in selectedStations">
+              <tr v-for="station in foundStations">
                 <td>
-                {{station.name}}
+                {{station.RVNM}}
               </td>
                 <td>
-                {{station.type}}
+                {{station.HNNM}}
               </td>
                 <td>
                   <input type="checkbox" name="iCheck"  value='sz' class='iCheckRadio'checked>
@@ -67,14 +67,14 @@
         </table>
       </div>
       <div id = 'methodType' style='display:flex; justify-content:center;margin-top:5px;align-items:center;'>
-      <div data-toggle="buttons" class="btn-group" style="margin-left:20px;">
+      <div data-toggle="buttons" class="btn-group" style="margin-left:20px;" v-on:click='compare()'>
 					<label class="btn btn-success" id="test">
 						<input value="3" type="radio">
 						<i class="icon-only ace-icon fa fa-external-link"></i>
 						多站对比
 					</label>
       </div>
-
+	</div>
   </div>
 </template>
 
@@ -82,15 +82,20 @@
 //import searchToolBar from './../searchToolBar.vue'
 export default {
   name: 'drawMapTool',
-  props: [],
+  props: ['foundStations'],
   data:function(){
       return {
-        'selectedStations':[{name:'测试站1',type:'水质水量'},{name:'测试站2',type:'水质水量'}]
+        'foundStations':[{RVNM:'测试站1',HNNM:'水质水量'},{RVNM:'测试站2',HNNM:'水质水量'}]
       }
   },
 
   methods:{
-
+      draw:function(){
+       this.$emit('drawMapStart');
+      },
+      compare:function(){
+        this.$emit('compareState');
+      }
   }
 }
 </script>
