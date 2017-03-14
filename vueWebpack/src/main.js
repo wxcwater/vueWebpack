@@ -11,10 +11,10 @@ import gq_content from './gq_content.vue'
 import gk_content from './gk_content.vue'
 
 //------------------------------工况
-import gkMod_tjMod from './gkMod_tjMod.vue'
+
 
 //------------------------------工情
-import gqMod_tjMod from './gqMod_tjMod.vue'
+
 
 
 //-------------------------------一张图
@@ -28,7 +28,9 @@ import lzMod_jsModule from './lzMod/lzMod_jsContent.vue'
   //----统计模块
 import szMod_tjModule from './szMod/szMod_tjContent.vue'
 import slMod_tjModule from './slMod/slMod_tjContent.vue'
-
+import lzMod_tjModule from './lzMod/lzMod_tjContent.vue'
+import gqMod_tjMod from './gqMod_tjMod.vue'
+import gkMod_tjMod from './gkMod_tjMod.vue'
 
 //------
 import drawMapTool from './mapTool/drawMapTool.vue'
@@ -70,5 +72,6 @@ window.vCompoment.szMod_tjModule = szMod_tjModule;
 window.vCompoment.slMod_tjModule = slMod_tjModule;
 window.vCompoment.gkMod_tjMod    = gkMod_tjMod;
 window.vCompoment.gqMod_tjMod    = gqMod_tjMod;
+window.vCompoment.lzMod_tjModule = lzMod_tjModule;
 
 window.vCompoment.drawMapTool    = drawMapTool;
