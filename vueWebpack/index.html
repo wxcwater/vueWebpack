@@ -508,18 +508,47 @@
 			}
 			//testVueCompent();
 			function drawMapToolToggle(){
+				newGisObject.mapObject.graphics.clear();
 				$('#mapTool').css('display')=='block'?$('#mapTool').css('display','none'):$('#mapTool').css('display','block');
 
 			}
 			//start
-      require(["gowa/gisObject","esri/layers/FeatureLayer", "dojo/domReady!"], function(gisObject,FeatureLayer) {
+      require(["esri/symbols/SimpleFillSymbol","esri/graphic","gowa/gisObject","esri/layers/FeatureLayer","esri/toolbars/draw", "esri/geometry/geometryEngine","esri/graphicsUtils","esri/tasks/RelationParameters",
+      	"esri/tasks/GeometryService","esri/geometry/Polygon","esri/geometry/Point","dojo/domReady!"],
+      	function(SimpleFillSymbol,Graphic,gisObject,FeatureLayer,Draw,geometryEngine,graphicsUtils,RelationParameters,GeometryService,Polygon,Point) {
       // newGisObject.init('mapDiv');
 
         newGisObject = new gisObject(GisModelConfig,'mapDiv',test);
-        newGisObject.initGoogleMap();
+        newGisObject.initMap('mapDiv');
+       // newGisObject.initGoogleMap();
 				newGisObject.mapObject.on("pan-start",function(e){
 					//地图拖拽开始时
         });
+
+		toolbar = new Draw(newGisObject.mapObject);
+		myDraw = Draw;
+		toolbar.on("draw-end",function(evt){
+			newGisObject.mapObject.graphics.clear();
+			var sfs = new SimpleFillSymbol();
+			toolbar.deactivate();
+          	newGisObject.mapObject.showZoomSlider();
+          
+	        var graphic = new Graphic(evt.geometry, sfs);
+	        newGisObject.mapObject.graphics.add(graphic);
+	        var resultGra = [];
+	        var geometries = graphicsUtils.getGeometries(evt);
+	        var polyg = new Polygon(evt.geometry);
+
+	        for(var i=0;i<graphicsLayer_sz_l1.graphics.length;i++){
+	        	var xx = Number(graphicsLayer_sz_l1.graphics[i].geometry.x).toFixed(2);
+	        	var yy = Number(graphicsLayer_sz_l1.graphics[i].geometry.y).toFixed(2);
+	        	if(geometryEngine.contains(polyg,new Point(Number(xx),Number(yy)))){
+	        		resultGra.push(graphicsLayer_sz_l1.graphics[i].attributes);
+	        	}
+	        }
+	        drawMapTool.foundStations = resultGra;
+		});
+		
         newGisObject.mapObject.on("pan-end",function(e){
 					//地图拖拽完成时
         });
@@ -534,6 +563,7 @@
 
         });
       });
+
       function test(){
         newGisObject.mapObject.setLevel(2);
 				// $(document).ready(function(){
@@ -1045,16 +1075,26 @@
 							}
 
 						})
+				
 				 drawMapTool = new Vue({
 					 el: '#mapToolContent',
-					 template:'<drawMaptool ></drawMaptool>',
+					 template:'<drawMaptool v-on:drawMapStart="drawMapEnd" v-on:compareState="compareStation" :foundStations="foundStations"></drawMaptool>',
 					 components: {
 						 'drawMaptool':window.vCompoment.drawMapTool,
 					 },
-					 methods:{},
+					 methods:{
+					 	drawMapEnd:function(){
+          					toolbar.activate('freehandpolygon');
+          					newGisObject.mapObject.hideZoomSlider();
+					 	},
+					 	compareStation:function(){
+					 		newGisObject.mapObject.graphics.clear();
+					 	}
+					 },
 					 data:{
 							 cview:'gk_tj',
 							 focusObject:'normal',
+							 foundStations:[{RVNM:'测试站1',HNNM:'水质水量'},{RVNM:'测试站2',HNNM:'水质水量'}]
 					 }
 
 				 });
