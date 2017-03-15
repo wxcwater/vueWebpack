@@ -29,8 +29,8 @@ import lzMod_jsModule from './lzMod/lzMod_jsContent.vue'
 import szMod_tjModule from './szMod/szMod_tjContent.vue'
 import slMod_tjModule from './slMod/slMod_tjContent.vue'
 import lzMod_tjModule from './lzMod/lzMod_tjContent.vue'
-import gqMod_tjMod from './gqMod_tjMod.vue'
-import gkMod_tjMod from './gkMod_tjMod.vue'
+import gqMod_tjMod from './gqMod/gqMod_tjMod.vue'
+import gkMod_tjMod from './gkMod/gkMod_tjMod.vue'
 
 //------
 import drawMapTool from './mapTool/drawMapTool.vue'
