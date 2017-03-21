@@ -1,0 +1,3593 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"></meta>
+	<title>太湖流域水环境信息共享平台-首页</title>
+<!--test-->
+
+	<link rel="stylesheet" href="http://localhost/arcgis_js_api/3.18/esri/css/esri.css">
+	<!--[if !IE]> -->
+	<script src="src/ace/components/jquery/jquery.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+	<script src="../ace/components/jquery.1x/jquery.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="http://localhost/arcgis_js_api/3.18/esri/css/esri.css">
+
+<link rel="stylesheet" href="src/ace/css/bootstrap.css">
+<link rel="stylesheet" href="src/ace/css/ace.css">
+<link rel="stylesheet" href="src/ace/css/font-awesome.css">
+<link rel="stylesheet" href="src/ace/css/jquery-ui.css">
+<link rel="stylesheet" href="src/gis/minimal/blue.css" >
+<link rel="stylesheet" href="src/ace/css/bootstrap-table.min.css">
+<link rel="stylesheet" href="src/ace/css/ace-rtl.css" />
+<link rel="stylesheet" href="src/ace/css/ace-skins.css" />
+<!--[if !IE]> -->
+<script src="src/ace/components/jquery/jquery.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script src="../ace/components/jquery.1x/jquery.js"></script>
+<![endif]-->
+<script src="src/ace/js/bootstrap.js" type="text/javascript"></script>
+<script src="src/echarts/echarts.min.js" type="text/javascript"></script>
+<script src="src/echarts/bmapBase.js" type="text/javascript"></script>
+<script src="src/echarts/bmap.min.js" type="text/javascript"></script>
+<script src="src/gis/icheck.min.js" type="text/javascript"></script>
+<script src="src/gis/js/typeaHead.js" type="text/javascript"></script>
+<script src="src/ace/js/ace-extra.js" type="text/javascript"></script>
+<script src="src/ace/js/data/fuelux.tree-sampledata.js" type="text/javascript"></script>
+<script src="src/ace/js/bootstrap-treeview.min.js" type="text/javascript"></script>
+<script src="src/ace/js/fuelux.tree.min.js" type="text/javascript"></script>
+
+<!-- <script src="../gis/gisObject.js" type="text/javascript"></script> -->
+<!-- <script src="../gis/water_gisFunctionalModule.js" type="text/javascript"></script> -->
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<!-- <script src="../gis/gisObject.js" type="text/javascript"></script> -->
+	<!-- <script src="../gis/water_gisFunctionalModule.js" type="text/javascript"></script> -->
+	<script src="http://localhost/arcgis_js_api/3.18/init.js"></script>
+
+
+	<link rel="stylesheet" href="src/ace/css/bootstrap.css">
+	<link rel="stylesheet" href="src/ace/css/ace.css">
+	<link rel="stylesheet" href="src/ace/css/font-awesome.css">
+	<style type="text/css">
+				.mapContent{
+					width: 100%;
+					height: 100%;
+
+				}
+				.container{
+					position: fixed;
+					display: block;
+
+          width: 100%;
+          height: 635px;
+					top:0;
+					left:0;
+					overflow: hidden;;
+				}
+				.control-panel{
+					position: fixed;
+					left:10px;
+					bottom:10px;
+					width:360px;
+					height:200px;
+					background-color: #EEE;
+				}
+				.data-view{
+					position: fixed;
+					right:0px;
+					bottom:0px;
+					width:320px;
+					height:635px;
+					background-color: #EEE;
+				}
+				.side-bar{
+					position: fixed;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: flex-start;
+					left:0px;
+					top:0px;
+					/*width:320px;*/
+					height:60%;
+					/*background-color: #EEE;*/
+				}
+				.head-bar{
+					position: fixed;
+					display: flex;
+					z-index: 9;
+					flex-direction: row;
+					justify-content: space-around;;
+					align-items: center;
+					left:0px;
+					top:0px;
+					width:366px;
+					height:40px;
+					background-image: linear-gradient(to bottom, #FFFFFF 0%, #EEEEEE 100%);
+					border-radius: 0px 0px 20px 0px;
+				}
+				.mapToolPanel{
+					position: fixed;
+					left:60px;
+					top:114px;
+					width:300px;
+					height:300px;
+					background-color: rgb(188, 207, 226);
+					border-radius: 0px 25px 15px 15px;
+				}
+				.control-content{
+					display: flex;
+					flex-direction: column;;
+					justify-content: space-around;
+					align-items: center;
+				}
+				.control-content .cententItem{
+					width:100%;
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					justify-content: space-around;;
+
+
+				}
+	</style>
+</head>
+
+<body >
+	<div id="container" class="container" height=635>
+		<div id="mapDiv" class='mapContent'></div>
+		<div class="head-bar" id="head-bar">
+			<div id = 'headvuetest'>
+
+			</div>
+			<div id="searchBoxTemplate" style="margin-left:10px;">
+
+			</div>
+		</div>
+		<div class="side-bar" id="side-bar">
+			<button type="button" class="btn btn-md" data-toggle="button" style='border-radius: 0px 10px 10px 0px;margin-top:3px;' aria-pressed="false">
+					<i class="icon-only ace-icon fa fa-search-plus"></i>
+			</button>
+			<button type="button" class="btn btn-md" data-toggle="button" style='border-radius: 0px 10px 10px 0px;margin-top:3px;' aria-pressed="false">
+					<i class="icon-only ace-icon fa fa-search-minus"></i>
+			</button>
+			<button type="button" class="btn btn-md" data-toggle="button" style='border-radius: 0px 10px 10px 0px;margin-top:3px;' aria-pressed="false">
+					<i class="icon-only ace-icon fa fa-globe"></i>
+			</button>
+			<button type="button" class="btn btn-md" data-toggle="button" style='border-radius: 0px 10px 10px 0px;margin-top:3px;' aria-pressed="false" onclick="drawMapToolToggle()">
+					<i class="icon-only ace-icon fa fa-edit"></i>
+			</button>
+
+		</div>
+		<div id="mapTool" class="mapToolPanel">
+			<div id="mapToolContent"></div>
+		</div>
+		<div class="control-panel" id="control-panel panel" style='border-radius: 0 25px 0 0;'>
+			<div class="widget-box ui-sortable-handle" id="widget-box-5" style='height:100%;border-radius: 0 25px 0 0;;'>
+				<div class="widget-header" style="border-radius: 0 25px 0 0;">
+					<h5 class="widget-title smaller">控制面板</h5>
+				</div>
+				<div class="widget-body control-content" style='height:85%'>
+					<div id="oneLevel" class="cententItem" style='margin-top:10px'>
+
+						<div id = 'timeSelect' style='width:190px;flex-basis:190px;flex-grow:0' class="input-group ">
+		        <div class="input-group-addon">当前时间</div>
+		        <input type="text" id="inStTm"
+		          onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH'})"
+		          class="form-control" value="2017-02-13 08"/>
+		      </div>
+					</div>
+					<div style="width:100%;" class="hr hr5 hr-dotted" style='margin:5px'></div><!--分割线-->
+					<div id="twoLevel" class="cententItem">
+						<input type="checkBox" name="iCheck"  style='flex-basis:33%' value='sz' class='iCheckRadio'checked><a>太湖水位</a>
+						<input type="checkBox" name="iCheck"  style='flex-basis:33%' value='sl' class='iCheckRadio'><a>环湖河流</a>
+						<input type="checkBox" name="iCheck"  style='flex-basis:33%' value='gk' class='iCheckRadio'><a>引供水河道</a>
+					</div>
+					<div id="threeLevel" class="cententItem">
+						<input type="checkBox" name="iCheck"  style='flex-basis:33%' value='gq' class='iCheckRadio'><a>沿长江</a>
+						<input type="checkBox" name="iCheck"  style='flex-basis:33%' value='lz' class='iCheckRadio'><a>杭州湾</a>
+						<input type="checkBox" name="iCheck"  style='flex-basis:33%' value='gq' class='iCheckRadio'><a>取用水户</a>
+					</div>
+
+					<div style="width:100%;" class="hr hr5 hr-dotted" style='margin:5px'></div><!--分割线-->
+					<div>
+						图例：
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="data-view" id="data-view">
+			<div id="dataViewContent" style='height:100%'>
+				<div class="widget-box ui-sortable-handle" id="widget-box-5">
+					<div class="widget-header">
+						<h5 class="widget-title smaller">监测数据</h5>
+					</div>
+
+					<div class="widget-body">
+						<div class="widget-main padding-6">
+							<div id='dataWidgetContent'></div>
+						</div>
+				</div>
+			</div>
+
+		</div>
+		</div>
+
+</div>
+	<script src="result/build.js"></script>
+
+	<script>
+
+	parentMsg = [{name:'test1',checked:true},{name:'test2',checked:true},{name:'test3',checked:false},{name:'test4',checked:false}];
+
+      // document.getElementById("mapDiv").height =
+			 GisModelConfig = {
+ 			 baseInfoLayers:[
+ 								 {
+ 										name   : '底图',
+ 										id : 'baseInfo_xzq',
+ 										url : "http://10.1.102.129:6080/arcgis/rest/services/taihu/th_basemap/MapServer",
+ 										layerType:'',
+										useType:'basic',
+ 										visible:true,
+ 										contentType:'Polygon'
+ 								 },{
+ 										name   : '太湖分区',
+ 										id : 'baseInfo_xzq1',
+ 										url : "http://10.1.102.129:6080/arcgis/rest/services/taihu/th_partition_blue/MapServer",
+ 										layerType:'',
+										useType:'basic',
+ 										visible:true,
+ 										contentType:'Polygon'
+ 								 },{
+ 										name   : '人工测站',
+ 										id : 'baseInfo_xzq2',
+ 										url : "http://10.1.102.129:6080/arcgis/rest/services/taihu/th_rgcezhan/MapServer",
+ 										layerType:'',
+ 										visible:false,
+										useType:'',
+ 										contentType:'Point'
+ 								 },{
+ 										name   : '主要河流',
+ 										id : 'baseInfo_xzq3',
+ 										url : "http://10.1.102.129:6080/arcgis/rest/services/taihu/th_river/MapServer",
+ 										layerType:'',
+ 										visible:false,
+										useType:'basic',
+ 										contentType:'Line'
+ 								 },{
+ 										name   : '水功能一级区划',
+ 										id : 'baseInfo_xzq4',
+ 										url : "http://10.1.102.129:6080/arcgis/rest/services/taihu/th_sgnyijiquhua/MapServer",
+ 										layerType:'',
+ 										visible:false,
+										useType:'basic',
+ 										contentType:'Polygon'
+ 								 },{
+ 										name   : '水利分区',
+ 										id : 'baseInfo_xzq5',
+ 										url : "http://10.1.102.129:6080/arcgis/rest/services/taihu/th_shuilifenqu/MapServer",
+ 										layerType:'',
+ 										visible:false,
+										useType:'basic',
+ 										contentType:'Polygon'
+ 								 },{
+ 										name   : '水质测站',
+ 										id : 'baseInfo_xzq6',
+ 										url : "http://10.1.102.129:6080/arcgis/rest/services/taihu/th_szcezhan/MapServer",
+ 										layerType:'',
+ 										visible:false,
+										useType:'',
+ 										contentType:'Point'
+ 								 },{
+ 										name   : '行政分区界限',
+ 										id : 'baseInfo_xzq7',
+ 										url : "http://10.1.102.129:6080/arcgis/rest/services/taihu/th_xzfenqujiexian/MapServer",
+ 										layerType:'',
+ 										visible:true,
+										useType:'basic',
+ 										contentType:'Polygon'
+ 								 }
+ 							 ],
+ 								centerPt:[120.50,31.2],
+ 								 xzqUrl : "http://10.1.102.129:6080/arcgis/rest/services/taihu/th_basemap/MapServer"
+ 		 };
+
+
+			//-------gis------------------------------
+			function yjjt_click(){
+							require(["esri/symbols/SimpleMarkerSymbol", "esri/geometry/Point", "esri/graphic",
+									"esri/SpatialReference","esri/symbols/Font","esri/Color",
+									"esri/symbols/TextSymbol","esri/symbols/PictureMarkerSymbol",
+									"esri/layers/GraphicsLayer","esri/layers/FeatureLayer","esri/config"],
+									function(SimpleMarkerSymbol, Point, Graphic,SpatialReference,Font,Color,
+										 TextSymbol, PictureMarkerSymbol,GraphicsLayer,FeatureLayer, esriConfig) {
+										// var lyr = newGisObject.mapObject.getLayer("graphicsLayer_sz_l1");
+										// if(lyr){
+										// 	newGisObject.mapObject.removeLayer(lyr);
+										// }
+										var imgUrl = graphicsLayer_sz_l1.graphics[0].symbol.url;
+										var imgHeight = graphicsLayer_sz_l1.graphics[0].symbol.height;
+										var imgWidth = graphicsLayer_sz_l1.graphics[0].symbol.width;
+										graphicsLayer_sz_l1.clear();
+									// 		graphicsLayer_yjjt = new GraphicsLayer();
+									// 		graphicsLayer_yjjt.id = 'graphicsLayer_yjjt';
+									// 		graphicsLayer_yjjt.visible = true;
+
+									// 		graphicsLayer_yjjt.on("mouse-over",function(e){
+									// 			sztooltip(e);
+									// 		});
+									  		newGisObject.addNewLayer('Point',graphicsLayer_sz_l1);
+
+
+									var stationSymbol_yjjt= new PictureMarkerSymbol(imgUrl,imgHeight,imgWidth);
+
+									for(var i = 0;i<test_yjjt.length;i++){
+										var targetData = test_yjjt[i];
+										var m = newGisObject.lonLat2Mercator([targetData.LGTD,targetData.LTTD]);
+										var p = new Point(targetData.LGTD,targetData.LTTD);
+										var gra = new Graphic(p,stationSymbol_yjjt,targetData);
+										graphicsLayer_sz_l1.add(gra);
+
+									}
+						 });
+					}
+					var test_yjjt = [
+						{
+					    "ADAG": "水利部太湖流域管理局",
+					    "MNAG": "",
+					    "LGTD": "120.7",
+					    "BSNM": "",
+					    "NT": "自动站",
+					    "STNM": "常熟自动站",
+					    "WFRCD": "",
+					    "STLC": "",
+					    "WDSTYM": "",
+					    "ESSTYM": "",
+					    "WRRCD": "F120100",
+					    "ADDVCD": "320000",
+					    "STCD": "63189003",
+					    "STGRD": "",
+					    "HNNM": "太湖流域湖区水系",
+					    "RVNM": "",
+					    "LTTD": "31.5",
+					    "id": "63189003",
+					    "index": 46
+					},
+					{
+					    "ADAG": "水利部太湖流域管理局",
+					    "MNAG": "",
+					    "LGTD": "120.63",
+					    "BSNM": "",
+					    "NT": "自动站",
+					    "STNM": "望亭自动站",
+					    "WFRCD": "10415",
+					    "STLC": "",
+					    "WDSTYM": "",
+					    "ESSTYM": "",
+					    "WRRCD": "F120100",
+					    "ADDVCD": "320000",
+					    "STCD": "63189002",
+					    "STGRD": "",
+					    "HNNM": "太湖流域湖区水系",
+					    "RVNM": "望虞河干流",
+					    "LTTD": "31.654",
+					    "id": "63189002",
+					    "index": 45
+					},
+					{
+					    "ADAG": "太湖局",
+					    "MNAG": "",
+					    "LGTD": "120.579445",
+					    "BSNM": "长江流域",
+					    "NT": "t7",
+					    "STNM": "冶长泾闸",
+					    "WFRCD": "",
+					    "STLC": "江苏省苏州市",
+					    "WDSTYM": "",
+					    "ESSTYM": "",
+					    "WRRCD": "F120100",
+					    "ADDVCD": "320500",
+					    "STCD": "63204320",
+					    "STGRD": "",
+					    "HNNM": "太湖流域湖区水系",
+					    "RVNM": "冶长泾",
+					    "LTTD": "31.505",
+					    "id": "63204320",
+					    "index": 77
+					},
+					{
+					    "ADAG": "太湖局",
+					    "MNAG": "",
+					    "LGTD": "120.53278",
+					    "BSNM": "长江流域",
+					    "NT": "4",
+					    "STNM": "琳桥闸",
+					    "WFRCD": "",
+					    "STLC": "江苏省苏州市",
+					    "WDSTYM": "",
+					    "ESSTYM": "",
+					    "WRRCD": "F120100",
+					    "ADDVCD": "320500",
+					    "STCD": "63204311",
+					    "STGRD": "",
+					    "HNNM": "太湖流域湖区水系",
+					    "RVNM": "西塘河",
+					    "LTTD": "31.46861",
+					    "id": "63204311",
+					    "index": 76
+					},
+					{
+					    "ADAG": "水利部太湖流域管理局",
+					    "MNAG": "",
+					    "LGTD": "120.492775",
+					    "BSNM": "长江",
+					    "NT": "3",
+					    "STNM": "太浦闸下",
+					    "WFRCD": "F1203100901000",
+					    "STLC": "江苏吴江",
+					    "WDSTYM": "",
+					    "ESSTYM": "",
+					    "WRRCD": "F120100",
+					    "ADDVCD": "320500",
+					    "STCD": "63205301",
+					    "STGRD": "",
+					    "HNNM": "太湖流域湖区水系",
+					    "RVNM": "太浦河干流",
+					    "LTTD": "31.008888",
+					    "id": "63205301",
+					    "index": 83
+					},
+					{
+					    "ADAG": "水利部太湖流域管理局",
+					    "MNAG": "",
+					    "LGTD": "120.934",
+					    "BSNM": "",
+					    "NT": "自动站",
+					    "STNM": "太浦闸自动站",
+					    "WFRCD": "",
+					    "STLC": "",
+					    "WDSTYM": "",
+					    "ESSTYM": "",
+					    "WRRCD": "F120100",
+					    "ADDVCD": "320000",
+					    "STCD": "63189004",
+					    "STGRD": "",
+					    "HNNM": "",
+					    "RVNM": "",
+					    "LTTD": "31.032",
+					    "id": "63189004",
+					    "index": 47
+					}]
+			//-------new------------------------------
+			currentModName = 'sl';//当前模块名称 拼音缩写 默认模块名称
+			currentDataViewMod = 'js';//当前dataView的数据展示 js:监测数据 tj:统计数据
+			focusObject = 'normal';//当前关注对象 默认为normal 示例添加project为两河一湖
+
+			function changeDataViewType(type){
+				alert(type);
+				currentDataViewMod = type;
+				changeDataView();
+
+			}
+			function changeDataView(){
+				tjtable.cview = currentModName+'_'+currentDataViewMod;
+				//alert(tjtable.cview);
+				changeStationContentView();
+			}
+			function changeStationContentView(){
+				if(stationContent){
+					stationContent.currentType = currentModName;
+				}
+			}
+			//testVueCompent();
+			function drawMapToolToggle(){
+				newGisObject.mapObject.graphics.clear();
+				$('#mapTool').css('display')=='block'?$('#mapTool').css('display','none'):$('#mapTool').css('display','block');
+
+			}
+			//start
+      require(["esri/symbols/SimpleFillSymbol","esri/graphic","gowa/gisObject","esri/layers/FeatureLayer","esri/toolbars/draw", "esri/geometry/geometryEngine","esri/graphicsUtils","esri/tasks/RelationParameters",
+      	"esri/tasks/GeometryService","esri/geometry/Polygon","esri/geometry/Point","dojo/domReady!"],
+      	function(SimpleFillSymbol,Graphic,gisObject,FeatureLayer,Draw,geometryEngine,graphicsUtils,RelationParameters,GeometryService,Polygon,Point) {
+      // newGisObject.init('mapDiv');
+
+        newGisObject = new gisObject(GisModelConfig,'mapDiv',test);
+        newGisObject.initMap('mapDiv');
+       // newGisObject.initGoogleMap();
+				newGisObject.mapObject.on("pan-start",function(e){
+					//地图拖拽开始时
+        });
+
+		toolbar = new Draw(newGisObject.mapObject);
+		myDraw = Draw;
+		toolbar.on("draw-end",function(evt){
+			newGisObject.mapObject.graphics.clear();
+			var sfs = new SimpleFillSymbol();
+			toolbar.deactivate();
+          	newGisObject.mapObject.showZoomSlider();
+
+	        var graphic = new Graphic(evt.geometry, sfs);
+	        newGisObject.mapObject.graphics.add(graphic);
+	        var resultGra = [];
+	        var geometries = graphicsUtils.getGeometries(evt);
+	        var polyg = new Polygon(evt.geometry);
+
+	        for(var i=0;i<graphicsLayer_sz_l1.graphics.length;i++){
+	        	var xx = Number(graphicsLayer_sz_l1.graphics[i].geometry.x).toFixed(2);
+	        	var yy = Number(graphicsLayer_sz_l1.graphics[i].geometry.y).toFixed(2);
+	        	if(geometryEngine.contains(polyg,new Point(Number(xx),Number(yy)))){
+	        		resultGra.push(graphicsLayer_sz_l1.graphics[i].attributes);
+	        	}
+	        }
+	        drawMapTool.foundStations = resultGra;
+		});
+
+        newGisObject.mapObject.on("pan-end",function(e){
+					//地图拖拽完成时
+        });
+        newGisObject.mapObject.on("zoom-start",function(e){
+            // for(var i=0;i<graphicsLayer_sl_base.graphics.length;i++){
+            //     var tempNode = graphicsLayer_sl_base.graphics[i].getNode();
+            //     $(tempNode).popover('destroy');
+            // }
+           $('.popover').remove();
+        });
+        newGisObject.mapObject.on("zoom-end",function(e){
+
+        });
+      });
+
+      function test(){
+        newGisObject.mapObject.setLevel(2);
+				// $(document).ready(function(){
+				  $('.iCheckRadio').iCheck({
+				    checkboxClass: 'icheckbox_minimal-blue',
+				    radioClass: 'iradio_minimal-blue',
+				    increaseArea: '20%' // optional
+				  }).on('ifChecked', function(event){
+						//radio切换的状态
+					  //alert(event.currentTarget.value);
+						currentModName = event.currentTarget.value;
+						changeDataView();
+						tjtable.focusObject = 'normal';
+						require(["esri/symbols/SimpleMarkerSymbol", "esri/geometry/Point", "esri/graphic","esri/SpatialReference",
+											"esri/symbols/Font","esri/Color","esri/symbols/TextSymbol","esri/symbols/PictureMarkerSymbol",
+											"esri/layers/GraphicsLayer","esri/layers/FeatureLayer","esri/config"], function(
+										 SimpleMarkerSymbol, Point, Graphic,SpatialReference,Font,Color,
+										 TextSymbol, PictureMarkerSymbol,GraphicsLayer,FeatureLayer, esriConfig) {
+										// var lyr = newGisObject.mapObject.getLayer("graphicsLayer_yjjt");
+										// if(lyr){
+										// 	newGisObject.mapObject.removeLayer(lyr);
+										// }
+										if(newGisObject.mapObject.getLayer('graphicsLayer_sz_l1')){
+											graphicsLayer_sz_l1 = newGisObject.mapObject.getLayer('graphicsLayer_sz_l1');
+											graphicsLayer_sz_l1.clear();
+										}else{
+											graphicsLayer_sz_l1 = new GraphicsLayer();
+											graphicsLayer_sz_l1.id = 'graphicsLayer_sz_l1';
+											graphicsLayer_sz_l1.visible = true;
+
+											graphicsLayer_sz_l1.on("mouse-over",function(e){
+												sztooltip(e);
+											});
+									 		newGisObject.addNewLayer('Point',graphicsLayer_sz_l1);
+										}
+
+
+									var stationSymbol_1;
+									if(currentModName == "sz"){
+										stationSymbol_1 = new PictureMarkerSymbol('../gis/assets/sz1.png',20,20);
+									}else if(currentModName == "sl"){
+										stationSymbol_1 = new PictureMarkerSymbol('../gis/assets/sz1.png',20,20);
+									}else if(currentModName == "gk"){
+									 	stationSymbol_1 = new PictureMarkerSymbol('../gis/assets/gk.gif',10,10);
+									}else if(currentModName == "gq"){
+										stationSymbol_1 = new PictureMarkerSymbol('../gis/assets/gq.png',10,10);
+									}else if(currentModName == "lz"){
+										stationSymbol_1 = new PictureMarkerSymbol('../gis/assets/lz_ft.png',10,10);
+									}
+									for(var i = 0;i<test_slsz.length;i++){
+										var targetData = test_slsz[i];
+										var m = newGisObject.lonLat2Mercator([targetData.LGTD,targetData.LTTD]);
+										var p = new Point(targetData.LGTD,targetData.LTTD);
+										var gra ;
+										var testS ;
+										switch(i%2){
+											case 0:gra = new Graphic(p,stationSymbol_1,targetData);graphicsLayer_sz_l1.add(gra);
+											 	break;
+										 }
+
+									 }
+						 });
+
+					});
+				// });
+				testVueCompent();
+				//addlz();
+				//initChart();
+				//addpwk();
+			 	//addsyd();
+				 addslsz();
+      }
+
+
+
+			function initChart(view){
+				if(!view){
+					view = '';
+				}
+				var option_slfq = {
+				    title: {
+				        text: ''
+				    },
+						grid:{
+							top:'5%',
+							bottom:'25%',
+							left:'10%',
+							right:'10%'
+						},
+				    tooltip: {
+				        trigger: 'axis',
+				        // formatter: function (params) {
+				        //     params = params[0];
+				        //     var date = new Date(params.name);
+				        //     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+				        // },
+				        axisPointer: {
+				            animation: false
+				        }
+				    },
+				    xAxis: {
+				        data:['2-05','2-06','2-07','2-08','2-09','2-10','2-11','2-12','2-13'],
+								axisLabel:{
+									rotate:60,
+									interval:0,
+									textSymbol:{
+										fontSize:5
+									}
+								},
+				        splitLine: {
+				            show: false
+				        }
+				    },
+				    yAxis: [{
+				        type: 'value',
+				        boundaryGap: [0, '100%'],
+				        splitLine: {
+				            show: true
+				        }
+				    },{
+				        type: 'value',
+				        boundaryGap: [0, '100%'],
+				        splitLine: {
+				            show: true
+				        }
+				    }],
+				    series: [{
+				        name: '流量',
+				        type: 'bar',
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [100,150,200,250,100,150,200,250,300]
+				    },{
+				        name: '水量',
+				        type: 'bar',
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [10,15,20,25,10,15,20,25,30]
+				    }]
+				};
+				var option_ygshd = {
+				    title: {
+				        text: '引供水河道水量'
+				    },
+						legend:{
+							show:true,
+							x:'right',
+							data:['引供水','排水'],
+						},
+						grid:{
+							top:'15%',
+							bottom:'25%',
+							left:'10%',
+							right:'10%'
+						},
+				    tooltip: {
+				        trigger: 'axis',
+				        // formatter: function (params) {
+				        //     params = params[0];
+				        //     var date = new Date(params.name);
+				        //     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+				        // },
+				        axisPointer: {
+				            animation: false
+				        }
+				    },
+				    xAxis: {
+				        data:['望亭水利枢纽','望虞河','常熟','太浦河'],
+								axisLabel:{
+									rotate:0,
+									interval:0,
+									textSymbol:{
+										fontSize:5
+									}
+								},
+				        splitLine: {
+				            show: false
+				        }
+				    },
+				    yAxis: {
+				        type: 'value',
+				        boundaryGap: [0, '100%'],
+				        splitLine: {
+				            show: true
+				        }
+				    },
+				    series: [{
+				        name: '实际入湖',
+				        type: 'bar',
+								stack:'入湖',
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [100,150,200,0]
+				    },{
+				        name: '饮水',
+				        type: 'bar',
+								stack:'入湖',
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [100,150,200,0]
+				    },{
+				        name: '出湖',
+				        type: 'bar',
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [0,0,0,500]
+				    }]
+				};
+				var option_normal = {
+				    title: {
+				        text: '太湖水量变化趋势'
+				    },
+						legend:{
+							show:true
+						},
+						grid:{
+							top:'20%',
+							bottom:'20%',
+							left:'10%',
+							right:'10%'
+						},
+				    tooltip: {
+				        trigger: 'axis',
+				        // formatter: function (params) {
+				        //     params = params[0];
+				        //     var date = new Date(params.name);
+				        //     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+				        // },
+				        axisPointer: {
+				            animation: false
+				        }
+				    },
+				    xAxis: {
+				        data:['12-12','12-13','12-14','12-15'],
+								boundaryGap: ['50%', '50%'],
+				        splitLine: {
+				            show: false
+				        }
+				    },
+				    yAxis: [{
+				        type: 'value',
+				        boundaryGap: [0, '100%'],
+				        splitLine: {
+				            show: true
+				        }
+				    },{
+				        type: 'value',
+				        boundaryGap: [0, '100%'],
+				        splitLine: {
+				            show: true
+				        }
+				    }],
+				    series: [{
+				        name: '模拟数据',
+				        type: 'line',
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [100,150,200,250]
+				    },{
+				        name: '望虞河',
+				        type: 'bar',
+
+								yAxisIndex:1,
+				        data: [1,2,3,4]
+				    },{
+				        name: '望亭',
+				        type: 'bar',
+
+								yAxisIndex:1,
+				        data: [4,2,3,1]
+				    }]
+				};
+				var option_xzq = {
+				    title: {
+				        text: '行政区取用水'
+				    },
+						legend:{
+							show:true,
+							x:'right',
+							data:['已取用','计划'],
+						},
+						grid:{
+							top:'20%',
+							bottom:'25%',
+							left:'15%',
+							right:'10%'
+						},
+				    tooltip: {
+				        trigger: 'axis',
+				        // formatter: function (params) {
+				        //     params = params[0];
+				        //     var date = new Date(params.name);
+				        //     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+				        // },
+				        axisPointer: {
+				            animation: false
+				        }
+				    },
+				    xAxis: {
+				        data:['宜兴市','湖州市','苏州市','无锡市'],
+								axisLabel:{
+									rotate:0,
+									interval:0,
+									textSymbol:{
+										fontSize:5
+									}
+								},
+				        splitLine: {
+				            show: false
+				        }
+				    },
+				    yAxis: {
+				        type: 'value',
+				        boundaryGap: [0, '100%'],
+				        splitLine: {
+				            show: true
+				        }
+				    },
+				    series: [{
+				        name: '已取用',
+				        type: 'bar',
+
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [50,50,170,100]
+				    },{
+				        name: '计划',
+				        type: 'bar',
+
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [100,150,200,50]
+				    }]
+				};
+				var option_qsyh = {
+				    title: {
+				        text: '行政区取用水'
+				    },
+						legend:{
+							show:true,
+							x:'right',
+							data:['已取用','计划'],
+						},
+						grid:{
+							top:'20%',
+							bottom:'25%',
+							left:'15%',
+							right:'10%'
+						},
+				    tooltip: {
+				        trigger: 'axis',
+				        // formatter: function (params) {
+				        //     params = params[0];
+				        //     var date = new Date(params.name);
+				        //     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+				        // },
+				        axisPointer: {
+				            animation: false
+				        }
+				    },
+				    xAxis: {
+				        data:['宜兴市','湖州市','苏州市','无锡市'],
+								axisLabel:{
+									rotate:0,
+									interval:0,
+									textSymbol:{
+										fontSize:5
+									}
+								},
+				        splitLine: {
+				            show: false
+				        }
+				    },
+				    yAxis: {
+				        type: 'value',
+				        boundaryGap: [0, '100%'],
+				        splitLine: {
+				            show: true
+				        }
+				    },
+				    series: [{
+				        name: '已取用',
+				        type: 'bar',
+
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [50,50,170,100]
+				    },{
+				        name: '计划',
+				        type: 'bar',
+
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [100,150,200,50]
+				    }]
+				};
+				var option_hhhl = {
+				    title: {
+				        text: '环湖河流'
+				    },
+						legend:{
+							show:true,
+							x:'right',
+							data:['入湖','出湖'],
+						},
+						grid:{
+							top:'15%',
+							bottom:'25%',
+							left:'10%',
+							right:'10%'
+						},
+				    tooltip: {
+				        trigger: 'axis',
+				        // formatter: function (params) {
+				        //     params = params[0];
+				        //     var date = new Date(params.name);
+				        //     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+				        // },
+				        axisPointer: {
+				            animation: false
+				        }
+				    },
+				    xAxis: {
+				        data:['望亭水利枢纽','望虞河','常熟','太浦河'],
+								axisLabel:{
+									rotate:0,
+									interval:0,
+									textSymbol:{
+										fontSize:5
+									}
+								},
+				        splitLine: {
+				            show: false
+				        }
+				    },
+				    yAxis: {
+				        type: 'value',
+				        boundaryGap: [0, '100%'],
+				        splitLine: {
+				            show: true
+				        }
+				    },
+				    series: [{
+				        name: '入湖',
+				        type: 'bar',
+
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [100,150,200,0]
+				    },{
+				        name: '出湖',
+				        type: 'bar',
+				        showSymbol: false,
+				        hoverAnimation: false,
+				        data: [10,15,20,500]
+				    }]
+				};
+				var chart = echarts.init(document.getElementById('chartContent'));
+				var option;
+				if(view=='slfq'){
+					option = option_slfq;
+				}else if(view=='hhhl'){
+					option = option_hhhl;
+				}else if(view=='normal'){
+					option = option_normal;
+				}else if(view=='xzq'){
+					option = option_xzq;
+				}else if(view=='ygshd'){
+					option = option_ygshd;
+				}else if(view=='qsyh'){
+					option = option_qsyh;
+				}else if(view=='slfq'){
+					option = option_slfq;
+				}else {
+					option = option_normal;
+				}
+				//chart.setOption(option);
+			}
+      function testVueCompent(){
+      	var laerTreeC = new Vue({
+				  el: '#headvuetest',
+				  template:'<div style="margin-right:50px;margin-top:-7px;"><layertree :layers="layers" :mapObject="mapObject" v-on:increment="incrementTotal"></layertree></div>',
+				  components: { 'layertree':window.vCompoment.layertree },
+				  methods:{    incrementTotal: function (name) {
+						alert(name);
+						if(newGisObject.mapObject.getLayer(name).visible){
+							alert(newGisObject.mapObject.getLayer(name).visible);
+		          newGisObject.mapObject.getLayer(name).hide();
+							alert(newGisObject.mapObject.getLayer(name).visible);
+		        }else{
+							alert(newGisObject.mapObject.getLayer(name).visible);
+		          newGisObject.mapObject.getLayer(name).show();
+							alert('1'+newGisObject.mapObject.getLayer(name).visible);
+		        }
+			    }},
+				  data:{
+				  	layers : GisModelConfig.baseInfoLayers,
+						mapObject:null
+				  }
+
+				})
+				var searchBoxC = new Vue({
+							el: '#searchBoxTemplate',
+							template:'<searchToolBar></searchToolBar>',
+							components: { 'searchToolBar':window.vCompoment.searchToolBar },
+							methods:{},
+							data:{
+
+							}
+
+						})
+
+				 drawMapTool = new Vue({
+					 el: '#mapToolContent',
+					 template:'<drawMaptool v-on:drawMapStart="drawMapEnd" v-on:compareState="compareStation" :foundStations="foundStations"></drawMaptool>',
+					 components: {
+						 'drawMaptool':window.vCompoment.drawMapTool,
+					 },
+					 methods:{
+					 	drawMapEnd:function(){
+          					toolbar.activate('freehandpolygon');
+          					newGisObject.mapObject.hideZoomSlider();
+					 	},
+					 	compareStation:function(){
+					 		newGisObject.mapObject.graphics.clear();
+					 	}
+					 },
+					 data:{
+							 cview:'gk_tj',
+							 focusObject:'normal',
+							 foundStations:[{RVNM:'测试站1',HNNM:'水质水量'},{RVNM:'测试站2',HNNM:'水质水量'}]
+					 }
+
+				 });
+				 tjtable = new Vue({
+							el: '#dataWidgetContent',
+							template:'<component :is="cview" :focusObject="focusObject" :echarts="echarts"></component>',
+							components: {
+								'sz_js':window.vCompoment.szMod_jsModule,
+								'sl_js':window.vCompoment.slMod_jsModule,
+								'gk_js':window.vCompoment.gkMod_jsModule,
+								'gq_js':window.vCompoment.gqMod_jsModule,
+								'lz_js':window.vCompoment.lzMod_jsModule,
+								'sz_tj':window.vCompoment.szMod_tjModule,
+								'sl_tj':window.vCompoment.slMod_tjModule,
+								'gk_tj':window.vCompoment.gkMod_tjMod,
+								'gq_tj':window.vCompoment.gqMod_tjMod,
+								'lz_tj':window.vCompoment.lzMod_tjModule,
+								'test' :window.vCompoment.slMod_MainState,
+							},
+							methods:{},
+							data:{
+									cview:'test',
+									focusObject:'normal',
+							}
+
+						});
+
+
+
+			 }
+			 function table_slfq_clickHandler(){
+			 	alert('1');
+			 	if($('#table_slfq_title').css('display')!='none'){
+			 		$('#table_slfq_title').css('display','none');
+			 		$('#table_slfq_content').css('display','block');
+			 		$('#table_slfq_icon').attr('class','fa fa-minus-square-o');
+
+			 	}else{
+			 		$('#table_slfq_title').css('display','inline');
+			 		$('#table_slfq_content').css('display','none');
+			 		$('#table_slfq_icon').attr('class','fa fa-plus-square-o');
+			 	}
+
+			 }
+
+
+
+					function gz_hhhl(){
+
+								tjtable.cview = 'hhhltjMod';
+						}
+					function gz_slfq(){
+
+						tjtable.cview = 'slfqtjMod';
+						}
+					function gz_ygshd(){
+
+						tjtable.cview = 'ygshdtjMod';
+						}
+					function gz_qsyh(){
+
+						tjtable.cview = 'xzqtjMod';
+						}
+
+					function gz_xzq(){
+
+						tjtable.cview = 'xzqtjMod';
+						}
+					function gz_normal(){
+
+						tjtable.cview = 'normaltjMod';
+						}
+
+
+						//
+						// function addslsz() {
+						//  require(["esri/symbols/SimpleMarkerSymbol", "esri/geometry/Point", "esri/graphic","esri/SpatialReference",
+						// 					"esri/symbols/Font","esri/Color","esri/symbols/TextSymbol","esri/symbols/PictureMarkerSymbol",
+						// 					"esri/layers/GraphicsLayer","esri/layers/FeatureLayer","esri/config"], function(
+						// 				 SimpleMarkerSymbol, Point, Graphic,SpatialReference,Font,Color,
+						// 				 TextSymbol, PictureMarkerSymbol,GraphicsLayer,FeatureLayer, esriConfig) {
+						// 				 graphicsLayer_sz_l1 = new GraphicsLayer();
+						// 				 graphicsLayer_sz_l1.id = 'graphicsLayer_sz_l1';
+						// 				 graphicsLayer_sz_l1.visible = true;
+						//
+						// 				 graphicsLayer_sz_l2 = new GraphicsLayer();
+						// 				 graphicsLayer_sz_l2.id = 'graphicsLayer_sz_l2';
+						// 				 graphicsLayer_sz_l2.visible = true;
+						//
+						// 				 graphicsLayer_sz_l3 = new GraphicsLayer();
+						// 				 graphicsLayer_sz_l3.id = 'graphicsLayer_sz_l3';
+						// 				 graphicsLayer_sz_l3.visible = true;
+						//
+						// 				 graphicsLayer_sz_l1_warn = new GraphicsLayer();
+						// 				 graphicsLayer_sz_l1_warn.id = 'graphicsLayer_sz_l1_warn';
+						// 				 graphicsLayer_sz_l1_warn.visible = true;
+						//
+						// 				 graphicsLayer_sz_l2_warn = new GraphicsLayer();
+						// 				 graphicsLayer_sz_l2_warn.id = 'graphicsLayer_sz_l2_warn';
+						// 				 graphicsLayer_sz_l2_warn.visible = true;
+						//
+						// 				 graphicsLayer_sz_l3_warn = new GraphicsLayer();
+						// 				 graphicsLayer_sz_l3_warn.id = 'graphicsLayer_sz_l3_warn';
+						// 				 graphicsLayer_sz_l3_warn.visible = true;
+						//
+						// 				 graphicsLayer_sz_l1.on("mouse-over",function(e){
+						// 					 sztooltip(e);
+						// 				 });
+						// 				 graphicsLayer_sz_l2.on("mouse-over",function(e){
+						// 					 sztooltip(e);
+						// 				 });
+						// 				 graphicsLayer_sz_l3.on("mouse-over",function(e){
+						// 					 sztooltip(e);
+						// 				 });
+						//
+						// 				 graphicsLayer_sz_l1_warn.on("mouse-over",function(e){
+						// 					 sztooltip(e);
+						// 				 });
+						// 				 graphicsLayer_sz_l2_warn.on("mouse-over",function(e){
+						// 					 sztooltip(e);
+						// 				 });
+						// 				 graphicsLayer_sz_l3_warn.on("mouse-over",function(e){
+						// 					 sztooltip(e);
+						// 				 });
+						// 				 // graphicsLayer_szsl.on("mouse-out",function(e){
+						// 				 // 	var tempNode = e.graphic.getNode();
+						// 				 //
+						// 				 // 	$(tempNode).popover('destroy');
+						// 				 // 		$('.popover').remove();
+						// 				 // });
+						//
+						// 			 newGisObject.addNewLayer('Point',graphicsLayer_sz_l1);
+						// 			 newGisObject.addNewLayer('Point',graphicsLayer_sz_l1_warn);
+						//
+						// 			 newGisObject.addNewLayer('Point',graphicsLayer_sz_l2);
+						// 			 newGisObject.addNewLayer('Point',graphicsLayer_sz_l2_warn);
+						//
+						// 			 newGisObject.addNewLayer('Point',graphicsLayer_sz_l3);
+						// 			 newGisObject.addNewLayer('Point',graphicsLayer_sz_l3_warn);
+						//
+						// 			 // graphicsLayer_szsl.spatialReference = new SpatialReference({ wkid: 102100   });
+						// 			 var stationSymbol1 = new PictureMarkerSymbol('src/assets/gq_open.png',10,10);
+						// 			 var stationSymbol2 = new PictureMarkerSymbol('src/assets/gq_close.png',10,10);
+						// 			 var stationSymbol3 = new PictureMarkerSymbol('src/assets/gq.png',10,10);
+						// 			 var stationSymbolt = new PictureMarkerSymbol('src/assets/v_high.gif',20,20);
+						//
+						// 			 for(var i = 0;i<test_slsz.length;i++){
+						// 				 var targetData = test_slsz[i];
+						// 				 var m = newGisObject.lonLat2Mercator([targetData.LGTD,targetData.LTTD]);
+						// 				 var p = new Point(targetData.LGTD,targetData.LTTD);
+						// 				 var gra ;
+						// 				 var testS ;
+						// 				 switch(i%6){
+						// 					 case 1:gra = new Graphic(p,stationSymbol1,targetData);graphicsLayer_sz_l1.add(gra);
+						// 									testS= new Graphic(p,stationSymbolt,targetData);graphicsLayer_sz_l3.add(testS);
+						// 					 				break;
+						// 					 case 2:gra = new Graphic(p,stationSymbol2,targetData);graphicsLayer_sz_l2.add(gra);break;
+						// 					 case 3:gra = new Graphic(p,stationSymbol3,targetData);graphicsLayer_sz_l3.add(gra);break;
+						// 					 case 4:gra = new Graphic(p,stationSymbol1,targetData);graphicsLayer_sz_l1_warn.add(gra);break;
+						// 					 case 5:gra = new Graphic(p,stationSymbol2,targetData);graphicsLayer_sz_l2_warn.add(gra);break;
+						// 					 case 0:gra = new Graphic(p,stationSymbol3,targetData);graphicsLayer_sz_l3_warn.add(gra);break;
+						// 					 default :;
+						// 				 }
+						//
+						// 				 // graphicsLayer_szsl.add(gra);
+						// 			 }
+						//
+						//
+						//  });
+						// }
+						function addslsz() {
+						 require(["esri/symbols/SimpleMarkerSymbol", "esri/geometry/Point", "esri/graphic","esri/SpatialReference",
+											"esri/symbols/Font","esri/Color","esri/symbols/TextSymbol","esri/symbols/PictureMarkerSymbol",
+											"esri/layers/GraphicsLayer","esri/layers/FeatureLayer","esri/config"], function(
+										 SimpleMarkerSymbol, Point, Graphic,SpatialReference,Font,Color,
+										 TextSymbol, PictureMarkerSymbol,GraphicsLayer,FeatureLayer, esriConfig) {
+										 graphicsLayer_sz_l1 = new GraphicsLayer();
+										graphicsLayer_sz_l1.id = 'graphicsLayer_sz_l1';
+										graphicsLayer_sz_l1.visible = true;
+
+										graphicsLayer_sz_l1.on("mouse-over",function(e){
+											sztooltip(e);
+										});
+									 	newGisObject.addNewLayer('Point',graphicsLayer_sz_l1);
+
+									 	var stationSymbol1 = new PictureMarkerSymbol('../gis/assets/sz1.png',20,20);
+
+										for(var i = 0;i<test_slsz.length;i++){
+											var targetData = test_slsz[i];
+											var m = newGisObject.lonLat2Mercator([targetData.LGTD,targetData.LTTD]);
+											var p = new Point(targetData.LGTD,targetData.LTTD);
+											var gra ;
+											var testS ;
+											switch(i%2){
+												case 0:gra = new Graphic(p,stationSymbol1,targetData);graphicsLayer_sz_l1.add(gra);
+												 	break;
+											}
+
+										}
+
+
+						 });
+						}
+            function sztooltip(e){
+							$('.popover').remove();
+													var tempNode = e.graphic.getNode();
+													var popContent = '';
+													popContent += '<div class=" widget-container-col ui-sortable" id="widget-container" >'
+													popContent += '<div class="widget-box ui-sortable-handle" id="widget-box-5" style="margin-bottom:0px;">'
+													popContent += '<div class="widget-header" style="height:30px">'
+													popContent += '<h5 class="widget-title smaller">'+e.graphic.attributes.STNM+'</h5>'
+
+													popContent += '<div class="widget-toolbar" style="margin-top: 10px">'
+													popContent += '<a href="#" id="popup_close">'
+													popContent += '<i class="ace-icon fa fa-times"></i>'
+													popContent += '</a>'
+
+													popContent += '</div>'
+													popContent += '</div>'
+
+													popContent += '<div class="widget-body">'
+													popContent += '<div class="widget-main padding-6;">'
+													popContent += '<div id="popovercontentv"></div>';
+
+													popContent += '</div>'
+													popContent += '</div>'
+													popContent += '</div>'
+													popContent += '</div>'
+													//popContent = popContent + '<font style="color:#66b4dc;font-size:10px">点击测站显示详细信息'+ '</font><br>';
+													var template = '<div class="popover" role="tooltip" style="z-index:5;opacity:0.9;width:260px;height:305px"><div class="arrow"></div><div class="popover-content" style="font-size:10.5px;padding:0px 0px 0px 0px;margin-top:-4px;"></div></div>';
+													$(tempNode).popover({
+														html:true,
+														placement:"auto",
+														template:template,
+														content:popContent,
+														container:'body'});
+													$(tempNode).popover('show');
+
+													$('#popup_close').on('click',function(e){
+														$(tempNode).popover('destroy');
+																$('.popover').remove();
+													});
+
+													 stationContent = new Vue({
+														el: '#popovercontentv',
+														template:'<div><component :is="currentType" :echarts="echarts"></component></div>',
+														components: {
+															'sl':window.vCompoment.sl_content,
+															'sz':window.vCompoment.sz_content,
+															'lz':window.vCompoment.lz_content,
+															'gq':window.vCompoment.gq_content,
+															'gk':window.vCompoment.gk_content,
+														},
+														methods:{
+															test:function(parentMsg){alert(parentMsg)},
+
+														},
+														data:{
+															'echarts' : echarts,
+															'currentType':currentModName
+														}
+
+													})
+						}
+						function tooltipCallBackFunction(){
+							var myChart = echarts.init(document.getElementById('contentChart'));
+
+					        // 指定图表的配置项和数据
+								var	option = {
+					    title: {
+					        text: ''
+					    },
+					    tooltip: {
+					        trigger: 'axis'
+					    },
+					    legend: {
+					        data:['闸上水位','闸下水位','过闸流量','开启高度']
+					    },
+					    grid: {
+					        left: '1%',
+					        right: '5%',
+					        bottom: '3%',
+					        containLabel: true
+					    },
+					    toolbox: {
+					        feature: {
+					            saveAsImage: {}
+					        }
+					    },
+					    xAxis: {
+					        type: 'category',
+					        boundaryGap: false,
+					        data: ['12-22','23','24','25','26','27','28']
+					    },
+					    yAxis: [{
+					        type: 'value'
+					    },{type:'value',max:100,min:0}],
+					    series: [
+					        {
+					            name:'闸上水位',
+					            type:'line',
+
+					            data:[120, 132, 101, 134, 90, 230, 210]
+					        },
+					        {
+					            name:'闸下水位',
+					            type:'line',
+
+					            data:[220, 182, 191, 234, 290, 330, 310]
+					        },{
+					            name:'过闸流量',
+					            type:'line',
+
+					            data:[20, 82, 91, 34, 90, 30, 30]
+					        },
+									{
+					            name:'开启高度',
+					            type:'bar',
+											yAxisIndex:1,
+					            data:[0,20,40,60,41,20,0]
+					        }
+					    ]
+					};
+
+
+					        // 使用刚指定的配置项和数据显示图表。
+					        myChart.setOption(option);
+						}
+
+						function getInsideContent(data){
+							var pageContent = '';
+							pageContent += '<div class="tabbable" style="width:260px;height:305px;">';
+							pageContent += '<ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab4">';
+							pageContent += '<li >';
+							pageContent += '<a data-toggle="tab" href="#home4">基本信息</a>';
+							pageContent += '</li>';
+							pageContent += '<li class="active">';
+							pageContent += '<a data-toggle="tab" href="#profile4">监测信息</a>';
+							pageContent += '</li>';
+							pageContent += '<li>';
+							pageContent += '<a data-toggle="tab" href="#profile6">统计</a>';
+							pageContent += '</li>';
+
+							pageContent += '</ul>';
+
+							pageContent += '<div class="tab-content" style="overflow: auto;max-height:250px">';
+							pageContent += '<div id="home4" class="tab-pane" >';
+
+							pageContent += '<table class="table table-striped table-bordered table-hover" >';
+							pageContent += '<thead class="thin-border-bottom">';
+							pageContent += '<tr>';
+							pageContent += '<th>';
+							// pageContent += '<i class="ace-icon fa fa-user"></i>';
+							pageContent += '经度';
+							pageContent += '</th>';
+
+							pageContent += '<th>';
+							// pageContent += '<i>@</i>';
+							pageContent += ' x';
+							pageContent += '</th>';
+
+							pageContent += '</thead>';
+
+							pageContent += '<tbody style="overflow: scroll;">';
+
+							pageContent += '<tr>';
+							pageContent += '<td class="">纬度</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#">y</a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+
+							pageContent += '<tr>';
+							pageContent += '<td class="">测站类型</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#">水量水质自动监测站</a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+
+							pageContent += '<tr>';
+							pageContent += '<td class="">监测内容</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#">水温、PH值、电导率、溶解氧、ORP值、浊度、高锰酸盐指数、总氮、氨氮、总磷</a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+
+							pageContent += '<tr>';
+							pageContent += '<td class="">监测频次</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#">水质：1次/2h</a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+
+							pageContent += '<tr>';
+							pageContent += '<td class="">管理单位</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#"></a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+
+							pageContent += '</tbody>';
+							pageContent += '</table>';
+
+
+							pageContent += '</div>';
+
+							pageContent += '<div id="profile4" class="tab-pane in active style="overflow: auto;max-height:250px">';
+
+							pageContent += '<table class="table table-striped table-bordered table-hover" >';
+							pageContent += '<thead class="thin-border-bottom">';
+							pageContent += '<tr>';
+							pageContent += '<th>';
+							// pageContent += '<i class="ace-icon fa fa-user"></i>';
+							pageContent += '检测项目';
+							pageContent += '</th>';
+
+							pageContent += '<th>';
+							// pageContent += '<i>@</i>';
+							pageContent += '测量值';
+							pageContent += '</th>';
+
+							pageContent += '</thead>';
+
+							pageContent += '<tbody style="overflow: scroll;">';
+
+							pageContent += '<tr>';
+							pageContent += '<td class="">闸上水位</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#">12</a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+
+							pageContent += '<tr>';
+							pageContent += '<td class="">闸下水位</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#">6.5</a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+							pageContent += '<tr>';
+							pageContent += '<td class="">闸位</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#">10</a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+							pageContent += '<tr>';
+							pageContent += '<td class="">过闸流量</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#">8</a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+
+							pageContent += '<tr>';
+							pageContent += '<td class="">视频</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#">无</a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+							pageContent += '<tr>';
+							pageContent += '<td class="">工作状态</td>';
+							pageContent += '<td>';
+							pageContent += '<a href="#">正常</a>';
+							pageContent += '</td>';
+							pageContent += '</tr>';
+
+
+							pageContent += '</tbody>';
+							pageContent += '</table>';
+							pageContent += '</div>';
+
+							pageContent += '<div id="profile6" class="tab-pane  style="overflow: auto;max-height:250px">';
+							pageContent += '<div id="contentChart" style="width:230px;height:220px"></div>';
+
+							pageContent += '<div class="input-group input-group-sm" style="margin-top:5px;">';
+								pageContent += '<div class="input-group-addon">开始</div>';
+								pageContent += '<input type="text" id="inStTm" onfocus="WdatePicker({dateFmt:\'yyyy-MM-dd HH\'})" class="form-control" value="2017-01-03 08"/></div>';
+
+
+							pageContent += '<div class="input-group input-group-sm" style="margin-top:5px;">';
+								pageContent += '<div class="input-group-addon">结束</div>';
+								pageContent += '<input type="text" id="inStTm"';
+									pageContent += 'onfocus="WdatePicker({dateFmt:\'yyyy-MM-dd HH\'})"';
+									pageContent += 'class="form-control" value="2017-01-03 11"/>';
+									pageContent += '<span class="input-group-btn">';
+										pageContent += '<button class="btn btn-success" type="button" style="line-height:10px;">刷新</button>';
+									pageContent += '</span>';
+							pageContent += '</div>';
+
+							pageContent += '</div>';
+							pageContent += '</div>';
+							return pageContent;
+						}
+						var test_slsz = [
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "LGTD": "120.02361",
+				        "BSNM": "长江",
+				        "NT": "5",
+				        "STNM": "分水老桥",
+				        "WFRCD": "",
+				        "STLC": "江苏武进分水镇分水村",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "",
+				        "ADDVCD": "320400",
+				        "STCD": "50000001",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "漕桥河",
+				        "LTTD": "31.492779",
+				        "id": "50000001",
+				        "index": 1
+				    },
+				    {
+				        "ADAG": "太湖流域水环境监测中心",
+				        "MNAG": "",
+				        "LGTD": "120.10861",
+				        "BSNM": "长江",
+				        "NT": "",
+				        "STNM": "龚巷桥",
+				        "WFRCD": "",
+				        "STLC": "江苏武进雪堰镇龚巷村",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320400",
+				        "STCD": "50000002",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "武进港",
+				        "LTTD": "31.505556",
+				        "id": "50000002",
+				        "index": 2
+				    },
+				    {
+				        "ADAG": "太湖流域水环境监测中心",
+				        "MNAG": "",
+				        "LGTD": "119.98694",
+				        "BSNM": "长江",
+				        "NT": "t1",
+				        "STNM": "新塘大桥",
+				        "WFRCD": "",
+				        "STLC": "浙江长兴雉城镇新塘村",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "330400",
+				        "STCD": "50000003",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "长兴港",
+				        "LTTD": "31.034445",
+				        "id": "50000003",
+				        "index": 3
+				    },
+				    {
+				        "ADAG": "太湖流域水环境监测中心",
+				        "MNAG": "",
+				        "LGTD": "120.01111",
+				        "BSNM": "长江",
+				        "NT": "t1",
+				        "STNM": "杨家浦桥",
+				        "WFRCD": "",
+				        "STLC": "浙江省长兴县杨家浦村",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "330400",
+				        "STCD": "50000004",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "杨家浦港",
+				        "LTTD": "31.019444",
+				        "id": "50000004",
+				        "index": 4
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t1",
+				        "STNM": "胥江大桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000006",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "50000006",
+				        "index": 5
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t1",
+				        "STNM": "铜坑闸",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000007",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "50000007",
+				        "index": 6
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t1",
+				        "STNM": "联湖桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000008",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "50000008",
+				        "index": 7
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t1",
+				        "STNM": "濮溇闸",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000009",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "50000009",
+				        "index": 8
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t1",
+				        "STNM": "汤溇闸",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000010",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "50000010",
+				        "index": 9
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "LGTD": "120.200043",
+				        "BSNM": "",
+				        "NT": "t1",
+				        "STNM": "梅梁湖泵站",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "",
+				        "ADDVCD": "",
+				        "STCD": "50000011",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "LTTD": "31.525873",
+				        "id": "50000011",
+				        "index": 10
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t1",
+				        "STNM": "景宜桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000012",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "50000012",
+				        "index": 11
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t1",
+				        "STNM": "杨家桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000013",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "50000013",
+				        "index": 12
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t1",
+				        "STNM": "大港桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000014",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "50000014",
+				        "index": 13
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t2",
+				        "STNM": "夏港闸",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000015",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "夏港河",
+				        "id": "50000015",
+				        "index": 14
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t2",
+				        "STNM": "墅沟闸",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000016",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "新槎浦",
+				        "id": "50000016",
+				        "index": 15
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t2",
+				        "STNM": "新川沙",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000017",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "新川沙河",
+				        "id": "50000017",
+				        "index": 16
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t2",
+				        "STNM": "新石洞",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000018",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "马路河",
+				        "id": "50000018",
+				        "index": 17
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t2",
+				        "STNM": "五好沟",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000019",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "随塘河",
+				        "id": "50000019",
+				        "index": 18
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t2",
+				        "STNM": "外高桥泵",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000020",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "浦东外环运河",
+				        "id": "50000020",
+				        "index": 19
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t4",
+				        "STNM": "石浦大桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000021",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "吴淞江",
+				        "id": "50000021",
+				        "index": 20
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t4",
+				        "STNM": "太和大桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000022",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "浏河",
+				        "id": "50000022",
+				        "index": 21
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t4",
+				        "STNM": "浏岛大桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000023",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "浏河",
+				        "id": "50000023",
+				        "index": 22
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t4",
+				        "STNM": "汤溇",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000024",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "太湖南部沿岸区",
+				        "id": "50000024",
+				        "index": 23
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t4",
+				        "STNM": "朱枫公路和尚泾桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000025",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "范塘－和尚泾",
+				        "id": "50000025",
+				        "index": 24
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t4",
+				        "STNM": "曹芳泾桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000026",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "曹芳泾",
+				        "id": "50000026",
+				        "index": 25
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t4",
+				        "STNM": "頔塘苏浙交界处",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000027",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "頔塘",
+				        "id": "50000027",
+				        "index": 26
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t4",
+				        "STNM": "升罗桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000028",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "长三港",
+				        "id": "50000028",
+				        "index": 27
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t4",
+				        "STNM": "九里村桥",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000029",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "澜溪塘",
+				        "id": "50000029",
+				        "index": 28
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t5",
+				        "STNM": "甘歧水库",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000030",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "甘歧水库",
+				        "id": "50000030",
+				        "index": 29
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t7",
+				        "STNM": "北窑港枢纽",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000031",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "太浦河",
+				        "id": "50000031",
+				        "index": 30
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t7",
+				        "STNM": "虞山船闸",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000032",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "望虞河",
+				        "id": "50000032",
+				        "index": 31
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t7",
+				        "STNM": "入滆湖口",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000033",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "新孟河",
+				        "id": "50000033",
+				        "index": 32
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "t7",
+				        "STNM": "入太湖口",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "50000034",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "新孟河",
+				        "id": "50000034",
+				        "index": 33
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.12466",
+				        "BSNM": "长江流域",
+				        "NT": "t4",
+				        "STNM": "三里桥",
+				        "WFRCD": "10024",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120300",
+				        "ADDVCD": "330400",
+				        "STCD": "50000037",
+				        "STGRD": "",
+				        "HNNM": "太湖流域苕溪水系",
+				        "RVNM": "泗安塘",
+				        "LTTD": "30.85433",
+				        "id": "50000037",
+				        "index": 34
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "长江流域",
+				        "NT": "t4",
+				        "STNM": "金泽大桥（浙江嘉善）",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "F120400",
+				        "ESSTYM": "",
+				        "ADDVCD": "310000",
+				        "STCD": "50000038",
+				        "STGRD": "",
+				        "HNNM": "太湖流域杭嘉湖区水系",
+				        "RVNM": "太浦河",
+				        "id": "50000038",
+				        "index": 35
+				    },
+				    {
+				        "ADAG": "浙江省水文局",
+				        "MNAG": "",
+				        "LGTD": "120.03333",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "杨家埠",
+				        "WFRCD": "",
+				        "STLC": "浙江省湖州市龙溪乡杨家埠",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "330400",
+				        "STCD": "63010800",
+				        "STGRD": "",
+				        "HNNM": "太湖流域苕溪水系",
+				        "RVNM": "旄儿港",
+				        "LTTD": "30.9",
+				        "id": "63010800",
+				        "index": 36
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "119.576385",
+				        "BSNM": "长江流域",
+				        "NT": "wq",
+				        "STNM": "杨桥",
+				        "WFRCD": "F1201201004000",
+				        "STLC": "浙江湖州长兴县",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "330400",
+				        "STCD": "63080010",
+				        "STGRD": "",
+				        "HNNM": "太湖流域苕溪水系",
+				        "RVNM": "泗安水库上游",
+				        "LTTD": "30.932499",
+				        "id": "63080010",
+				        "index": 37
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.18111",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "大钱闸",
+				        "WFRCD": "F1203101523013",
+				        "STLC": "浙江湖州",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "330400",
+				        "STCD": "63080120",
+				        "STGRD": "",
+				        "HNNM": "太湖流域苕溪水系",
+				        "RVNM": "东苕溪",
+				        "LTTD": "30.925554",
+				        "id": "63080120",
+				        "index": 38
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "119.94",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "棉堤桥",
+				        "WFRCD": "F1201103514000",
+				        "STLC": "江苏宜兴",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63180030",
+				        "STGRD": "",
+				        "HNNM": "太湖流域南溪水系",
+				        "RVNM": "烧香港",
+				        "LTTD": "31.373611",
+				        "id": "63180030",
+				        "index": 39
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "119.9425",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "社渎港桥",
+				        "WFRCD": "F1201103714000",
+				        "STLC": "江苏宜兴",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63180040",
+				        "STGRD": "",
+				        "HNNM": "太湖流域南溪水系",
+				        "RVNM": "社渎港",
+				        "LTTD": "31.35639",
+				        "id": "63180040",
+				        "index": 40
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "119.93083",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "官渎港桥",
+				        "WFRCD": "",
+				        "STLC": "江苏宜兴",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63180045",
+				        "STGRD": "",
+				        "HNNM": "太湖流域南溪水系",
+				        "RVNM": "官渎港",
+				        "LTTD": "31.341112",
+				        "id": "63180045",
+				        "index": 41
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "119.92194",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "大浦港桥",
+				        "WFRCD": "F1201101614000",
+				        "STLC": "江苏宜兴",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63180055",
+				        "STGRD": "",
+				        "HNNM": "太湖流域南溪水系",
+				        "RVNM": "大浦港",
+				        "LTTD": "31.313889",
+				        "id": "63180055",
+				        "index": 42
+				    },
+				    {
+				        "ADAG": "江苏省水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "119.48555",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "团结桥",
+				        "WFRCD": "",
+				        "STLC": "溧阳市团结桥",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320400",
+				        "STCD": "63186600",
+				        "STGRD": "",
+				        "HNNM": "太湖流域南溪水系",
+				        "RVNM": "南河",
+				        "LTTD": "31.42389",
+				        "id": "63186600",
+				        "index": 43
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.345",
+				        "BSNM": "",
+				        "NT": "自动站",
+				        "STNM": "贡湖自动站",
+				        "WFRCD": "104408",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63189001",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖贡湖水体",
+				        "LTTD": "31.408",
+				        "id": "63189001",
+				        "index": 44
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.63",
+				        "BSNM": "",
+				        "NT": "自动站",
+				        "STNM": "望亭自动站",
+				        "WFRCD": "10415",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63189002",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "望虞河干流",
+				        "LTTD": "31.654",
+				        "id": "63189002",
+				        "index": 45
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.7",
+				        "BSNM": "",
+				        "NT": "自动站",
+				        "STNM": "常熟自动站",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63189003",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "",
+				        "LTTD": "31.5",
+				        "id": "63189003",
+				        "index": 46
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.934",
+				        "BSNM": "",
+				        "NT": "自动站",
+				        "STNM": "太浦闸自动站",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63189004",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "LTTD": "31.032",
+				        "id": "63189004",
+				        "index": 47
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.5",
+				        "BSNM": "",
+				        "NT": "自动站",
+				        "STNM": "金泽自动站",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63189005",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "LTTD": "31.2",
+				        "id": "63189005",
+				        "index": 48
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "119.938",
+				        "BSNM": "",
+				        "NT": "自动站",
+				        "STNM": "大浦口浮台站",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "",
+				        "ADDVCD": "",
+				        "STCD": "63189006",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "LTTD": "31.29",
+				        "id": "63189006",
+				        "index": 49
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.963",
+				        "BSNM": "",
+				        "NT": "自动站",
+				        "STNM": "淀山湖浮台站",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "",
+				        "ADDVCD": "",
+				        "STCD": "63189007",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "LTTD": "31.144",
+				        "id": "63189007",
+				        "index": 50
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.43",
+				        "BSNM": "",
+				        "NT": "自动站",
+				        "STNM": "张桥自动站",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63189008",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "LTTD": "31.5",
+				        "id": "63189008",
+				        "index": 51
+				    },
+				    {
+				        "ADAG": "江苏省水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "119.932208",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "陈东港桥",
+				        "WFRCD": "",
+				        "STLC": "宜兴市周铁镇",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63195030",
+				        "STGRD": "",
+				        "HNNM": "太湖流域南溪水系",
+				        "RVNM": "陈东港",
+				        "LTTD": "31.320501",
+				        "id": "63195030",
+				        "index": 52
+				    },
+				    {
+				        "ADAG": "江苏省水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "119.933334",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "洪巷港桥",
+				        "WFRCD": "",
+				        "STLC": "宜兴市大浦镇",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63195040",
+				        "STGRD": "",
+				        "HNNM": "太湖流域南溪水系",
+				        "RVNM": "洪巷港",
+				        "LTTD": "31.333334",
+				        "id": "63195040",
+				        "index": 53
+				    },
+				    {
+				        "ADAG": "江苏省水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "120.03333",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "分水",
+				        "WFRCD": "",
+				        "STLC": "宜兴市分水镇",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63195120",
+				        "STGRD": "",
+				        "HNNM": "太湖流域南溪水系",
+				        "RVNM": "太滆运河",
+				        "LTTD": "31.5",
+				        "id": "63195120",
+				        "index": 54
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "",
+				        "STNM": "大港",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "63200100",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "63200100",
+				        "index": 55
+				    },
+				    {
+				        "ADAG": "江苏水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "119.888821",
+				        "BSNM": "长江流域",
+				        "NT": "t1",
+				        "STNM": "乌溪（乌）",
+				        "WFRCD": "",
+				        "STLC": "江苏省宜兴市乌溪乡乌溪村口",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63201010",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "乌溪港",
+				        "LTTD": "31.226454",
+				        "id": "63201010",
+				        "index": 56
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "",
+				        "STNM": "洪巷",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "63201110",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "63201110",
+				        "index": 57
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "",
+				        "STNM": "官渎",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "63201120",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "63201120",
+				        "index": 58
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "",
+				        "STNM": "社渎",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "63201130",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "63201130",
+				        "index": 59
+				    },
+				    {
+				        "ADAG": "江苏水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "120.03333",
+				        "BSNM": "长江流域",
+				        "NT": "t1",
+				        "STNM": "沙塘港（沙）",
+				        "WFRCD": "",
+				        "STLC": "江苏省宜兴市沙塘港港北村",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63201140",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "沙塘港",
+				        "LTTD": "31.433332",
+				        "id": "63201140",
+				        "index": 60
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "",
+				        "STNM": "汤溇闸",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "63201620",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "63201620",
+				        "index": 61
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "",
+				        "STNM": "濮溇闸",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "63201650",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "63201650",
+				        "index": 62
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "",
+				        "STNM": "幻溇闸",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "63201750",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "63201750",
+				        "index": 63
+				    },
+				    {
+				        "ADAG": "浙江省水文局",
+				        "MNAG": "",
+				        "LGTD": "120.1",
+				        "BSNM": "长江",
+				        "NT": "7",
+				        "STNM": "小梅口",
+				        "WFRCD": "",
+				        "STLC": "浙江省湖州市白雀乡小梅口",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "330400",
+				        "STCD": "63201850",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "机坊港",
+				        "LTTD": "30.95",
+				        "id": "63201850",
+				        "index": 64
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "119.93305",
+				        "BSNM": "长江",
+				        "NT": "6",
+				        "STNM": "长丰涧",
+				        "WFRCD": "",
+				        "STLC": "浙江长兴",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "330400",
+				        "STCD": "63201900",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "夹浦河",
+				        "LTTD": "31.100834",
+				        "id": "63201900",
+				        "index": 65
+				    },
+				    {
+				        "ADAG": "江苏水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "119.566666",
+				        "BSNM": "长江流域",
+				        "NT": "t2",
+				        "STNM": "谏壁闸",
+				        "WFRCD": "",
+				        "STLC": "江苏省镇江市谏壁镇",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "321100",
+				        "STCD": "63202501",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "大运河",
+				        "LTTD": "32.183334",
+				        "id": "63202501",
+				        "index": 66
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "LGTD": "120.475388",
+				        "BSNM": "长江",
+				        "NT": "syd",
+				        "STNM": "吴江水厂取水口",
+				        "WFRCD": "F1201300211000",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63203333",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "东太湖",
+				        "LTTD": "31.015867",
+				        "id": "63203333",
+				        "index": 67
+				    },
+				    {
+				        "ADAG": "江苏水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "119.833336",
+				        "BSNM": "长江流域",
+				        "NT": "t2",
+				        "STNM": "九曲河闸",
+				        "WFRCD": "",
+				        "STLC": "江苏省丹阳市新桥镇林家桥村",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "321100",
+				        "STCD": "63203351",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "九曲河",
+				        "LTTD": "32.1",
+				        "id": "63203351",
+				        "index": 68
+				    },
+				    {
+				        "ADAG": "江苏水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "119.88333",
+				        "BSNM": "长江流域",
+				        "NT": "t2",
+				        "STNM": "小河新闸(闸上游)",
+				        "WFRCD": "",
+				        "STLC": "江苏省武进市小河新闸",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63203400",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "新孟河",
+				        "LTTD": "32.016666",
+				        "id": "63203400",
+				        "index": 69
+				    },
+				    {
+				        "ADAG": "常州市水利局",
+				        "MNAG": "",
+				        "LGTD": "119.933334",
+				        "BSNM": "长江",
+				        "NT": "t2",
+				        "STNM": "魏村闸（闸上游）",
+				        "WFRCD": "",
+				        "STLC": "江苏省镇江吴淞",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "321100",
+				        "STCD": "63203500",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "德胜河",
+				        "LTTD": "31.983334",
+				        "id": "63203500",
+				        "index": 70
+				    },
+				    {
+				        "ADAG": "江苏水利",
+				        "MNAG": "",
+				        "LGTD": "119.933334",
+				        "BSNM": "长江",
+				        "NT": "t2",
+				        "STNM": "圩塘闸",
+				        "WFRCD": "",
+				        "STLC": "苏-常州",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63203520",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "澡港河",
+				        "LTTD": "31.95",
+				        "id": "63203520",
+				        "index": 71
+				    },
+				    {
+				        "ADAG": "常州市水利局",
+				        "MNAG": "",
+				        "BSNM": "长江",
+				        "NT": "t2",
+				        "STNM": "澡港闸（闸下游）",
+				        "WFRCD": "",
+				        "STLC": "江苏省常州市新北区春江镇",
+				        "WDSTYM": "",
+				        "WRRCD": "F120100",
+				        "ESSTYM": "",
+				        "ADDVCD": "320400",
+				        "STCD": "63203521",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "澡港河",
+				        "id": "63203521",
+				        "index": 72
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "",
+				        "STNM": "琳桥（西）",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "63203860",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "63203860",
+				        "index": 73
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "",
+				        "STNM": "永昌泾",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "63204210",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "63204210",
+				        "index": 74
+				    },
+				    {
+				        "ADAG": "",
+				        "MNAG": "",
+				        "BSNM": "",
+				        "NT": "",
+				        "STNM": "冶长泾",
+				        "WFRCD": "",
+				        "STLC": "",
+				        "WDSTYM": "",
+				        "WRRCD": "",
+				        "ESSTYM": "",
+				        "ADDVCD": "",
+				        "STCD": "63204220",
+				        "STGRD": "",
+				        "HNNM": "",
+				        "RVNM": "",
+				        "id": "63204220",
+				        "index": 75
+				    },
+				    {
+				        "ADAG": "太湖局",
+				        "MNAG": "",
+				        "LGTD": "120.53278",
+				        "BSNM": "长江流域",
+				        "NT": "4",
+				        "STNM": "琳桥闸",
+				        "WFRCD": "",
+				        "STLC": "江苏省苏州市",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320500",
+				        "STCD": "63204311",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "西塘河",
+				        "LTTD": "31.46861",
+				        "id": "63204311",
+				        "index": 76
+				    },
+				    {
+				        "ADAG": "太湖局",
+				        "MNAG": "",
+				        "LGTD": "120.579445",
+				        "BSNM": "长江流域",
+				        "NT": "t7",
+				        "STNM": "冶长泾闸",
+				        "WFRCD": "",
+				        "STLC": "江苏省苏州市",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320500",
+				        "STCD": "63204320",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "冶长泾",
+				        "LTTD": "31.505",
+				        "id": "63204320",
+				        "index": 77
+				    },
+				    {
+				        "ADAG": "江苏省水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "120.816994",
+				        "BSNM": "长江",
+				        "NT": "2",
+				        "STNM": "常熟枢纽",
+				        "WFRCD": "",
+				        "STLC": "江苏省常熟市虞山镇小东门外",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63204450",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "望虞河",
+				        "LTTD": "31.778088",
+				        "id": "63204450",
+				        "index": 78
+				    },
+				    {
+				        "ADAG": "江苏水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "121.0398",
+				        "BSNM": "长江流域",
+				        "NT": "t2",
+				        "STNM": "白茆闸(闸上游)",
+				        "WFRCD": "",
+				        "STLC": "江苏省常熟市白茆塘",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320500",
+				        "STCD": "63204600",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "白茆塘",
+				        "LTTD": "31.7121",
+				        "id": "63204600",
+				        "index": 79
+				    },
+				    {
+				        "ADAG": "江苏水文水资源勘测局",
+				        "MNAG": "",
+				        "LGTD": "121.2",
+				        "BSNM": "长江流域",
+				        "NT": "t2",
+				        "STNM": "七浦闸\t(闸上游)",
+				        "WFRCD": "",
+				        "STLC": "江苏省太仓市浮桥镇",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320500",
+				        "STCD": "63204850",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "七浦塘",
+				        "LTTD": "31.616667",
+				        "id": "63204850",
+				        "index": 80
+				    },
+				    {
+				        "ADAG": "太湖局",
+				        "MNAG": "",
+				        "LGTD": "121.13611",
+				        "BSNM": "长江流域",
+				        "NT": "wq",
+				        "STNM": "娄陆大桥",
+				        "WFRCD": "",
+				        "STLC": "太仓陆渡镇",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320500",
+				        "STCD": "63205020",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "浏河",
+				        "LTTD": "31.467222",
+				        "id": "63205020",
+				        "index": 81
+				    },
+				    {
+				        "ADAG": "太湖局",
+				        "MNAG": "",
+				        "LGTD": "120.9275",
+				        "BSNM": "长江流域",
+				        "NT": "t4",
+				        "STNM": "珠砂港桥",
+				        "WFRCD": "",
+				        "STLC": "江苏省吴江",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320500",
+				        "STCD": "63205190",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "朱厍港",
+				        "LTTD": "31.141388",
+				        "id": "63205190",
+				        "index": 82
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.492775",
+				        "BSNM": "长江",
+				        "NT": "3",
+				        "STNM": "太浦闸下",
+				        "WFRCD": "F1203100901000",
+				        "STLC": "江苏吴江",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320500",
+				        "STCD": "63205301",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太浦河干流",
+				        "LTTD": "31.008888",
+				        "id": "63205301",
+				        "index": 83
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.12",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "湖山桥",
+				        "WFRCD": "F1202101713013",
+				        "STLC": "江苏无锡",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320200",
+				        "STCD": "63280010",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "直湖港",
+				        "LTTD": "31.512777",
+				        "id": "63280010",
+				        "index": 84
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.08917",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "雅浦港桥",
+				        "WFRCD": "",
+				        "STLC": "江苏常州武进",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320400",
+				        "STCD": "63280030",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "雅浦港",
+				        "LTTD": "31.462778",
+				        "id": "63280030",
+				        "index": 85
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.257225",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "J03#五里湖",
+				        "WFRCD": "",
+				        "STLC": "五里湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280110",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖五里湖水体",
+				        "LTTD": "31.507778",
+				        "id": "63280110",
+				        "index": 86
+				    },
+				    {
+				        "ADAG": "太湖局",
+				        "MNAG": "",
+				        "LGTD": "120.23278",
+				        "BSNM": "长江流域",
+				        "NT": "t6",
+				        "STNM": "西五里湖",
+				        "WFRCD": "",
+				        "STLC": "五里湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280111",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖五里湖水体",
+				        "LTTD": "31.538332",
+				        "id": "63280111",
+				        "index": 87
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.22806",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "J06#梅园",
+				        "WFRCD": "F1201300413011",
+				        "STLC": "五里湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280120",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖梅梁湖水体",
+				        "LTTD": "31.538055",
+				        "id": "63280120",
+				        "index": 88
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.21139",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "B20#小湾里",
+				        "WFRCD": "F1201300413011",
+				        "STLC": "梅梁湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280121",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖梅梁湖水体",
+				        "LTTD": "31.465557",
+				        "id": "63280121",
+				        "index": 89
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.133606",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "J11#闾江口",
+				        "WFRCD": "F1201300413011",
+				        "STLC": "梅梁湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280122",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖梅梁湖水体",
+				        "LTTD": "31.494167",
+				        "id": "63280122",
+				        "index": 90
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.16417",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "J15#拖山",
+				        "WFRCD": "F1201300413011",
+				        "STLC": "梅梁湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280123",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖梅梁湖水体",
+				        "LTTD": "31.405832",
+				        "id": "63280123",
+				        "index": 91
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.19556",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "J16#三号标",
+				        "WFRCD": "F1201300413011",
+				        "STLC": "梅梁湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280124",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖梅梁湖水体",
+				        "LTTD": "31.507778",
+				        "id": "63280124",
+				        "index": 92
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.05361",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "J12#竺山湖",
+				        "WFRCD": "F1201300211001",
+				        "STLC": "竺山湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280130",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖竺山湖水体",
+				        "LTTD": "31.441666",
+				        "id": "63280130",
+				        "index": 93
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.3875",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "J18#沙墩港",
+				        "WFRCD": "F1201300211002",
+				        "STLC": "太湖贡湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280140",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖贡湖水体",
+				        "LTTD": "31.435555",
+				        "id": "63280140",
+				        "index": 94
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.24027",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "B21#渔业村",
+				        "WFRCD": "F1201300211002",
+				        "STLC": "太湖贡湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280141",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖贡湖水体",
+				        "LTTD": "31.404999",
+				        "id": "63280141",
+				        "index": 95
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.29722",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "J17A#大贡山",
+				        "WFRCD": "F1201300211002",
+				        "STLC": "太湖贡湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280142",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖贡湖水体",
+				        "LTTD": "31.371666",
+				        "id": "63280142",
+				        "index": 96
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.36806",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "B23#贡湖",
+				        "WFRCD": "F1201300211002",
+				        "STLC": "太湖贡湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280143",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖贡湖水体",
+				        "LTTD": "31.404167",
+				        "id": "63280143",
+				        "index": 97
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.470276",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "J36#东太湖",
+				        "WFRCD": "F1201300211000",
+				        "STLC": "东太湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280151",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖东太湖水体",
+				        "LTTD": "31.031666",
+				        "id": "63280151",
+				        "index": 98
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.44528",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "B24#庙港",
+				        "WFRCD": "F1201300211000",
+				        "STLC": "东太湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280152",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖东太湖水体",
+				        "LTTD": "31.000834",
+				        "id": "63280152",
+				        "index": 99
+				    },
+				    {
+				        "ADAG": "水利部太湖流域管理局",
+				        "MNAG": "",
+				        "LGTD": "120.491104",
+				        "BSNM": "长江",
+				        "NT": "wq",
+				        "STNM": "B25#戗港外",
+				        "WFRCD": "F1201300211000",
+				        "STLC": "东太湖水体",
+				        "WDSTYM": "",
+				        "ESSTYM": "",
+				        "WRRCD": "F120100",
+				        "ADDVCD": "320000",
+				        "STCD": "63280153",
+				        "STGRD": "",
+				        "HNNM": "太湖流域湖区水系",
+				        "RVNM": "太湖东太湖水体",
+				        "LTTD": "31.077778",
+				        "id": "63280153",
+				        "index": 100
+				    }
+				];
+</script>
+
+
+</body>
+</html>
