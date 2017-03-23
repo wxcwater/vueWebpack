@@ -33,7 +33,7 @@
         <tr v-for="station in stations">
 
           <td>
-            {{station.name}}
+            <a class='stationName'>{{station.name}}</a>
           </td>
             <td>
             {{station.inQ}}
