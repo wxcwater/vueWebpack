@@ -1,7 +1,7 @@
 <template>
   <div id = 'drawMapTool' class="drawMapToolPanel">
     <div class="widget-header" style="border-radius: 0 25px 0 0;top:0px;top:0px;">
-      <h5 class="widget-title smaller">选择测站</h5>
+      <h5 class="widget-title smaller">选测测站</h5>
     </div>
       <div id = 'methodType' style='display:flex; justify-content:flex-start;margin-top:5px;'>
       <div data-toggle="buttons" class="btn-group" style="margin-left:20px;" v-on:click='draw()'>
@@ -85,8 +85,7 @@ export default {
   props: ['foundStations'],
   data:function(){
       return {
-        'searchText':'',
-        'getItems':[]
+        'foundStations':[{RVNM:'测试站1',HNNM:'水质水量'},{RVNM:'测试站2',HNNM:'水质水量'}]
       }
   },
 

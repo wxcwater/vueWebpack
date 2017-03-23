@@ -32,7 +32,7 @@
               当前时间
               </td>
               <td>
-                <a class='stationName'>{{station.name}}</a>
+                {{station.name}}
               </td>
                 <td>
                 {{station.z}}
@@ -97,8 +97,5 @@ export default {
   font-size:5px;
   /*background-color : black;*/
   text-align: center;
-}
-.stationName{
-  cursor: pointer;
 }
 </style>

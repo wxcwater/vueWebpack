@@ -34,10 +34,20 @@ import gkMod_tjMod from './gkMod/gkMod_tjMod.vue'
 
 //------
 import drawMapTool from './mapTool/drawMapTool.vue'
+/* eslint-disable no-new */
+//  var x = new Vue({
+//   el: '#headvuetest',
+//   template:'<div class="col-md-2"><layertree :layers="layers"></layertree></div>',
+//   components: { 'layertree':layertree },
+//   methods:{test:function(parentMsg){alert(parentMsg)}},
+//   data:{
+//   	layers : parentMsg
+//   }
 
-
-//----test
-import slMod_MainState from './slMod/slMod_MainState.vue'
+// })
+// x.test(parentMsg);
+// x.test(x.layers);
+// window.x = x;
 
 window.vCompoment = new Object();
 window.vCompoment.layertree = layertree;
@@ -65,7 +75,3 @@ window.vCompoment.gqMod_tjMod    = gqMod_tjMod;
 window.vCompoment.lzMod_tjModule = lzMod_tjModule;
 
 window.vCompoment.drawMapTool    = drawMapTool;
-
-
-///
-window.vCompoment.slMod_MainState = slMod_MainState;
