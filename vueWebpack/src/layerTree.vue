@@ -1,9 +1,10 @@
-<template>
-  <ul class="nav navbar-nav" style="height:28px;">
-    <li id="fat-menu" class="dropdown">
-      <a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style=" height: 35px; color:#EEE;background-color: #31708f;padding-top:9px;">
-      图层控制<span class="badge badge-grey" style="padding-left:3px;padding-right:3px;left:5px;">{{checkedLayers.length}}/{{allLayers.length}}</span>
-      <span class="caret"></span>
+  <template>
+  <div  style="height:100%;">
+    <div id="fat-menu" class="layerTreeDropDown">
+      <a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="line-height:30px;font-size:10px;color:#669FC7;">
+        图层控制
+        <span class="badge badge-grey" >{{checkedLayers.length}}/{{allLayers.length}}</span>
+        <span class="caret"></span>
       </a>
       <ul class="dropdown-menu" aria-labelledby="drop3" style="min-width:180px;max-height:300px;overflow:auto;">
 
@@ -27,10 +28,10 @@
           <input type="checkBox" :value="layer.name"  style="display:inline" v-else  v-on:click='onChange(layer.id)'>
           <a href="#" style="display:inline"><span class='fa fa fa-map-o' style='margin-left:-7px;margin-right:5px;'></span>{{layer.name}}</a>
         </li>
-        <!-- <li role="separator" class="divider"></li> -->
-      </ul>
-    </li>
-  </ul>
+        <!-- <li role="separator" class="divider"></li>
+      </ul> -->
+    </div>
+  </div>
 </template>
 
 <script>
@@ -120,5 +121,25 @@ export default {
 </script>
 
 <style>
+  .layerTreeDropDown{
+    height:100%;
+    /*background-color: #BDBDBD;height:100%;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+  }
+  #drop3{
+    height:100%;
+    padding:0px;
+  }
+  .badge{
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 10px;
+
+  }
 </style>

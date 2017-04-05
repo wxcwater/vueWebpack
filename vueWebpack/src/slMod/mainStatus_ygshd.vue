@@ -1,7 +1,11 @@
 <template>
   <div class="widget-box transparent" id="widget-box-12">
   <div class="widget-header">
-  <h6 class="widget-title lighter ui-sortable-handle">引供水河道、沿长江、沿杭州湾</h6>
+  <h6 class="widget-title lighter ui-sortable-handle">
+    {{this.hdComponentParam.indexOf('ygshd')>-1?'引供水河道':''}}
+    {{this.hdComponentParam.indexOf('cj')>-1?'沿长江':''}}
+    {{this.hdComponentParam.indexOf('hzw')>-1?'沿杭州湾':''}}
+  </h6>
 
 
   </div>
@@ -54,7 +58,7 @@
 
 export default {
   name: 'mainStatus_ygshd',
-  props: ['echarts','addComponents'],
+  props: ['echarts','addComponents','hdComponentParam'],
   components: {
     // <my-component> 将只在父模板可用
 

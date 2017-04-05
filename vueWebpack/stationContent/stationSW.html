@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../src/ace/components/jquery/jquery.js"></script>
+    <script src="../src/js/echarts.min.js"></script>
+    <style media="screen">
+    html,body{
+      height:100%;
+      width:100%;
+      margin : 0px;
+    }
+    .stationPageContainer{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: stretch;
+    }
+    .stationPageContentContainer{
+      flex-basis: 80%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: stretch;
+    }
+    #titleBar{
+       display: flex;
+       flex-direction: row;
+       justify-content: center;
+       flex-basis: 5%;
+    }
+    .myTable{
+  border: 0px;
+  width: 100%;
+}
+.myTable th{
+  background-color: #a4c2f4;
+  font-size:7px;
+  font-weight: bolder;
+  text-align: center;
+}
+.myTable tr:nth-child(even){
+  font-size:5px;
+  background-color: #e2ecf6;
+  text-align: center;
+}
+.myTable tr:nth-child(odd){
+  font-size:5px;
+  /*background-color : black;*/
+  text-align: center;
+}
+    </style>
+  </head>
+  <body>
+    <div id="container" class="stationPageContainer">
+        <div id="titleBar">
+          <p style="margin:0px;font-size:15px;">太湖()-平均水位</p>
+        </div>
+
+      <div id="titleBar" style="font-size:12px;">
+
+        <p style="margin:0px;">日期时间</p>
+        <div id="timer"  class='contentTitleBarItem' style="display:flex;flex-direction:row;justify-content:space-around">
+
+          <p style="margin:0px;">从</p>
+          <input style="width:30%" value="2017-03-28 08"></input >
+          <p style="margin:0px;">至</p>
+          <input style="width:30%" value="2017-03-28 14"></input >
+          <i class="ace-icon fa fa-repeat"></i>
+
+          <p style="margin:0px;">时间维度:</p>
+          <input type="radio" group="time" text="1">日
+          <input type="radio" group="time" text="1">时
+          <input type="radio" group="time" text="1">分
+      </div>
+    </div>
+        <div class="stationPageContentContainer">
+          <div id="chartDiv" style="flex-basis:60%">
+            <!--图形-->
+          </div>
+          <div id="tableDiv" style="flex-basis:40%">
+            <table border="0" class="myTable"><thead><tr><th>
+          日期
+          </th> <th>
+          水位
+          </th> <th>
+          警戒水位
+          </th> <th>
+          保证水位
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2017-01-01</td>
+            <td>20</td>
+            <td>20</td>
+            <td>20</td>
+
+        </tr>
+        <tr>
+          <td>2017-01-01</td>
+            <td>20</td>
+            <td>20</td>
+            <td>20</td>
+
+        </tr>
+        <tr>
+          <td>2017-01-01</td>
+            <td>20</td>
+            <td>20</td>
+            <td>20</td>
+
+        </tr>
+        <tr>
+          <td>2017-01-01</td>
+            <td>20</td>
+            <td>20</td>
+            <td>20</td>
+
+        </tr>
+        <tr>
+          <td>2017-01-01</td>
+            <td>20</td>
+            <td>20</td>
+            <td>20</td>
+
+        </tr>
+      </tbody>
+    </table>
+          </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          var option = {
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['水位','警戒水位','保证水位']
+                },
+                grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['02-24 ','02-25','02-26','02-27','02-28','03-01','03-02']
+                },
+                yAxis: {
+                    name:'水位(m)',
+                    type: 'value',
+                    axisLabel:{
+                      formatter:function(value){
+                        return value.toFixed(2);
+                      }
+                    }
+                },
+                series: [
+                    {
+                        name:'水位',
+                        type:'line',
+                        itemStyle:{
+                          normal:{
+                            color:'#0000ff'
+                          }
+                        },
+                        data:[2.4, 2.6, 2.8, 3.2, 2.8, 3.4, 3.2]
+                    },
+                    {
+                        name:'警戒水位',
+                        type:'line',
+                        itemStyle:{
+                          normal:{
+                            color:'#ff9900',
+                            opacity:0.1,
+                          }
+                        },
+                        lineStyle:{
+                          normal:{
+                            width:0.5,
+                            type:'dashed'
+
+                          }
+                        },
+                        markPoint:{
+                          symbol:'rect',
+                          symbolSize:[80,20],
+                          symbolOffset:[0,-10],
+                          label:{
+                            normal:{
+                              show:true,
+                              formatter:'警戒水位:3.80',
+                              textStyle:{
+                                  fontSize:2,
+                                  fontWeight:'lighter',
+                              }
+                            }
+                          },
+                          data:[ {type : 'max', name: '最大值',x:'30%'}]
+                        },
+                        data:[3.80, 3.80, 3.80, 3.80, 3.80, 3.80, 3.80]
+                    },
+                    {
+                        name:'保证水位',
+                        type:'line',
+                        itemStyle:{
+                          normal:{
+                            color:'#ff0000',
+                            opacity:0.1,
+                          }
+                        },
+                        lineStyle:{
+                          normal:{
+                            width:0.5,
+                            type:'dashed'
+                          }
+                        },
+                        markPoint:{
+                          symbol:'rect',
+                          symbolSize:[80,20],
+                          symbolOffset:[0,-10],
+                          label:{
+                            normal:{
+                              show:true,
+                              formatter:'保证水位:4.65',
+                              textStyle:{
+                                fontSize:1,
+                                fontWeight:'lighter',
+                              }
+                            }
+                          },
+                          data:[ {type : 'max', name: '最大值',x:'70%'}]
+                        },
+                        data:[4.65, 4.65, 4.65, 4.65, 4.65, 4.65, 4.65]
+                    }
+                ]
+            };
+
+              var chart = echarts.init(document.getElementById("chartDiv"));
+              chart.setOption(option);
+        });
+    </script>
+  </body>
+</html>

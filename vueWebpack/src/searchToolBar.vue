@@ -1,17 +1,17 @@
 <template>
-  <div class="nav-search" id="nav-search" style="margin-top:-5px;position:relative;">
-      <form class="form-search">
-        <span class="input-icon" style="top:5px;height:33px;">
-          <input type="text" placeholder="Search ..." class="nav-search-input" autoComplete="off" style="height:33px;" id="nav-search-input" v-model="searchText"   v-on:keyup="searchtext()">
-          <i class="ace-icon fa fa-search nav-search-icon"></i>
-        </span>
+  <div class='searchToolBarContainer'>
+      <form style="height:100%;padding:0px;" >
+        <div class='searchToolBarContent'>
+          <input  class='searchToolBarInput' placeholder="查询 ..."  autoComplete="off"  v-model="searchText"   v-on:keyup="searchtext()">
+          <i class="ace-icon fa fa-search nav-search-icon searchToolBarIcon"></i>
+        </div>
       </form>
-      <div  style="position:absolute;background:#ffffff;border-radius:5px;;width:150px;z-index:1060;">
+      <div  style="position:absolute;background:#ffffff;border-radius:0px 0px 5px 5px;width:105px;z-index:1060;margin-left:-5px;margin-top:5px;">
         <div v-for='item in getItems' style='cursor:pointer;padding:8px;clear:both;'>
-          <a >
+          <a style="font-size:10px">
             {{item.key}}
           </a>
-          <font style="font-size:11px;color:#999999">
+          <font style="font-size:8px;color:#999999">
             {{item.type}}
           </font>
         </div>
@@ -66,5 +66,31 @@ export default {
 </script>
 
 <style>
-
+  .searchToolBarContainer{
+    height:70%;
+    width:30%;
+    padding:5px;
+    /*border-color: blue;*/
+    /*background-image: linear-gradient(to bottom right,#FFFFFF,rgb(188, 207, 226));*/
+    background-color:white;
+    border-radius: 5px;
+  }
+  .searchToolBarContent{
+      height:100%;display:flex;flex-wrap: nowrap;align-items: center;padding:0px;
+  }
+  .searchToolBarInput{
+    height:20px;
+    display: inline;
+    width: 100%;
+    font-size: 10px;
+    /*margin-left:10px;*/
+    /*background-color: white;*/
+    border-style: hidden;
+    border: 0px;
+  }
+  .searchToolBarIcon{
+    display: inline;
+    margin-left: -20px;
+    color: #669FC7;
+  }
 </style>

@@ -6,7 +6,7 @@
 
   <div class="widget-body contentComponent " >
     <div class="widget-main padding-6 no-padding-left no-padding-right">
-      <table class='myTable' border='1'>
+      <table class='myTable' border='0'>
         <thead >
         <tr>
           <th>
@@ -54,7 +54,7 @@
 
 export default {
   name: 'mainStatus_thsw',
-  props: ['echarts','addComponents'],
+  props: ['echarts','addComponents','hdComponentParam'],
   components: {
     // <my-component> 将只在父模板可用
 

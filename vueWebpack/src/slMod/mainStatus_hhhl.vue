@@ -58,7 +58,7 @@
 
 export default {
   name: 'mainStatus_hhhl',
-  props: ['echarts','addComponents'],
+  props: ['echarts','addComponents','hdComponentParam'],
   components: {
     // <my-component> 将只在父模板可用
 

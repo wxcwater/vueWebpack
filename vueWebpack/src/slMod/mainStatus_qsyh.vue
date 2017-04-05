@@ -54,7 +54,7 @@
 
 export default {
   name: 'mainStatus_qsyh',
-  props: ['echarts','addComponents'],
+  props: ['echarts','addComponents','hdComponentParam'],
   components: {
     // <my-component> 将只在父模板可用
 

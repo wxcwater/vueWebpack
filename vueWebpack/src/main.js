@@ -34,15 +34,18 @@ import gkMod_tjMod from './gkMod/gkMod_tjMod.vue'
 
 //------
 import drawMapTool from './mapTool/drawMapTool.vue'
-
+import focusObject from './focusObject.vue'
 
 //----test
 import slMod_MainState from './slMod/slMod_MainState.vue'
 
+
+//--------------sl
+import slMod_qsyh_tjTableContent from './slMod/slMod_slfqtjMod.vue'
 window.vCompoment = new Object();
 window.vCompoment.layertree = layertree;
 window.vCompoment.searchToolBar = searchToolBar;
-
+window.vCompoment.focusObject   = focusObject;
 
 
 window.vCompoment.sl_content = sl_content;
@@ -69,3 +72,4 @@ window.vCompoment.drawMapTool    = drawMapTool;
 
 ///
 window.vCompoment.slMod_MainState = slMod_MainState;
+window.vCompoment.slMod_qsyh_tjTableContent = slMod_qsyh_tjTableContent;
